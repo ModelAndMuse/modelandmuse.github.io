@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<meta name="description" content="The first proposal for While The Ceiling Moves: 25 storyboard panels, the arc of the film and its rules.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="While The Ceiling Moves Storyboard">
+<meta property="og:description" content="The first proposal for While The Ceiling Moves: 25 storyboard panels, the arc of the film and its rules.">
+<meta property="og:url" content="https://@@org.github.io/while-the-ceiling-moves/storyboard/">
+<meta property="og:image" content="https://@@org.github.io/while-the-ceiling-moves/storyboard/frames/16_end_reveal.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.png">
+<title>While The Ceiling Moves Storyboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:ital,wght@0,400;0,600;1,400&family=Fragment+Mono&display=swap">
+<style>
+/* Layout: a night-kitchen edit timeline. Arc first, then panels in song order, frame left and notes right.
+   Single dark look by choice: the film happens at night under one strip light. */
+:root {
+  --night: #0c1316; --panel: #121d22; --line: #233840; --tile-a: #13222a; --tile-b: #0f1b21;
+  --cold: #dcedf0; --muted: #8ea8ae; --teal: #5d9aa3; --amber: #f2a650;
+  --display: "Gloock", "Georgia", serif;
+  --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Fragment Mono", "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--night); color: var(--cold); font: 16px/1.6 var(--body); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 48px 96px; display: grid; gap: 72px; }
+h1, h2, h3, h4 { font-weight: 400; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.eyebrow, .tc, .num, .chip, dt, .drv { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+.eyebrow { color: var(--muted); }
+.hero { display: grid; gap: 20px; }
+.hero h1 { font-family: var(--display); font-size: clamp(44px, 8vw, 104px); line-height: .95; position: relative; }
+.hero h1 .echo { position: absolute; inset: 0; transform: translate(.05em, -.04em); color: transparent; -webkit-text-stroke: 1px var(--teal); pointer-events: none; animation: echo 7.33s ease-in-out infinite; }
+@keyframes echo { 0%, 100% { transform: translate(.05em, -.04em); } 50% { transform: translate(.015em, -.01em); } }
+@media (prefers-reduced-motion: reduce) { .hero h1 .echo { animation: none; } }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 24px; color: var(--muted); }
+.lede { max-width: 64ch; font-size: 19px; color: var(--cold); }
+.warm { color: var(--amber); }
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; padding: 0; margin: 0; list-style: none; }
+.rules li, .systems li, .pipeline li { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.rules h4, .systems h4, .pipeline h4 { font-family: var(--display); font-size: 22px; }
+.rules p, .systems p, .pipeline p { color: var(--muted); }
+h2 { font-family: var(--display); font-size: clamp(30px, 4vw, 44px); }
+.block { display: grid; gap: 24px; }
+.arc { overflow-x: auto; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding-block: 16px; }
+.arc svg { min-width: 720px; width: 100%; height: auto; display: block; }
+.arc .sec { font: 12px var(--mono); fill: var(--muted); }
+.arc .tc { font: 11px var(--mono); fill: var(--muted); }
+.arc .lbl { font: 11px var(--mono); fill: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.arc .grid { stroke: var(--line); stroke-dasharray: 2 4; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 24px; color: var(--muted); font-size: 14px; }
+.legend span::before { content: ""; display: inline-block; width: 18px; height: 3px; margin-right: 8px; vertical-align: middle; background: var(--cold); }
+.legend .lr::before { background: var(--amber); height: 10px; width: 10px; }
+.systems, .pipeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px 32px; padding: 0; margin: 0; list-style: none; }
+.drv { color: var(--teal); }
+.pipeline { counter-reset: step; }
+.pipeline h4::before { counter-increment: step; content: counter(step) "  "; font-family: var(--mono); font-size: 13px; color: var(--teal); vertical-align: middle; }
+.sect { display: grid; gap: 40px; }
+.sect-head { display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 10px; position: sticky; top: env(safe-area-inset-top, 0px); background: var(--night); z-index: 2; padding-top: 10px; }
+.sect-head h3 { font-family: var(--display); font-size: 28px; }
+.sect-head .tc { color: var(--muted); }
+.panel { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.frame { margin: 0; position: relative; }
+.frame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; outline: 1px solid var(--line); }
+.kind-photo .frame img { outline-color: var(--amber); }
+.missing { aspect-ratio: 16 / 9; max-width: 100%; display: grid; place-items: center; border: 1px dashed var(--line); color: var(--muted); font-family: var(--mono); font-size: 13px; }
+.notes { display: grid; gap: 16px; min-width: 0; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.num { color: var(--teal); }
+.meta .tc { color: var(--muted); }
+.chip { padding: 3px 8px; border: 1px solid var(--line); color: var(--muted); }
+.chip-type { border-color: var(--teal); color: var(--cold); }
+.chip-photo { border-color: var(--amber); color: var(--amber); }
+.lyric { margin: 0; font-family: var(--display); font-size: 24px; line-height: 1.25; }
+dl { margin: 0; display: grid; gap: 4px; }
+dt { color: var(--teal); margin-top: 8px; }
+dd { margin: 0; color: var(--muted); font-size: 15px; }
+.questions { margin: 0; padding-left: 1.2em; display: grid; gap: 12px; max-width: 70ch; color: var(--muted); }
+.questions li::marker { color: var(--amber); }
+.decided li::marker { color: var(--teal); }
+.chip-mode { border-color: transparent; color: var(--teal); padding-inline: 0; }
+@media (max-width: 760px) { .panel { grid-template-columns: 1fr; gap: 16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Storyboard proposal · second pass · 25 panels</p>
+    <h1>While The Ceiling Moves<span class="echo" aria-hidden="true">While The Ceiling Moves</span></h1>
+    <div class="facts tc"><span>Amber &amp; Ink</span><span>4:08</span><span>~131 BPM</span><span>16:9</span><span>Times from the word timings</span></div>
+    <p class="lede">A panic attack seen from the floor of one kitchen at night, and the person who stays. The room is the main character. It tips and comes apart as the song builds, then settles until, by the outro, it is completely still.</p>
+  </header>
+
+  <section class="block">
+    <h2>The rules of the film</h2>
+    <ul class="rules">
+      <li><h4>We are the one on the floor</h4><p>The camera is the narrator's eyes. No faces, ever. The other person is a presence: warm light, a line-drawn hand, a voice.</p></li>
+      <li><h4>Abstract, with flashes of the real</h4><p>The low-poly room is the disconnected state. Photoreal flashes cut in like sensory overload. In the final chorus realism comes back and stays, and being real becomes the comfort.</p></li>
+      <li><h4>Two voices, two colours</h4><p>The narrator's words are cold fluorescent white. Everything the other person says is <span class="warm">warm amber</span>. The light in the room shifts from one to the other over the film.</p></li>
+      <li><h4>Stillness is the ending</h4><p>One designed curve drives every wobble, tilt and echo. It peaks as the floor gives way, then falls to zero. The last shots are the first shots, held still.</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>The arc</h2>
+    <div class="arc"><svg viewBox="0 0 1000 230" role="img" aria-labelledby="arc-title arc-desc">
+<title id="arc-title">The arc of the film</title>
+<desc id="arc-desc">Unease rises through the verses and choruses to a peak at the start of the bridge, then falls to complete stillness by the outro. Realism appears as three brief flashes, then holds during the final chorus.</desc>
+<rect x="0.0" y="22" width="61.6" height="138" fill="var(--tile-a)"/>
+<text class="sec" x="30.8" y="180" text-anchor="middle">Intro</text>
+<rect x="61.6" y="22" width="114.7" height="138" fill="var(--tile-b)"/>
+<text class="sec" x="119.0" y="180" text-anchor="middle">V1</text>
+<rect x="176.3" y="22" width="123.6" height="138" fill="var(--tile-a)"/>
+<text class="sec" x="238.1" y="180" text-anchor="middle">Ch 1</text>
+<rect x="299.9" y="22" width="56.8" height="138" fill="var(--tile-b)"/>
+<text class="sec" x="328.3" y="180" text-anchor="middle">Inst</text>
+<rect x="356.7" y="22" width="111.9" height="138" fill="var(--tile-a)"/>
+<text class="sec" x="412.6" y="180" text-anchor="middle">V2</text>
+<rect x="468.6" y="22" width="126.8" height="138" fill="var(--tile-b)"/>
+<text class="sec" x="532.0" y="180" text-anchor="middle">Ch 2</text>
+<rect x="595.4" y="22" width="55.2" height="138" fill="var(--tile-a)"/>
+<text class="sec" x="623.0" y="180" text-anchor="middle">Inst</text>
+<rect x="650.6" y="22" width="115.1" height="138" fill="var(--tile-b)"/>
+<text class="sec" x="708.1" y="180" text-anchor="middle">Bridge</text>
+<rect x="765.7" y="22" width="128.0" height="138" fill="var(--tile-a)"/>
+<text class="sec" x="829.7" y="180" text-anchor="middle">Final</text>
+<rect x="893.7" y="22" width="47.9" height="138" fill="var(--tile-b)"/>
+<text class="sec" x="917.7" y="180" text-anchor="middle">Outro</text>
+<rect x="941.6" y="22" width="58.4" height="138" fill="var(--tile-a)"/>
+<text class="sec" x="970.8" y="180" text-anchor="middle">End</text>
+<line x1="0" x2="1000" y1="91.0" y2="91.0" class="grid"/>
+<line x1="0" x2="1000" y1="22.0" y2="22.0" class="grid"/>
+<polygon points="0,160 0.0,146.2 61.6,125.5 176.3,91.0 261.7,74.4 299.9,84.1 356.7,84.1 468.6,56.5 595.4,35.8 624.0,22.0 650.6,28.9 704.5,77.2 765.7,118.6 845.4,143.4 893.7,154.5 941.6,160.0 1000.0,160.0 1000,160" fill="var(--teal)" fill-opacity="0.22"/>
+<polyline points="0.0,146.2 61.6,125.5 176.3,91.0 261.7,74.4 299.9,84.1 356.7,84.1 468.6,56.5 595.4,35.8 624.0,22.0 650.6,28.9 704.5,77.2 765.7,118.6 845.4,143.4 893.7,154.5 941.6,160.0 1000.0,160.0" fill="none" stroke="var(--cold)" stroke-width="2.5"/>
+<polyline points="0.0,146.2 61.6,125.5 176.3,91.0 261.7,74.4 299.9,84.1 356.7,84.1 468.6,56.5 595.4,35.8 624.0,22.0 650.6,28.9 704.5,77.2 765.7,118.6 845.4,143.4 893.7,154.5 941.6,160.0 1000.0,160.0" fill="none" stroke="var(--teal)" stroke-width="1.5" transform="translate(5,-4)" opacity="0.8"/>
+<rect x="99.1" y="190" width="3" height="16" fill="var(--amber)"/>
+<rect x="260.2" y="190" width="3" height="16" fill="var(--amber)"/>
+<rect x="429.3" y="190" width="3" height="16" fill="var(--amber)"/>
+<rect x="873.6" y="190" width="32.2" height="16" fill="var(--amber)"/>
+<text class="tc" x="3.0" y="15">0:00</text>
+<text class="tc" x="244.5" y="15">1:00</text>
+<text class="tc" x="486.1" y="15">2:00</text>
+<text class="tc" x="727.6" y="15">3:00</text>
+<text class="tc" x="969.2" y="15">4:00</text>
+<text class="lbl" x="994" y="37.0" text-anchor="end">peak unease</text>
+<text class="lbl" x="994" y="154" text-anchor="end">still</text>
+</svg></div>
+    <div class="legend"><span>Unease: drives every distortion parameter</span><span class="lr">Realism: brief flashes, then held</span></div>
+  </section>
+
+  <section class="block">
+    <h2>Visual systems</h2>
+    <ul class="systems"><li><h4>The room</h4><p>One low-poly kitchen built in Blender, rendered in Eevee. It tips, breathes and comes apart; the camera itself stays level.</p><p class="drv">Unease curve, drums, bass</p></li><li><h4>The tile grid</h4><p>Floor, wall and ceiling tiles as instanced geometry. Every banjo note lights a tile: pitch picks the column, the onset fires it.</p><p class="drv">Banjo (guitar stem) MIDI, re-timed to audio</p></li><li><h4>Doubling</h4><p>Everything comes in twice as loud: outlines and whole frames are rendered twice with an offset that spikes on hits and shrinks to zero by the end.</p><p class="drv">Snare, unease curve</p></li><li><h4>Line hands</h4><p>Hands drawn as thin line art (Grease Pencil or SVG). The outline drifts off the hand while dissociated and sits exactly on it at the end.</p><p class="drv">Lead vocal envelope</p></li><li><h4>Lyrics</h4><p>Every line on screen, never as plain subtitles: woven into the room when calm, a storm of copies and fragments when the unease is high. Rules below.</p><p class="drv">Word timings, unease curve</p></li><li><h4>Breath</h4><p>The bridge&#x27;s box breathing drawn as a square, one side per bar, in time with the music.</p><p class="drv">Tempo map</p></li><li><h4>Realism</h4><p>Photoreal inserts: 2-6 frame flashes early on, then held, warm hands in the final chorus. Codex stills or Cycles renders for now; your own footage drops into the same slots if you get some.</p><p class="drv">Kick and snare hits; final chorus</p></li></ul>
+  </section>
+
+  <section class="block">
+    <h2>How the lyrics behave</h2>
+    <ul class="rules"><li><h4>Always readable</h4><p>Every word appears clean and legible at the moment it is sung. No exceptions.</p></li><li><h4>The storm surrounds it</h4><p>The unease curve decides how much chaos surrounds that clean word: extra copies, fragments, wrong scales and angles, 1-2 frame flashes, earlier lines resurfacing.</p></li><li><h4>The other voice never storms</h4><p>The other person&#x27;s words (warm amber) are always clean and still. &#x27;I&#x27;m here&#x27; is the one steady thing in the frame.</p></li><li><h4>Instrumentals carry fragments</h4><p>With nothing sung, only broken pieces of words drift through, deliberately unreadable.</p></li></ul>
+  </section>
+
+  <section class="block">
+    <h2>Panels</h2>
+    <section class="sect"><header class="sect-head"><h3>Intro</h3><span class="tc">0:00–0:15</span></header>
+
+<article class="panel kind-lowpoly" id="p-01_intro_ceiling">
+  <figure class="frame"><img src="frames/01_intro_ceiling.jpg" alt="Black. A fluorescent strip flickers on. We are lying on a kitchen floor, looking straight up. The ceiling grid breathes, very slightly, and its line-art outline sits a few pixels off the real edges." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">01</span><span class="tc">0:00</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    
+    <dl><dt>Shot</dt><dd>Black. A fluorescent strip flickers on. We are lying on a kitchen floor, looking straight up. The ceiling grid breathes, very slightly, and its line-art outline sits a few pixels off the real edges.</dd><dt>Built with</dt><dd>Blender set, Eevee. Ceiling is a subdivided plane with displacement; line-art pass rendered twice, the second copy offset.</dd><dt>Driven by</dt><dd>Flicker keyed to FX stem onsets; ceiling breath from bass envelope (low amplitude).</dd><dt>Lyrics on screen</dt><dd>The title set into the ceiling tile grid, one letter per tile, lit by the banjo arpeggio.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Verse 1</h3><span class="tc">0:15–0:43</span></header>
+
+<article class="panel kind-lowpoly" id="p-02_v1_hands">
+  <figure class="frame"><img src="frames/02_v1_hands.jpg" alt="POV: two hands held up in front of the face in cold light. Each hand&#x27;s white outline drifts off the hand and lags behind its movement, as if the outline belongs to someone else." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">02</span><span class="tc">0:15</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">My hands forget they&#x27;re mine at all</blockquote>
+    <dl><dt>Shot</dt><dd>POV: two hands held up in front of the face in cold light. Each hand&#x27;s white outline drifts off the hand and lags behind its movement, as if the outline belongs to someone else.</dd><dt>Built with</dt><dd>Low-poly rigged hands (or Grease Pencil line hands); the line-art copy is a separate object on a spring/lag.</dd><dt>Driven by</dt><dd>Outline offset distance follows the lead vocal envelope.</dd><dt>Lyrics on screen</dt><dd>The line is written along the drifting hand outline, lagging behind the real hand just as the outline does.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-lowpoly" id="p-03_v1_room_tips">
+  <figure class="frame"><img src="frames/03_v1_room_tips.jpg" alt="Wide POV from the floor. The camera stays level but the whole kitchen rotates around us, cabinets and fridge tilting, leaving faint line-art ghosts of where they just were." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">03</span><span class="tc">0:18</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">The room tips hard but doesn&#x27;t fall</blockquote>
+    <dl><dt>Shot</dt><dd>Wide POV from the floor. The camera stays level but the whole kitchen rotates around us, cabinets and fridge tilting, leaving faint line-art ghosts of where they just were.</dd><dt>Built with</dt><dd>Rotate the room collection, never the camera. Ghost trails from a frame-echo pass in the compositor.</dd><dt>Driven by</dt><dd>Tilt angle from the &#x27;unease curve&#x27; plus a kick-drum nudge.</dd><dt>Lyrics on screen</dt><dd>The words stay level while the room tips around them, then slide with the room on &#x27;fall&#x27;. A first hint of storm: a faint second copy.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-lowpoly" id="p-04_v1_tiles">
+  <figure class="frame"><img src="frames/04_v1_tiles.jpg" alt="Close on the wall and floor tiles beside the sink. The banjo arpeggio lights tiles one by one in a rippling run; the runs get faster than the eye can follow." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">04</span><span class="tc">0:21</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">I count the tiles beside the sink</blockquote>
+    <dl><dt>Shot</dt><dd>Close on the wall and floor tiles beside the sink. The banjo arpeggio lights tiles one by one in a rippling run; the runs get faster than the eye can follow.</dd><dt>Built with</dt><dd>Instanced tile grid. Each banjo note becomes a tile pulse: pitch picks the column, onset fires the emission.</dd><dt>Driven by</dt><dd>Guitar stem (banjo) MIDI, re-timed to the audio onsets.</dd><dt>Lyrics on screen</dt><dd>&#x27;One, two, three&#x27; as large numerals lit in tiles, lighting faster than they&#x27;re sung.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-photo" id="p-R1_flash_tap">
+  <figure class="frame"><img src="frames/R1_flash_tap.jpg" alt="Realism flash, 3-4 frames: a real tap, a single drop, harsh light. Intrusive and too sharp." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">05</span><span class="tc">~0:25</span>
+      <span class="chip chip-photo">Realism · flash</span><span class="chip chip-mode">Lyrics: Storm</span></div>
+    
+    <dl><dt>Shot</dt><dd>Realism flash, 3-4 frames: a real tap, a single drop, harsh light. Intrusive and too sharp.</dd><dt>Built with</dt><dd>Photoreal still generated with Codex (as here) or a Cycles macro render; your own phone clip drops into the same slot if you get one. Hard cut, a fast push-in and a flash-frame exposure.</dd><dt>Driven by</dt><dd>Cut in on a kick, out on the next 16th.</dd><dt>Lyrics on screen</dt><dd>One word from the current line slams onto the photo for its two frames.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-lowpoly" id="p-05_v1_phone">
+  <figure class="frame"><img src="frames/05_v1_phone.jpg" alt="A phone glows in a palm, the only warm light in the room. Six message blocks pop in, six go back, the rest are erased. Then the phone is laid face-down on the chest and its light is gone." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">06</span><span class="tc">0:32</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">Six words arrive and break the calm</blockquote>
+    <dl><dt>Shot</dt><dd>A phone glows in a palm, the only warm light in the room. Six message blocks pop in, six go back, the rest are erased. Then the phone is laid face-down on the chest and its light is gone.</dd><dt>Built with</dt><dd>Phone screen as an emission texture; blocks are simple rounded rects animated in Blender or composited from SVG.</dd><dt>Driven by</dt><dd>Blocks land on vocal syllable onsets (needs the Whisper word timings).</dd><dt>Lyrics on screen</dt><dd>The line arrives as the message bubbles on the phone; the typed reply is erased letter by letter.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Chorus 1</h3><span class="tc">0:43–1:14</span></header>
+
+<article class="panel kind-lowpoly" id="p-06_chorus1_ceiling">
+  <figure class="frame"><img src="frames/06_chorus1_ceiling.jpg" alt="Back to the ceiling, now moving properly: tiles ripple like a water surface and the strip light swings. The whole image doubles. A warm line-drawn hand reaches in from the edge of frame." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">07</span><span class="tc">0:43</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">Stay with me while the ceiling moves</blockquote>
+    <dl><dt>Shot</dt><dd>Back to the ceiling, now moving properly: tiles ripple like a water surface and the strip light swings. The whole image doubles. A warm line-drawn hand reaches in from the edge of frame.</dd><dt>Built with</dt><dd>Displacement wave on the ceiling; two render passes composited with an offset (&#x27;twice as loud&#x27;). Warm hand as a Grease Pencil stroke.</dd><dt>Driven by</dt><dd>Wave height from bass + drums; doubling offset spikes on snare; warm light from backing vocals.</dd><dt>Lyrics on screen</dt><dd>See 06b: letters in the ceiling tiles, rippling with the displacement and doubled on snare hits.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-type" id="p-06b_chorus1_type">
+  <figure class="frame"><img src="frames/06b_chorus1_type.jpg" alt="Lyric treatment: the chorus line laid into the ceiling grid, one letter per tile, rippling with the ceiling and doubled when the snare hits." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">08</span><span class="tc">0:43</span>
+      <span class="chip chip-type">Lyric treatment</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">Stay with me while the ceiling moves</blockquote>
+    <dl><dt>Shot</dt><dd>Lyric treatment: the chorus line laid into the ceiling grid, one letter per tile, rippling with the ceiling and doubled when the snare hits.</dd><dt>Built with</dt><dd>Letters are emissive decals on the tile instances, so they inherit the displacement for free.</dd><dt>Driven by</dt><dd>Letters light on the vocal word timings; doubling offset on snare.</dd><dt>Lyrics on screen</dt><dd>Main chorus treatment.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-photo" id="p-R3_flash_fist">
+  <figure class="frame"><img src="frames/R3_flash_fist.jpg" alt="Realism flash: a real clenched fist on cold tile, knuckles pale, two frames, gone." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">09</span><span class="tc">~1:05</span>
+      <span class="chip chip-photo">Realism · flash</span><span class="chip chip-mode">Lyrics: Storm</span></div>
+    
+    <dl><dt>Shot</dt><dd>Realism flash: a real clenched fist on cold tile, knuckles pale, two frames, gone.</dd><dt>Built with</dt><dd>Photoreal still generated with Codex (as here) or a Cycles macro render; your own phone clip drops into the same slot if you get one. Hard cut, a fast push-in and a flash-frame exposure.</dd><dt>Driven by</dt><dd>On the downbeat before the chorus&#x27;s last line.</dd><dt>Lyrics on screen</dt><dd>Two frames: the photo with one word of the line burned across it.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Instrumental 1</h3><span class="tc">1:14–1:28</span></header>
+
+<article class="panel kind-lowpoly" id="p-07_break1_grid">
+  <figure class="frame"><img src="frames/07_break1_grid.jpg" alt="The kitchen comes apart into a lattice of floating tiles in the dark, lit in banjo patterns. The camera drifts through it on the bar grid. This is the most abstract shot in the first half." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">10</span><span class="tc">~1:15</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Fragments</span></div>
+    
+    <dl><dt>Shot</dt><dd>The kitchen comes apart into a lattice of floating tiles in the dark, lit in banjo patterns. The camera drifts through it on the bar grid. This is the most abstract shot in the first half.</dd><dt>Built with</dt><dd>Geometry Nodes tile lattice; camera path keyed to bars.</dd><dt>Driven by</dt><dd>Banjo and synth MIDI drive tile emission; drums drive camera pushes.</dd><dt>Lyrics on screen</dt><dd>No vocals, so fragments of the chorus drift through the lattice, deliberately unreadable.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Verse 2</h3><span class="tc">1:28–1:56</span></header>
+
+<article class="panel kind-lowpoly" id="p-08_v2_siren_rain">
+  <figure class="frame"><img src="frames/08_v2_siren_rain.jpg" alt="The kitchen window at night. Rain runs down the glass; red and blue siren light smears through the drops and folds into them. Pipework along the wall strains and clicks." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">11</span><span class="tc">1:32</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Storm</span></div>
+    <blockquote class="lyric">A siren folds into the rain</blockquote>
+    <dl><dt>Shot</dt><dd>The kitchen window at night. Rain runs down the glass; red and blue siren light smears through the drops and folds into them. Pipework along the wall strains and clicks.</dd><dt>Built with</dt><dd>Window glass refraction in Eevee or a 2D rain shader composited over a window plate.</dd><dt>Driven by</dt><dd>Siren colour pulse from FX stem; pipe &#x27;clicks&#x27; from percussion onsets.</dd><dt>Lyrics on screen</dt><dd>The line is refracted through the raindrops: a clean copy behind the glass, smeared red-and-blue copies in every drop.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-lowpoly" id="p-09_v2_lock">
+  <figure class="frame"><img src="frames/09_v2_lock.jpg" alt="The front door, seen from inside. The kitchen has gone too white, overexposed. A hand checks the deadbolt: four stuttered repeats, then four more, each one a hard cut on the beat." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">12</span><span class="tc">1:46</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Storm</span></div>
+    <blockquote class="lyric">Then check the lock four times, then four</blockquote>
+    <dl><dt>Shot</dt><dd>The front door, seen from inside. The kitchen has gone too white, overexposed. A hand checks the deadbolt: four stuttered repeats, then four more, each one a hard cut on the beat.</dd><dt>Built with</dt><dd>Exposure and white balance keyframed up; the stutter is an edit (repeat the same 1-beat clip 4+4 times).</dd><dt>Driven by</dt><dd>Cuts land on snare hits from the drum stem.</dd><dt>Lyrics on screen</dt><dd>See 09s: the line stutters with the cuts, repeated and scattered around the door, one clean copy at the centre.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-type" id="p-09s_v2_lock_storm">
+  <figure class="frame"><img src="frames/09s_v2_lock_storm.jpg" alt="Lyric treatment, storm mode: the line repeats around the door at different sizes and angles, overlapping, some copies motion-blurred or cut off by the frame. One clean copy holds the centre so the words still read." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">13</span><span class="tc">1:46</span>
+      <span class="chip chip-type">Lyric treatment</span><span class="chip chip-mode">Lyrics: Storm</span></div>
+    <blockquote class="lyric">Then check the lock four times, then four</blockquote>
+    <dl><dt>Shot</dt><dd>Lyric treatment, storm mode: the line repeats around the door at different sizes and angles, overlapping, some copies motion-blurred or cut off by the frame. One clean copy holds the centre so the words still read.</dd><dt>Built with</dt><dd>2D type layer: copies spawned from the clean line with random scale, rotation and lifetime; spawn rate follows the unease curve.</dd><dt>Driven by</dt><dd>Copies spawn on snare hits; the clean copy fills word by word on the vocal timings.</dd><dt>Lyrics on screen</dt><dd>Storm treatment for the verses.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-photo" id="p-R2_flash_lock">
+  <figure class="frame"><img src="frames/R2_flash_lock.jpg" alt="Realism flash: real fingers on a real deadbolt, used as the &#x27;four times, then four&#x27; stutter cuts." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">14</span><span class="tc">~1:47</span>
+      <span class="chip chip-photo">Realism · flash</span><span class="chip chip-mode">Lyrics: Storm</span></div>
+    
+    <dl><dt>Shot</dt><dd>Realism flash: real fingers on a real deadbolt, used as the &#x27;four times, then four&#x27; stutter cuts.</dd><dt>Built with</dt><dd>Photoreal still generated with Codex (as here) or a Cycles macro render; your own phone clip drops into the same slot if you get one. Hard cut, a fast push-in and a flash-frame exposure.</dd><dt>Driven by</dt><dd>Cut on snare hits.</dd><dt>Lyrics on screen</dt><dd>Each stutter cut carries one repeated word of the line.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Chorus 2</h3><span class="tc">1:56–2:27</span></header>
+
+<article class="panel kind-type" id="p-10s_chorus2_storm">
+  <figure class="frame"><img src="frames/10s_chorus2_storm.jpg" alt="Lyric treatment, storm mode in the chorus: the narrator&#x27;s line is scattered through the tipping room, on the cabinets and floor and in the air, doubled and breaking apart. The other person&#x27;s &#x27;I&#x27;m here&#x27; stays clean, warm and still in the doorway." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">15</span><span class="tc">2:04</span>
+      <span class="chip chip-type">Lyric treatment</span><span class="chip chip-mode">Lyrics: Storm</span></div>
+    <blockquote class="lyric">Every sound comes in twice as loud</blockquote>
+    <dl><dt>Shot</dt><dd>Lyric treatment, storm mode in the chorus: the narrator&#x27;s line is scattered through the tipping room, on the cabinets and floor and in the air, doubled and breaking apart. The other person&#x27;s &#x27;I&#x27;m here&#x27; stays clean, warm and still in the doorway.</dd><dt>Built with</dt><dd>Type as 3D text objects parented to the room, so the words tip with it; echo copies offset by the doubling system.</dd><dt>Driven by</dt><dd>Echo offset spikes on snare; warm text glow follows the backing vocals.</dd><dt>Lyrics on screen</dt><dd>The two voices side by side: the narrator storms, the other voice holds.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-lowpoly" id="p-10_chorus2_presence">
+  <figure class="frame"><img src="frames/10_chorus2_presence.jpg" alt="The room tips harder than in chorus 1. In the doorway, a warm backlit silhouette kneels down towards us. No face, just presence and light. Every outline is doubled." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">16</span><span class="tc">2:08</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Storm</span></div>
+    <blockquote class="lyric"><span class="warm">“I&#x27;m here, I&#x27;m here,”</span> say it out loud</blockquote>
+    <dl><dt>Shot</dt><dd>The room tips harder than in chorus 1. In the doorway, a warm backlit silhouette kneels down towards us. No face, just presence and light. Every outline is doubled.</dd><dt>Built with</dt><dd>Same room rig as 03 at double the amplitude; the figure is a faceless low-poly mesh with an emissive rim.</dd><dt>Driven by</dt><dd>&#x27;I&#x27;m here&#x27; doubled as two ring pulses timed to the vocal words.</dd><dt>Lyrics on screen</dt><dd>See 10s: the narrator&#x27;s lines scattered across the tipping room at wrong scales. The other person&#x27;s words stay warm and steady (10b).</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-type" id="p-10b_chorus2_type">
+  <figure class="frame"><img src="frames/10b_chorus2_type.jpg" alt="Lyric treatment for the other voice: the quoted words appear warm, close to the doorway light, and arrive twice, the second copy offset and fainter." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">17</span><span class="tc">2:08</span>
+      <span class="chip chip-type">Lyric treatment</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric"><span class="warm">“I&#x27;m here, I&#x27;m here,”</span> say it out loud</blockquote>
+    <dl><dt>Shot</dt><dd>Lyric treatment for the other voice: the quoted words appear warm, close to the doorway light, and arrive twice, the second copy offset and fainter.</dd><dt>Built with</dt><dd>Warm text on its own layer with a delayed duplicate; position anchored to the doorway in 3D.</dd><dt>Driven by</dt><dd>Each &#x27;I&#x27;m here&#x27; lands on its sung word; backing vocals swell the glow.</dd><dt>Lyrics on screen</dt><dd>Quoted speech is always warm amber, the narrator&#x27;s lines cold white.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Instrumental 2</h3><span class="tc">2:27–2:41</span></header>
+
+<article class="panel kind-lowpoly" id="p-11_break2_fall">
+  <figure class="frame"><img src="frames/11_break2_fall.jpg" alt="The peak of the unease: the camera falls backwards through the tiled floor, past floor after floor stacked beneath, into the dark." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">18</span><span class="tc">~2:28</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Fragments</span></div>
+    
+    <dl><dt>Shot</dt><dd>The peak of the unease: the camera falls backwards through the tiled floor, past floor after floor stacked beneath, into the dark.</dd><dt>Built with</dt><dd>Array of floor slabs receding; camera dolly down; tiles peel apart on drum hits.</dd><dt>Driven by</dt><dd>Drums drive the tile separation; the fall eases as the bridge arrives.</dd><dt>Lyrics on screen</dt><dd>The storm&#x27;s peak with no vocals: words from the whole song fall past the camera with the tiles, flashing, unreadable.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Bridge</h3><span class="tc">2:41–3:10</span></header>
+
+<article class="panel kind-lowpoly" id="p-12_bridge_breath">
+  <figure class="frame"><img src="frames/12_bridge_breath.jpg" alt="Near darkness. A single square of warm light is drawn one side at a time: in, hold, out, hold. Below it, two line-drawn hands rest palm to palm, one cold, one warm." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">19</span><span class="tc">2:55</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">In through the nose, hold, let go</blockquote>
+    <dl><dt>Shot</dt><dd>Near darkness. A single square of warm light is drawn one side at a time: in, hold, out, hold. Below it, two line-drawn hands rest palm to palm, one cold, one warm.</dd><dt>Built with</dt><dd>Pure 2D: SVG/Cairo or Grease Pencil, stroke-reveal animation. The cleanest, quietest shot in the film.</dd><dt>Driven by</dt><dd>Each side of the square takes exactly one bar of the tempo map, so the box is drawn in time with the music.</dd><dt>Lyrics on screen</dt><dd>See 12b: each breathing phrase written along one side of the square as it is drawn.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-type" id="p-12b_bridge_type">
+  <figure class="frame"><img src="frames/12b_bridge_type.jpg" alt="Lyric treatment for the breathing lines: each phrase rides along one side of the square as that side is drawn." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">20</span><span class="tc">2:55</span>
+      <span class="chip chip-type">Lyric treatment</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">In through the nose, hold, let go</blockquote>
+    <dl><dt>Shot</dt><dd>Lyric treatment for the breathing lines: each phrase rides along one side of the square as that side is drawn.</dd><dt>Built with</dt><dd>Text on a path following the stroke reveal.</dd><dt>Driven by</dt><dd>One side per bar.</dd><dt>Lyrics on screen</dt><dd>Bridge treatment.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-lowpoly" id="p-13_bridge_walls">
+  <figure class="frame"><img src="frames/13_bridge_walls.jpg" alt="The kitchen reassembles: wall panels, cabinets and tiles float back and lock into place one at a time, each landing settling the light a little warmer." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">21</span><span class="tc">2:58</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">The walls stay still, the minutes slow</blockquote>
+    <dl><dt>Shot</dt><dd>The kitchen reassembles: wall panels, cabinets and tiles float back and lock into place one at a time, each landing settling the light a little warmer.</dd><dt>Built with</dt><dd>Each set piece animated back to its rest transform; colour temperature lerps from cold to warm.</dd><dt>Driven by</dt><dd>Each piece lands on a downbeat; the unease curve falls towards zero.</dd><dt>Lyrics on screen</dt><dd>Words lock into place with the wall panels, one per downbeat. The storm is over.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Final Chorus</h3><span class="tc">3:10–3:42</span></header>
+
+<article class="panel kind-lowpoly" id="p-14_final_chorus_hands">
+  <figure class="frame"><img src="frames/14_final_chorus_hands.jpg" alt="Close on two hands on the floor. A fist loosens under another hand resting on top. For the first time the white outlines sit exactly on the hands. No doubling." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">22</span><span class="tc">3:35</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">The fear unclenches, slips its grip</blockquote>
+    <dl><dt>Shot</dt><dd>Close on two hands on the floor. A fist loosens under another hand resting on top. For the first time the white outlines sit exactly on the hands. No doubling.</dd><dt>Built with</dt><dd>Shape-key fist to open over the chorus; line-art offset driven to zero.</dd><dt>Driven by</dt><dd>Hand opening tied to the final chorus&#x27;s last 8 bars.</dd><dt>Lyrics on screen</dt><dd>A single clean line, no doubling; outlines and letters perfectly aligned.</dd></dl>
+  </div>
+</article>
+
+<article class="panel kind-photo" id="p-R4_held_hands">
+  <figure class="frame"><img src="frames/R4_held_hands.jpg" alt="Realism held, the turn: the same hands as 14, now real, warm and steady for several seconds. Realism becomes grounding instead of threat." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">23</span><span class="tc">~3:37</span>
+      <span class="chip chip-photo">Realism · held</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    
+    <dl><dt>Shot</dt><dd>Realism held, the turn: the same hands as 14, now real, warm and steady for several seconds. Realism becomes grounding instead of threat.</dd><dt>Built with</dt><dd>Photoreal still generated with Codex (as here) or a Cycles macro render; your own phone clip drops into the same slot if you get one. Slow drift and a crossfade from the low-poly version of the same composition (panel 14).</dd><dt>Driven by</dt><dd>Held across the final chorus&#x27;s last lines.</dd><dt>Lyrics on screen</dt><dd>The final chorus line sits under the real hands, clean and still.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Outro</h3><span class="tc">3:42–3:53</span></header>
+
+<article class="panel kind-lowpoly" id="p-15_outro_still">
+  <figure class="frame"><img src="frames/15_outro_still.jpg" alt="Mirror of the opening shot: the same view of the ceiling, now perfectly straight and still. The strip light is off and soft dawn comes through the window." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">24</span><span class="tc">3:43</span>
+      <span class="chip chip-lowpoly">Scene</span><span class="chip chip-mode">Lyrics: Woven</span></div>
+    <blockquote class="lyric">One, two, three, the room stays still</blockquote>
+    <dl><dt>Shot</dt><dd>Mirror of the opening shot: the same view of the ceiling, now perfectly straight and still. The strip light is off and soft dawn comes through the window.</dd><dt>Built with</dt><dd>Same camera and set as 01 with every distortion parameter at zero; daylight world lighting.</dd><dt>Driven by</dt><dd>Nothing moves except the light: total stillness against the vocal.</dd><dt>Lyrics on screen</dt><dd>&#x27;One, two, three&#x27; in the now-still tiles, held, calm.</dd></dl>
+  </div>
+</article>
+</section>
+<section class="sect"><header class="sect-head"><h3>Ending</h3><span class="tc">3:53–4:08</span></header>
+
+<article class="panel kind-lowpoly" id="p-16_end_reveal">
+  <figure class="frame"><img src="frames/16_end_reveal.jpg" alt="On the loud instrumental ending the camera finally rises off the floor for the only wide shot of the film: two faceless low-poly figures sitting together on the kitchen floor, backs against the cabinets, in dawn light. Cut to black on the last hit." loading="lazy" width="1280" height="720"></figure>
+  <div class="notes">
+    <div class="meta"><span class="num">25</span><span class="tc">~3:54</span>
+      <span class="chip chip-lowpoly">Scene</span></div>
+    
+    <dl><dt>Shot</dt><dd>On the loud instrumental ending the camera finally rises off the floor for the only wide shot of the film: two faceless low-poly figures sitting together on the kitchen floor, backs against the cabinets, in dawn light. Cut to black on the last hit.</dd><dt>Built with</dt><dd>Crane move from POV height to a high corner; simple faceless low-poly figures.</dd><dt>Driven by</dt><dd>Crane timed to the final 8 bars; hard cut on the final drum hit.</dd><dt>Lyrics on screen</dt><dd>No lyrics; the image holds.</dd></dl>
+  </div>
+</article>
+</section>
+  </section>
+
+  <section class="block">
+    <h2>How it gets built</h2>
+    <ol class="pipeline"><li><h4>Analyse</h4><p>Beat grid from the MIDI tempo map, calibrated to the audio. Per-stem envelopes and onsets at the video frame rate. Word timings from Whisper.</p></li><li><h4>Build scenes</h4><p>Blender scenes read the analysis data and keyframe themselves; the same kitchen set serves most shots.</p></li><li><h4>2D layers</h4><p>Type, line hands and the breathing square drawn from code (SVG/Cairo or Grease Pencil) on the same timeline.</p></li><li><h4>Edit</h4><p>A Python edit decision list cuts and composites the layers with ffmpeg, so every cut lands on a real beat.</p></li></ol>
+  </section>
+
+  <section class="block">
+    <h2>Decided</h2>
+    <ul class="questions decided"><li>16:9, and the kitchen stays: the lyrics name it (the sink, the tiles, the kitchen itself, the door).</li><li>The world is abstract and low-poly; realism appears only as flashes and as the held hands.</li><li>The closing wide shot keeps its faceless low-poly figures, with the hands moments just before it.</li><li>Every lyric is on screen, woven into the room or scattered as a storm, never as plain subtitles.</li><li>Realism comes from Codex stills or Cycles renders for now; your footage replaces them if it arrives.</li></ul>
+  </section>
+
+  <section class="block">
+    <h2>Still open</h2>
+    <ul class="questions"><li>Word timings: check renders/lyric_check.mp4 by ear. Give me a timecode for anything off and I&#x27;ll pin it.</li><li>The final chorus vocals start at 3:10 but the music lifts at about 3:23. Should the real hands land on the lift?</li></ul>
+  </section>
+</div>
+
+</body>
+</html>

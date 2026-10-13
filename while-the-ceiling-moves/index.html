@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<meta name="description" content="How a song about a panic attack became a comic book that moves: four days, ten sessions, one kitchen drawn fifty times, and every word on screen at the moment it&#x27;s sung.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Making While The Ceiling Moves">
+<meta property="og:description" content="How a song about a panic attack became a comic book that moves: four days, ten sessions, one kitchen drawn fifty times, and every word on screen at the moment it&#x27;s sung.">
+<meta property="og:url" content="https://@@org.github.io/while-the-ceiling-moves/">
+<meta property="og:image" content="https://@@org.github.io/while-the-ceiling-moves/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.png">
+<title>Making While The Ceiling Moves</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Reenie+Beanie&display=swap">
+<style>
+/* Layout: a long comic page at night. Text runs in one column; panels (images, clips) break out wider, framed in the
+   film's cold off-white; chapter titles are his caption boxes; the director's words are her warm balloons. */
+:root {
+  color-scheme: dark;
+  --page: #0b1215;        /* the film's gutter */
+  --panel: #111c21;
+  --rule: #22323a;
+  --text: #c8d5d9;
+  --muted: #7d9298;
+  --paper: #dcedf0;       /* his captions, the panel borders */
+  --ink: #0c1316;
+  --balloon: #fadeb0;     /* her voice */
+  --amber: #f2a650;
+  --glow: #bee4ff;        /* the counted tiles */
+  --biro: #2f4fa3;
+  --display: "Comic Neue", "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif;
+  --body: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --hand: "Reenie Beanie", "Bradley Hand", cursive;
+  --col: 66ch;
+  --wide: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--page);
+  color: var(--text);
+  font: 400 1.125rem/1.62 var(--body);
+  margin: 0;
+  padding-inline: clamp(16px, 4vw, 40px);
+  padding-block: 0 64px;
+}
+a { color: var(--glow); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, video:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+img, video { display: block; max-width: 100%; height: auto; }
+code { font: 0.86em var(--mono); color: var(--paper); background: var(--panel); padding: 0.08em 0.35em; border-radius: 3px; }
+em { font-style: italic; }
+
+/* the flow: text in the column, .wide things break out */
+.flow { display: grid; grid-template-columns: 1fr min(var(--col), 100%) 1fr; row-gap: 1.25rem; }
+.flow > * { grid-column: 2; margin: 0; min-width: 0; }
+.flow > .wide { grid-column: 1 / -1; width: 100%; max-width: var(--wide); justify-self: center; }
+
+/* hero */
+.hero { padding-block: clamp(40px, 8vw, 88px) 8px; }
+.kicker, .meta {
+  font: 500 0.78rem/1.4 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 { margin: 0; }
+.cap {
+  display: inline-block;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.45);
+  text-wrap: balance;
+}
+h1 .cap { font-size: clamp(2rem, 6.4vw, 4.4rem); line-height: 1; padding: 0.18em 0.32em 0.12em; transform: rotate(-0.8deg); }
+.dek { font-size: clamp(1.2rem, 2.4vw, 1.5rem); line-height: 1.45; color: var(--paper); max-width: 34ch; }
+
+/* chapters */
+section { padding-top: clamp(48px, 7vw, 80px); }
+h2 { margin: 0; line-height: 1.1; }
+h2 .cap { font-size: clamp(1.25rem, 3vw, 1.7rem); padding: 0.3em 0.55em 0.22em; transform: rotate(-0.5deg); }
+h3 {
+  margin: 0;
+  font: 700 1.3rem/1.25 var(--display);
+  color: var(--paper);
+  text-wrap: balance;
+  padding-top: 1.5rem;
+}
+h3 .when { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; color: var(--muted); margin-left: 0.6em; text-transform: uppercase; white-space: nowrap; }
+p { text-wrap: pretty; }
+
+/* panels */
+figure { margin: 0; }
+.panel img, .panel video { border: 2px solid var(--paper); border-radius: 2px; background: var(--ink); width: 100%; }
+figcaption { font: 400 0.8rem/1.5 var(--mono); color: var(--muted); padding-top: 0.55rem; max-width: 92ch; }
+figcaption b { color: var(--paper); font-weight: 500; }
+.pair, .trio { display: grid; gap: clamp(12px, 2vw, 20px); align-items: start; }
+.pair { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.trio { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.tilt-l { transform: rotate(-0.7deg); }
+.tilt-r { transform: rotate(0.6deg); }
+.sound::before { content: "▶ with sound · "; color: var(--amber); }
+
+/* her balloons: the director's words */
+.say { position: relative; justify-self: start; max-width: min(100%, 54ch); margin-block: 0.4rem 1.1rem; }
+.say blockquote {
+  position: relative;
+  margin: 0;
+  background: var(--balloon);
+  color: var(--ink);
+  font: 700 1.04rem/1.42 var(--display);
+  padding: 0.9rem 1.25rem 0.95rem;
+  border-radius: 1.6rem;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+.say blockquote::after {  /* the tail */
+  content: "";
+  position: absolute;
+  left: 2.2rem;
+  bottom: -0.95rem;
+  border-style: solid;
+  border-width: 1.05rem 0.9rem 0 0;
+  border-color: var(--balloon) transparent transparent transparent;
+  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.35));
+}
+.say cite { display: block; font: 400 0.74rem var(--mono); color: var(--muted); padding: 1.15rem 0 0 4.2rem; font-style: normal; }
+.say.right { justify-self: end; }
+.say.right blockquote::after { left: auto; right: 2.2rem; border-width: 1.05rem 0 0 0.9rem; border-color: var(--balloon) transparent transparent transparent; }
+.say.right cite { text-align: right; padding: 1.15rem 4.2rem 0 0; }
+
+/* the arc */
+.arc-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 10px 8px; }
+.arc { display: block; width: 100%; min-width: 760px; height: auto; font-family: var(--mono); }
+.arc .area { fill: var(--glow); fill-opacity: 0.12; }
+.arc .curve { fill: none; stroke: var(--glow); stroke-width: 2.4; stroke-linejoin: round; }
+.arc .grid { stroke: var(--rule); stroke-dasharray: 3 5; }
+.arc .base { stroke: var(--muted); }
+.arc .div { stroke: var(--rule); }
+.arc .tick { fill: var(--muted); font-size: 11px; }
+.arc .sec { fill: var(--paper); font-size: 12px; text-anchor: middle; }
+.arc .hit { fill: transparent; }
+.arc a:hover .hit, .arc a:focus .hit { fill: var(--glow); fill-opacity: 0.1; }
+.arc a:hover .sec { fill: var(--glow); }
+.arc .peak { fill: var(--amber); }
+.arc .note { fill: var(--amber); font-size: 11px; }
+.arc .sess { stroke: var(--muted); stroke-width: 3; stroke-linecap: round; }
+.arc .sesst { fill: var(--muted); font-size: 11px; text-anchor: middle; }
+
+/* lists of what worked and didn't */
+.verdict { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+.verdict > div { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 18px 20px 6px; min-width: 0; }
+.verdict h4 { margin: 0 0 0.6rem; font: 700 1rem var(--display); text-transform: uppercase; letter-spacing: 0.04em; }
+.verdict .yes h4 { color: var(--glow); }
+.verdict .no h4 { color: var(--amber); }
+.verdict ul { margin: 0; padding-left: 1.1rem; }
+.verdict li { margin-bottom: 0.7rem; font-size: 1rem; line-height: 1.5; }
+.verdict li strong { color: var(--paper); font-weight: 600; }
+
+/* numbers */
+.numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.numbers div { border-top: 2px solid var(--paper); padding-top: 10px; }
+.numbers b { display: block; font: 700 2.1rem/1 var(--display); color: var(--paper); font-variant-numeric: tabular-nums; }
+.numbers span { font: 400 0.8rem/1.45 var(--mono); color: var(--muted); }
+
+.pipeline { list-style: none; padding: 0; margin: 0; counter-reset: step; display: grid; gap: 0.7rem; }
+.pipeline li { counter-increment: step; display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.6rem; font-size: 1rem; line-height: 1.5; }
+.pipeline li::before { content: counter(step); font: 700 1rem/1.5 var(--display); color: var(--ink); background: var(--paper); text-align: center; height: 1.5rem; border-radius: 2px; }
+
+.toc { display: flex; flex-wrap: wrap; gap: 6px 14px; font: 400 0.82rem/1.5 var(--mono); }
+.toc a { color: var(--muted); text-decoration: none; }
+.toc a:hover { color: var(--glow); }
+.watch { font: 500 0.9rem/1.4 var(--mono); letter-spacing: 0.04em; margin-top: -0.4rem; }
+.watch a { color: var(--amber); }
+.end { font: 2.6rem/1 var(--hand); color: var(--glow); transform: rotate(-2deg); padding-top: 2rem; }
+footer { padding-top: 3rem; }
+footer p { font: 400 0.8rem/1.6 var(--mono); color: var(--muted); }
+
+/* a name, redacted: a bar in the text's own colour; now and then it scrambles to [EXPUNGED] and closes again */
+.x { display: inline-block; width: 5.4em; height: 0.95em; vertical-align: -0.1em; background: currentColor;
+  border-radius: 1px; overflow: hidden; white-space: nowrap; font: 500 0.78em/1.22 var(--mono); letter-spacing: 0;
+  text-align: center; text-transform: uppercase; cursor: default; }
+.x.scr { background: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+</style>
+</head>
+<body>
+<main>
+<header class="hero flow">
+  <p class="kicker">A making-of · a music video for Amber &amp; Ink · 6–13 October 2026</p>
+  <h1><span class="cap">While The Ceiling Moves</span></h1>
+  <p class="dek">How a song about a panic attack became a comic book that moves: four days, ten sessions, one kitchen
+    drawn fifty times, and every word on screen at the moment it's sung.</p>
+  <p class="watch"><a href="https://youtu.be/Xie61X2mAi0">Watch the film on YouTube</a> · 4:08</p>
+  <figure class="panel wide">
+    <img src="img/hero.jpg" width="1600" height="900" alt="A comic panel of a kitchen window at night, misted with condensation. The words 'stay with me' are wiped into the steam as if with a fingertip; a caption box reads 'DON'T'.">
+    <figcaption><b>Chorus 1, 0:59.</b> "Stay with me" wipes itself into the window's steam as he sings it. Nobody
+      writes it: he's on the floor. His words turn up in the room because he can't say them.</figcaption>
+  </figure>
+  <p>This is the story of how the video was made: what we tried first, what we threw away, what the song taught us
+    along the way, and how the details became the story. It was made in conversation between <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, who wrote the
+    song and made it with Suno, and Claude, working in Claude Code, which wrote and ran every script, with Codex
+    drawing the pictures. The song is credited to Amber &amp; Ink, after its two voices: her warm amber, his ink.
+    <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s notes appear here as they were given, in warm balloons, the way the film letters the voice that
+    stays.</p>
+  <nav class="toc" aria-label="Chapters">
+    <a href="#chapter-brief">The brief</a><a href="#chapter-ears">Listening without ears</a>
+    <a href="#chapter-storyboard">A storyboard</a><a href="#chapter-3d">A day in Blender</a>
+    <a href="#chapter-comic">The comic</a><a href="#chapter-bible">Sterile or alive</a>
+    <a href="#chapter-details">The details are the story</a><a href="#chapter-print">A print effect, parked</a>
+    <a href="#chapter-words">Words in the room</a><a href="#chapter-song">The song, page by page</a>
+    <a href="#chapter-review">After the first cut</a>
+    <a href="#chapter-verdict">What worked</a><a href="#chapter-numbers">By the numbers</a>
+  </nav>
+</header>
+
+<section class="flow" aria-labelledby="arc-h">
+  <p class="meta">The shape of the film</p>
+  <h2 id="arc-h"><span class="cap">One curve drives everything</span></h2>
+  <p>Before any picture, the film had a shape: a designed "unease" curve from 0 (still) to 1 (the peak), drawn over
+    the song's sections. Every distortion follows it: the room's wobble, the double vision, the glare, the watery warp.
+    It builds through the verses and choruses, peaks in the second instrumental, and drains to nothing across the
+    bridge, so the outro can be perfectly still. Underneath are the seven sessions that built it, one section of the
+    song at a time. Each band links to its part of the story.</p>
+  <div class="wide arc-wrap">
+<svg class="arc" viewBox="0 0 1000 250" role="img" aria-labelledby="arc-title arc-desc">
+<title id="arc-title">The unease curve</title>
+<desc id="arc-desc">The designed unease curve from 0 to 1 across the song's 4:08: low in the intro, rising through the verses and choruses to a peak of 1.0 at 2:35 in the second instrumental, then falling through the bridge to stillness from 3:54. Below it, the song's sections and the session that built each one.</desc>
+<a href="#chapter-brief"><title>Intro, 0:00–0:15</title><rect class="hit" x="8.0" y="172" width="60.6" height="26"/><text class="sec" x="38.3" y="189">Intro</text></a>
+<line class="div" x1="68.6" y1="24" x2="68.6" y2="220"/>
+<a href="#chapter-bible"><title>Verse 1, 0:15–0:43</title><rect class="hit" x="68.6" y="172" width="112.9" height="26"/><text class="sec" x="125.1" y="189">Verse 1</text></a>
+<line class="div" x1="181.5" y1="24" x2="181.5" y2="220"/>
+<a href="#s-chorus1"><title>Chorus 1, 0:43–1:14</title><rect class="hit" x="181.5" y="172" width="121.6" height="26"/><text class="sec" x="242.3" y="189">Chorus 1</text></a>
+<line class="div" x1="303.1" y1="24" x2="303.1" y2="220"/>
+<a href="#s-verse2"><title>Instrumental 1, 1:14–1:28</title><rect class="hit" x="303.1" y="172" width="55.9" height="26"/><text class="sec" x="331.0" y="189">Inst.</text></a>
+<line class="div" x1="359.0" y1="24" x2="359.0" y2="220"/>
+<a href="#s-verse2"><title>Verse 2, 1:28–1:56</title><rect class="hit" x="359.0" y="172" width="110.1" height="26"/><text class="sec" x="414.0" y="189">Verse 2</text></a>
+<line class="div" x1="469.1" y1="24" x2="469.1" y2="220"/>
+<a href="#s-chorus2"><title>Chorus 2, 1:56–2:27</title><rect class="hit" x="469.1" y="172" width="124.8" height="26"/><text class="sec" x="531.5" y="189">Chorus 2</text></a>
+<line class="div" x1="593.9" y1="24" x2="593.9" y2="220"/>
+<a href="#s-peak"><title>Instrumental 2, 2:27–2:41</title><rect class="hit" x="593.9" y="172" width="54.3" height="26"/><text class="sec" x="621.0" y="189">Inst.</text></a>
+<line class="div" x1="648.2" y1="24" x2="648.2" y2="220"/>
+<a href="#s-bridge"><title>Bridge, 2:41–3:10</title><rect class="hit" x="648.2" y="172" width="113.3" height="26"/><text class="sec" x="704.8" y="189">Bridge</text></a>
+<line class="div" x1="761.4" y1="24" x2="761.4" y2="220"/>
+<a href="#s-final"><title>Final chorus, 3:10–3:42</title><rect class="hit" x="761.4" y="172" width="126.0" height="26"/><text class="sec" x="824.4" y="189">Final chorus</text></a>
+<line class="div" x1="887.4" y1="24" x2="887.4" y2="220"/>
+<a href="#s-ending"><title>Outro, 3:42–3:53</title><rect class="hit" x="887.4" y="172" width="47.1" height="26"/><text class="sec" x="911.0" y="189">Outro</text></a>
+<line class="div" x1="934.6" y1="24" x2="934.6" y2="220"/>
+<a href="#s-ending"><title>Ending, 3:53–4:08</title><rect class="hit" x="934.6" y="172" width="57.4" height="26"/><text class="sec" x="963.3" y="189">End</text></a>
+<line class="grid" x1="8" y1="101.0" x2="992" y2="101.0"/><text class="tick" x="10" y="114.0">0.5</text>
+<line class="grid" x1="8" y1="34.0" x2="992" y2="34.0"/><text class="tick" x="10" y="47.0">1.0</text>
+<path class="area" d="M8.0,154.6 L68.6,134.5 L181.5,101.0 L265.5,84.9 L303.1,94.3 L359.0,94.3 L469.1,67.5 L593.9,47.4 L622.0,34.0 L648.2,40.7 L701.2,87.6 L761.4,127.8 L839.9,151.9 L887.4,162.6 L934.6,168.0 L992.0,168.0 L992.0,168 L8.0,168 Z"/><path class="curve" d="M8.0,154.6 L68.6,134.5 L181.5,101.0 L265.5,84.9 L303.1,94.3 L359.0,94.3 L469.1,67.5 L593.9,47.4 L622.0,34.0 L648.2,40.7 L701.2,87.6 L761.4,127.8 L839.9,151.9 L887.4,162.6 L934.6,168.0 L992.0,168.0"/>
+<line class="base" x1="8" y1="168" x2="992" y2="168"/>
+<circle class="peak" cx="622.0" cy="34.0" r="4"/><text class="note" x="630.0" y="38.0">the peak, 2:35</text>
+<text class="note" x="934.6" y="146.0" text-anchor="end">stillness</text>
+<line class="sess" x1="11.0" y1="208" x2="178.5" y2="208"/><text class="sesst" x="94.8" y="226">Sessions 1–2</text>
+<line class="sess" x1="184.5" y1="208" x2="300.1" y2="208"/><text class="sesst" x="242.3" y="226">S3</text>
+<line class="sess" x1="306.1" y1="208" x2="466.1" y2="208"/><text class="sesst" x="386.1" y="226">S4</text>
+<line class="sess" x1="472.1" y1="208" x2="645.2" y2="208"/><text class="sesst" x="558.6" y="226">S5</text>
+<line class="sess" x1="651.2" y1="208" x2="758.4" y2="208"/><text class="sesst" x="704.8" y="226">S6</text>
+<line class="sess" x1="764.4" y1="208" x2="989.0" y2="208"/><text class="sesst" x="876.7" y="226">S7</text>
+<text class="tick" x="8.0" y="18" text-anchor="start">0:00</text>
+<text class="tick" x="245.7" y="18" text-anchor="middle">1:00</text>
+<text class="tick" x="483.4" y="18" text-anchor="middle">2:00</text>
+<text class="tick" x="721.0" y="18" text-anchor="middle">3:00</text>
+<text class="tick" x="958.7" y="18" text-anchor="middle">4:00</text>
+</svg>
+  </div>
+</section>
+
+<section class="flow" id="chapter-brief" aria-labelledby="brief-h">
+  <p class="meta">Session 1 · 6 October, 1:18 am</p>
+  <h2 id="brief-h"><span class="cap">The brief</span></h2>
+  <div class="say"><blockquote>Hello! Something a bit different for us this time. Do you think you could help make a
+    music video for this song? We have Codex available for Imagegen, but I'm hoping to create something
+    programatically using code, SVGs, animation, blender, etc.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, the first message</cite></div>
+  <p>The song is <em>While The Ceiling Moves</em>: four minutes and eight seconds of pop with a country delivery and
+    arpeggiated banjos, about 132 beats a minute. It's about a panic attack, being talked down by someone who stays,
+    and grounding into stillness. It's a duet: his voice is the man coming apart in the kitchen at night, hers is the
+    one who reaches him.</p>
+  <p>What came with it was a Suno export: the mixed MP3 (with the lyrics and their section tags tucked into its ID3
+    tag), ten separated stems from drums to backing vocals, and a MIDI transcription of each. That turned out to be
+    nearly everything a programmatic video needs. The one thing missing was the hardest to replace: Claude can't
+    listen to music.</p>
+</section>
+
+<section class="flow" id="chapter-ears" aria-labelledby="ears-h">
+  <p class="meta">Session 1 · the first morning</p>
+  <h2 id="ears-h"><span class="cap">Listening without ears</span></h2>
+  <p>So the first job was to turn the song into data. The MIDI's tempo map gave a beat grid, once we found that Suno's
+    MIDI runs about 190 milliseconds early on every stem. Each stem got a loudness curve and a list of its hits.
+    Whisper transcribed the isolated vocal stem with a time for every word, and an alignment matched what Whisper
+    heard against the real lyrics, so the words on screen would always be the right ones. 313 of the 360 sung words
+    matched on the first pass; the misses were in the choruses, where backing vocals overlap and lines repeat.</p>
+  <p>Then the human half. A karaoke check video filled in each word as it was sung, flagging the weak lines, and
+    <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> listened and sent timecodes back:</p>
+  <div class="say right"><blockquote>1:05 "Just leave your hand..." skips over and races to "I'll feel your grip relax m"
+    and then hangs on "my" until we catch up again properly on "fist"</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, by ear</cite></div>
+  <p>Each note became either a pin (a time fixed by ear, never moved again) or a general rule, checked against the
+    version already approved so nothing else shifted. Three rounds later: "Lyrics are good now, start on the Blender
+    kitchen." Everything after this keys off those timings. Later the same stem told us who sings what, by pitch: his
+    voice around 130-210 Hz, hers around 300-350 Hz, which decided which lines are lettered in her warm colour.</p>
+  <figure class="panel">
+    <img src="img/lyric_check.jpg" width="1280" height="720" loading="lazy" alt="A dark video frame with one lyric line, 'Stay with me while I lose the room', its sung words lit in amber, and a small header 'Chorus 2:01.17 [?] [pinned]'.">
+    <figcaption><b>The lyric check video.</b> Words light as they're sung; the header flags a weak match and a time
+      pinned by ear.</figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="chapter-storyboard" aria-labelledby="sb-h">
+  <p class="meta">Session 1 · a first proposal</p>
+  <h2 id="sb-h"><span class="cap">A storyboard</span></h2>
+  <p>The first proposal was a storyboard page of 23 frames drawn by Codex: the camera as the person on the kitchen
+    floor, the room tipping and coming apart as the song builds, his words in cold white and hers in warm amber, and
+    the unease curve falling to complete stillness at the end. It asked four questions. The answer to one of them set
+    a rule the whole film kept:</p>
+  <div class="say"><blockquote>I feel like all lyrics should be on screen, but not as plain subtitles; woven cleverly
+    into the surroundings, or flashed chaotically around at confusing moments, to suggest the mental storm and
+    confusion</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <figure class="panel wide">
+    <img src="img/storyboard.jpg" width="1280" height="1440" loading="lazy" alt="A contact sheet of storyboard frames in a low-poly 3D style: a strip light, a dripping tap, glowing tiles, the words STAY WITH ME in ceiling tiles, a clenched fist.">
+    <figcaption><b>The storyboard's first frames.</b> A low-poly kitchen at night, realism flashes of a tap and a fist,
+      the chorus line spelled out in ceiling tiles.</figcaption>
+  </figure>
+  <p>Most of these frames were never built as drawn. Two of them waited two days and came back, changed, at the very
+    end: the breathing square drawn one side at a time, and the film's only wide shot, the two of them on the floor
+    against the cabinets at dawn.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/sb_breath.jpg" width="1600" height="900" loading="lazy" alt="Storyboard frame: a square of warm light in darkness above two hands reaching towards each other, one cold, one warm.">
+      <figcaption><b>Storyboard, the bridge:</b> "In through the nose, hold, let go", one side of the square a
+        breath. It became her breathing card on the fridge.</figcaption></figure>
+    <figure class="panel"><img src="img/sb_end.jpg" width="1600" height="900" loading="lazy" alt="Storyboard frame: two faceless low-poly figures sitting together on a kitchen floor against the cabinets in pale dawn light, seen from high in the corner.">
+      <figcaption><b>Storyboard, the ending:</b> the one wide shot. It became the dawn at the end of the final
+        chorus.</figcaption></figure>
+  </div>
+</section>
+
+<section class="flow" id="chapter-3d" aria-labelledby="3d-h">
+  <p class="meta">Session 1 · midday to evening</p>
+  <h2 id="3d-h"><span class="cap">A day in Blender</span></h2>
+  <p>The first real attempt was a film rendered in 3D. One Python script built the whole kitchen in headless Blender
+    in about three seconds: cabinets, fridge, sink and window, 962 individual tiles, a strip light, a warm hallway and
+    a front door, with white ink outlines. The whole room hung off one pivot so it could tip around a level camera,
+    and one warp field bent walls, floor and ceiling together (<span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>: "unmoving walls reads oddly"). A scripted
+    first-person camera looked around the room, and a perception layer added after rendering gave it glare, double
+    vision, flickering edges and tears.</p>
+  <figure class="panel wide"><img src="img/set_compare.jpg" width="1600" height="1350" loading="lazy" alt="Storyboard frames beside matching Blender renders of the low-poly kitchen: the strip light from the floor, the tilting room, the high corner view.">
+    <figcaption><b>The set against the storyboard.</b> The first renders from the script-built kitchen, beside the
+      frames they were aiming for.</figcaption></figure>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_3d.jpg" width="1280" height="720"><source src="clips/c_3d.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>The 3D preview, 0:18-0:31.</b> The room tips on "tips", then three tiles light on
+      "one, two, three" and the fizz spreads across every tile on "too fast to think".</figcaption>
+  </figure>
+  <p>Some of it landed straight away. The count and the fizz ("the count + fizz is very effective") survived into
+    the final film, and so did the glare and the smear. Much of it didn't, and the notes were precise about why:</p>
+  <div class="say"><blockquote>The ceiling looks more like a disco floor than flickering tiles.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, on the first preview</cite></div>
+  <div class="say right"><blockquote>The lurch is stronger, yes, the motion isn't quite right overall, more like a
+    bobble-head wobble. … I feel more incapacitated than anxious based on the body motions.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, on the third</cite></div>
+  <p>Each round fixed something (the tip became a dolly-zoom stretch, he stood at the counter before sinking to the
+    floor, his glances darted between the window, his hands and the phone), and each re-render took seventeen minutes.
+    The real problem was steering: a continuous camera in a 3D room is hard to direct in words.</p>
+  <div class="say"><blockquote>There's a lot I like about this, but I don't know how to describe the changes I want to
+    make very well. I wonder if we should experiment with a different style. I'm thinking that a lyrics focused, comic
+    book style approach might work.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, 7:37 pm</cite></div>
+</section>
+
+<section class="flow" id="chapter-comic" aria-labelledby="comic-h">
+  <p class="meta">Session 1 · the evening</p>
+  <h2 id="comic-h"><span class="cap">The comic</span></h2>
+  <p>A comic suits this song. The lyrics are already a run of small, concrete, observed moments (his hands, the
+    tiles, the phone, the lock, the siren in the rain), and each one is a panel. It also gives a vocabulary for
+    feedback: "this panel's too busy", "this one should hold longer". And the two voices map straight onto comic
+    language: his lines in boxed captions, in his head; her words in speech balloons, spoken to him.</p>
+  <p>Two mock pages tested the look: one built from our 3D renders with a comic treatment, and the same page with
+    every panel illustrated by Codex.</p>
+  <div class="wide pair">
+    <figure class="panel tilt-l"><img src="img/mock_a.jpg" width="1600" height="900" loading="lazy" alt="Mock comic page built from flat 3D renders: blocky white hands, the tilted counter, the tile wall, three narrow count panels.">
+      <figcaption><b>From our renders,</b> with halftone and comic lettering.</figcaption></figure>
+    <figure class="panel tilt-r"><img src="img/mock_a_ill.jpg" width="1600" height="900" loading="lazy" alt="The same mock page illustrated by Codex: inked hands held up before a dark window, a tilted kitchen, glowing tiles counted ONE, TWO, THREE.">
+      <figcaption><b>Illustrated by Codex.</b> "This looks good. I like the codex comic style."</figcaption></figure>
+  </div>
+  <p>The method that came out of the mock is the one the whole film used. Our Blender set renders a layout for each
+    panel: the camera, the room, which tiles will glow. Codex redraws that layout as comic art against one style
+    reference, and keeps its composition almost exactly. Because we know where every tile sits in 3D, the animator
+    can put light back over the drawing: the drawing stays still while the light moves.</p>
+  <figure class="panel">
+    <img src="img/redraw_compare.jpg" width="1280" height="720" loading="lazy" alt="Four images: grey 3D layout renders of the tiled wall and the fizzing tiles beside their inked comic redraws, the same tiles lit.">
+    <figcaption><b>Layout and redraw.</b> The same wall, the same lit tiles, drawn by hand.</figcaption>
+  </figure>
+  <p>The first 44-second moving test rendered that evening, in six minutes instead of seventeen.</p>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_comic_first.jpg" width="1280" height="720"><source src="clips/c_comic_first.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>The first comic test, 0:22-0:31.</b> Panels slide in on the beat, captions letter in word by
+      word, and the count and fizz replay from the same glow data as the 3D version.</figcaption>
+  </figure>
+  <div class="say right"><blockquote>This is shaping up nicely! The style is great and the format works well; the
+    sequencing is pretty sweet too.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+</section>
+
+<section class="flow" id="chapter-bible" aria-labelledby="bible-h">
+  <p class="meta">Sessions 1-2 · 6 October, evening to midnight</p>
+  <h2 id="bible-h"><span class="cap">Sterile or alive</span></h2>
+  <div class="say"><blockquote>The 3d model we've used to set the scene is minimising the details we're getting … it
+    feels a bit sterile rather than lived in.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>The redraws were faithful to a nearly empty 3D kitchen, so Codex drew a nearly empty kitchen. Two drawings it had
+    made freely for the mock felt alive, because it had invented the clutter: a tea towel, a cafetière, photos on the
+    fridge. They were also inconsistent: a different tap and a different room every time, and a tea towel folded
+    "underneath the sink's actual basin, like could never happen!"</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/alive_hands.jpg" width="1600" height="900" loading="lazy" alt="Codex's free drawing: a man's hands held up in front of a dark kitchen window, a tea towel and plants behind.">
+      <figcaption><b>Alive:</b> the knit cuffs <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> loved, a lived-in counter.</figcaption></figure>
+    <figure class="panel"><img src="img/alive_tip.jpg" width="1600" height="900" loading="lazy" alt="Codex's free drawing: a steeply tilted kitchen at night with a moon in the window, a dish rack and a cafetière.">
+      <figcaption><b>But a different kitchen:</b> another tap, a moon, a dish rack that wasn't there before.</figcaption></figure>
+  </div>
+  <p><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s fix: use the 3D model to pin the framing and the consistency, and give Codex reference sheets of
+    the room. We called it the room bible, and it became the spine of the project. It started with questions about the
+    people, and the answers turned a kitchen into a home:</p>
+  <div class="say right"><blockquote>This is a song about being there, and trusting someone when you are at your most
+    vulnerable and out of control. The narrator lives together with his partner, but doesn't know how to cope and has
+    let everything bottle up until he breaks down in panic. This is their family home.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>So: a family home at a quarter past three in the morning. A married couple with plain gold bands; their young
+    child asleep upstairs, never seen, present in bright primary colours (handprints on the fridge, a friendship
+    bracelet on his wrist, a red booster seat). No faces, ever: the photos on the fridge show hands, feet and backs.
+    One file, <code>room.json</code>, holds 66 props, each with its place, size and colour, what it is, what it means,
+    and what it must never be ("the tea towel hangs over the oven door's bar handle; never in or under the sink"). Every
+    prop is blocked into the 3D set as a simple box or card, and every redraw's prompt lists exactly the props its
+    camera can see.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/master_r1.jpg" width="1600" height="911" loading="lazy" alt="Four versions of the kitchen: a grey 3D blocking with coloured proxy shapes, and three bright, clean comic illustrations of it.">
+      <figcaption><b>Master plate, round 1:</b> the blocking and three takes. Right in structure, but precise and
+        rendered-looking, with too many tiles.</figcaption></figure>
+    <figure class="panel"><img src="img/master_r2.jpg" width="1600" height="911" loading="lazy" alt="Four darker, more hand-drawn versions of the kitchen with floorboards instead of floor tiles.">
+      <figcaption><b>Round 2:</b> floorboards, fewer tiles, darker layouts and a prompt that pushes for ink and
+        shadow. "Drawn looks good."</figcaption></figure>
+  </div>
+  <figure class="panel wide">
+    <img src="img/master.jpg" width="1600" height="900" loading="lazy" alt="The master plate: a dark, detailed, inked kitchen at night with a fridge covered in children's art and photos, a counter with mugs and a kettle, a window, and a warm-lit doorway to the hall.">
+    <figcaption><b>The master plate.</b> Round 3, take 3, one wedding photo patched. From here on, every panel is drawn
+      in this room.</figcaption>
+  </figure>
+  <p>From the master came a reference set: the table side and the hallway drawn against it, close-ups of the fridge
+    door and the sink, and a sheet of each person's hands. With no faces, the hands are the characters: his charcoal
+    knit and the child's woven bracelet, her mustard corduroy and a brown leather watch.</p>
+  <figure class="panel wide"><img src="img/bible_sheet.jpg" width="1600" height="1210" loading="lazy" alt="An overview sheet of the reference set: the master plate, the table side, the hallway, the fridge door, the sink, and two sheets of hands.">
+    <figcaption><b>The bible's reference set.</b> Every later redraw is drawn against the pieces it needs.</figcaption></figure>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/verse1_before.jpg" width="1600" height="1216" loading="lazy" alt="Twelve frames of the first verse 1 comic test: clean, sparse kitchen panels.">
+      <figcaption><b>Verse 1, before:</b> twelve moments of the first test.</figcaption></figure>
+    <figure class="panel"><img src="img/verse1_after.jpg" width="1600" height="1216" loading="lazy" alt="The same twelve moments redrawn in the room bible's kitchen: darker, cluttered, lived-in.">
+      <figcaption><b>After the bible:</b> the same moments, in the same lived-in room.</figcaption></figure>
+  </div>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_comic_bible.jpg" width="1280" height="720"><source src="clips/c_comic_bible.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>Verse 1 redrawn in the room, 0:22-0:31.</b> The same moment as the first test, now in the
+      lived-in kitchen. "The lyrics line up well and the first verse section hangs together nicely."</figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="chapter-details" aria-labelledby="details-h">
+  <p class="meta">Every session</p>
+  <h2 id="details-h"><span class="cap">The details are the story</span></h2>
+  <div class="say"><blockquote>We'll have to watch out for details in these, there are several howlers if we look
+    closely: The cup with two handls, a picture showing three feet in a row, for example. The fridge is the
+    trickiest.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>Image models are good at the whole and careless with the small. From the first master plate on, every drawing was
+    checked at full size and zoomed in: mugs, photos, paper, and above all hands. The worst offenders got rules in the
+    bible and the prompts (each mug has exactly one handle; any hand has five fingers). The rest were fixed one at a
+    time with a patch tool: Codex edits the whole picture, and only the boxed area, or only the pixels that actually
+    changed, is pasted back, so nothing else can drift.</p>
+  <div class="wide trio">
+    <figure class="panel"><img src="img/mugs.jpg" width="1600" height="357" loading="lazy" alt="Three pairs of mugs zoomed in five times; some have two handles.">
+      <figcaption><b>Mugs at 5x.</b> Only one take of three had one handle on both. <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s theory: "the
+        child's cup with a lid" was leaking a second handle onto the mug.</figcaption></figure>
+    <figure class="panel"><img src="img/wedding_two_rings.jpg" width="1600" height="723" loading="lazy" alt="Two zoomed fridge photos of clasped hands; one hand wears two rings.">
+      <figcaption><b>The wedding photo,</b> first patched: two rings on one hand.</figcaption></figure>
+    <figure class="panel"><img src="img/wedding_fixed.jpg" width="780" height="810" loading="lazy" alt="The fixed fridge photo: her hand resting on his, one gold band each.">
+      <figcaption><b>Second patch:</b> her hand on his, one ring each.</figcaption></figure>
+  </div>
+  <figure class="panel"><img src="img/nails.jpg" width="970" height="730" loading="lazy" alt="Two palm-up hands before and after a patch: fingernails drawn on the palm side, then plain finger pads.">
+    <figcaption><b>Fingernails on the palm side,</b> spotted by <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> in verse 1's hands, and patched away.</figcaption></figure>
+  <p>Some catches were more than mistakes. They changed what a picture said.</p>
+  <div class="say right"><blockquote>Looking at 14_fist_and_holding_zoom.jpg, his ring is missing but hers is there,
+    which tells a different story.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, session 3</cite></div>
+  <figure class="panel wide"><img src="img/ring_finger.jpg" width="1600" height="612" loading="lazy" alt="Close-ups of his hand under hers with a gold band added, on the wrong finger.">
+    <figcaption><b>Counting from the thumb.</b> The band went back on, but on his middle finger in the panel and his index
+      finger in the hands sheet. The
+      fix that worked made Codex count: "thumb, index, middle, ring, little".</figcaption></figure>
+  <p>Her boots stood under the coat hooks while she walked in wearing them. She sings "six words arrive", so the six
+    messages must be his, in his cold colour, and the reply typed and erased is hers. A rule came out of each: one
+    thing, one place; and whose colour a thing is in says who it belongs to.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/boots.jpg" width="1600" height="417" loading="lazy" alt="Hallway drawings: her wet tan boots stepping in, and the same boots standing under the coats.">
+      <figcaption><b>Her boots, twice.</b> The pair under the coats became his work boots, patched in three drawings.</figcaption></figure>
+    <figure class="panel"><img src="img/messages.jpg" width="1600" height="450" loading="lazy" alt="Two versions of the phone page: message bubbles in cold off-white and a reply box in warm cream.">
+      <figcaption><b>Whose messages.</b> His six words in cold, her erased reply in warm.</figcaption></figure>
+  </div>
+  <p>The patch tool also made something new possible. A fist that opens, a window that clears, a room that brightens
+    at dawn: each later drawing was made from the approved one, changing only what had to change, so the two dissolve
+    into each other exactly.</p>
+  <figure class="panel"><img src="img/registration.jpg" width="960" height="540" loading="lazy" alt="Edge drawings of two hand pictures overlaid in green and red, yellow where they match; only one hand differs.">
+    <figcaption><b>Registration check.</b> The fist and the open hand overlaid (yellow where they agree): only his hand
+      moves, so "relax my fist" can be a dissolve.</figcaption></figure>
+</section>
+
+<section class="flow" id="chapter-print" aria-labelledby="print-h">
+  <p class="meta">Session 2 · a detour</p>
+  <h2 id="print-h"><span class="cap">A print effect, parked</span></h2>
+  <p>The redrawn room had lost something the first panels had: a comic-print texture Codex had drawn into them. A
+    regular print screen was wrong ("not as simple as a grid of dots"). <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> pointed at the reference: irregular
+    dots whose size follows the shading, small and sparse in the light, big and crowded in shadow. We built it,
+    dots sized by the light's falloff, kept off ink lines and photos.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/strip_dots.jpg" width="1210" height="890" loading="lazy" alt="Zoomed crops of a strip light panel showing irregular dots that grow in the shadows.">
+      <figcaption><b>The reference,</b> zoomed: faux-print dots that follow the light.</figcaption></figure>
+    <figure class="panel"><img src="img/stipple.jpg" width="910" height="920" loading="lazy" alt="Crops of the kitchen with a generated dot stipple laid over it.">
+      <figcaption><b>Our stipple.</b> Convincing in places, pasted-on in others.</figcaption></figure>
+  </div>
+  <div class="say"><blockquote>It works in some places, but not others. It seems painted on in places, rather than part
+    of the composition. I think we should go without for now, since we could spend forever on this detail.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>The tool is kept for another day. Knowing when to stop was the useful lesson. The same instinct came back in
+    session 7, when a skin texture did need fixing and a post-process did the job.</p>
+</section>
+
+<section class="flow" id="chapter-words" aria-labelledby="words-h">
+  <p class="meta">Session 3 · after midnight</p>
+  <h2 id="words-h"><span class="cap">Words in the room</span></h2>
+  <div class="say right"><blockquote>I think the lyrics can be hidden in the scene, scribbled onto notes and papers;
+    traced in the window's steam. The narrator has trouble expressing himself, and it turns up in the
+    environment.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>Codex was never allowed to write: every prompt says paper carries only faint, unreadable marks. The words are
+    lettered by code, in each person's own hand. Fifteen open-licence handwriting fonts were compared. His is a spiky
+    blue biro, hers a round brown felt-tip, and every letter is drawn separately with a little jitter so repeated
+    letters differ. The words write themselves on at pen speed, at the moment they're sung, warped onto the paper in
+    the drawing and multiplied into it so they take its light. In the steam they wipe the mist clear instead, with
+    beads of water running down after each word.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/fonts.jpg" width="1600" height="1198" loading="lazy" alt="A grid of handwriting font samples, his lines in blue biro and hers in brown.">
+      <figcaption><b>Fifteen hands auditioned.</b></figcaption></figure>
+    <figure class="panel"><img src="img/list.jpg" width="1600" height="800" loading="lazy" alt="Three stages of a shopping list on the fridge: as drawn with scribbles, scribbles removed, and lettered '- reach out - it's ok - you are loved'.">
+      <figcaption><b>Her shopping list:</b> "reach out, it's ok, you are loved", <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s words, in her felt-tip. Lesson:
+        ask for blank paper, since painting the scribbles out took the ruled lines too.</figcaption></figure>
+  </div>
+  <figure class="panel wide"><img src="img/tally.jpg" width="1560" height="640" loading="lazy" alt="A sequence of a yellow sticky note gaining tally marks stroke by stroke, with CLK sound effects.">
+    <figcaption><b>"Then check the lock four times, then four"</b> (verse 2): his tally on the sticky note by the lock, a
+      stroke on every CLK. Her homecoming finds the same marks later.</figcaption></figure>
+  <div class="say"><blockquote>That's so good! Brilliant. Love the extra details and touches; the writing on the window
+    works very well.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, on chorus 1</cite></div>
+</section>
+
+<section class="flow" id="chapter-song" aria-labelledby="song-h">
+  <p class="meta">Sessions 3-7 · 7 October</p>
+  <h2 id="song-h"><span class="cap">The song, page by page</span></h2>
+  <p>From here the film was built one section at a time, each in a fresh session: a proposal built as real output,
+    stills, a test video with sound, <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s notes, and rounds until it was right, then a commit and a handoff
+    for the next session. Two to nine rounds a section. Each section has its own pages; together they tell the story
+    of one night.</p>
+
+  <h3 id="s-chorus1">Chorus 1 <span class="when">0:44-1:16 · session 3</span></h3>
+  <p>He's on the floor. The ceiling fills the page and moves, softly, then tears into jagged bands on "moves", "lose"
+    and "room". On "lose the room" the whole kitchen drains away to the centre as tunnel vision closes in. The doorway
+    doubles for "twice as loud"; her "I'm here" comes from the phone on his chest.</p>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_chorus1.jpg" width="1280" height="720"><source src="clips/c_chorus1.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>"Stay with me while the ceiling moves", 0:43-0:52.</b></figcaption>
+  </figure>
+  <p>The first version had her come home here: her key in the lock, the deadbolt turning, her boots stepping in. It
+    worked, and it was too early.</p>
+  <div class="say right"><blockquote>This works really well, but from a storyboard perspective, I think we need her
+    coming home in the final section, not so early in the song.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <figure class="panel wide"><img src="img/homecoming_parked.jpg" width="1600" height="450" loading="lazy" alt="Frames of the homecoming sequence: the doorway with TICK, a key turning the deadbolt with CLACK, her boots stepping in, and a warm 'I'm here' balloon.">
+    <figcaption><b>The homecoming, built and saved</b> for the final chorus, three sessions later.</figcaption></figure>
+
+  <h3 id="s-verse2">Instrumental 1 and verse 2 <span class="when">1:15-1:56 · session 4</span></h3>
+  <p>The quiet after: the call-light under his hand dims, and her list writes itself on, a line to a bar.
+    Then it comes back: the pipes click, a blue siren sweeps the rain, the tiles' fizz crawls down his fingers, the
+    kitchen washes out "a shade too white", and the lock is checked four times, then four. Her voice reaches him a beat
+    late, as squiggles he can't make out ("this is a comic and we don't know the protagonist yet").</p>
+  <figure class="panel wide"><img src="img/verse2.jpg" width="1600" height="1200" loading="lazy" alt="A grid of verse 2 frames: fizzing hands, a white-out kitchen, his shoulder against the front door, the lock, the phone with a squiggled balloon.">
+    <figcaption><b>Verse 2 test frames.</b></figcaption></figure>
+  <p>The perception layer's watery warp climbs through this verse, and at full strength it melted the drawings and
+    bent the captions.</p>
+  <div class="say"><blockquote>The warp is quite strong in places, so let's dial it back a little bit otherwise it's
+    going to be too hard to read and concentrate, which is kinda the point, but also don't want to overdo
+    it.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>So the curve bends at a knee and keeps building more gently, and the lettering gets its own calm pass: words stay
+    readable while the art swims.</p>
+
+  <h3 id="s-chorus2">Chorus 2 <span class="when">1:56-2:28 · session 5</span></h3>
+  <p>The same words, and everything worse. He has slid down the front door and sits in the hall. The hall ceiling
+    cracks into pieces on "moves" and they drift out into the dark. His heart is the loudest sound in the house. Her
+    "I'm here" is readable now, but the line is breaking up.</p>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_shatter.jpg" width="1280" height="720"><source src="clips/c_shatter.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>"Stay with me while the ceiling moves", 1:57-2:05.</b> The ceiling cracks and comes apart.</figcaption>
+  </figure>
+  <div class="say right"><blockquote>That is so good. I love the fractured/ripped image falling apart. I think a horror
+    dolly … down the length of the hallway here would really suit if we could work that in
+    somewhere.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <figure class="panel wide"><img src="img/dolly.jpg" width="1600" height="486" loading="lazy" alt="Three frames of the hall from the floor: his knees and the phone stay the same size while the kitchen at the end of the hall shrinks away.">
+    <figcaption><b>The horror dolly,</b> a radial remap about the drawing's vanishing point: the far end stretches away
+      while his knees and the phone keep their size.</figcaption></figure>
+
+  <h3 id="s-peak">Instrumental 2: the peak <span class="when">2:28-2:42 · session 5</span></h3>
+  <p>The fist stays, and the room's drawings fall past it and off the page: one a bar, then one every beat. Among
+    them, what he calls himself, scrawled in his own biro: WORTHLESS, IDIOT, GET A GRIP. Then the fist falls too, and
+    the page is empty.</p>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_fall.jpg" width="1280" height="720"><source src="clips/c_fall.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>The peak, 2:29-2:41.</b></figcaption>
+  </figure>
+  <figure class="panel wide"><img src="img/insults.jpg" width="1600" height="450" loading="lazy" alt="Frames of his fist on the runner with words in his blue biro on spiky bursts: WORTHLESS, IDIOT, PATHETIC, GET A GRIP, LOOK AT YOU.">
+    <figcaption><b>What he calls himself,</b> <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s idea: "aggressive looking words, as vivid as those sounds",
+      in his own hand, slamming on and falling with the drawings.</figcaption></figure>
+  <p>Two of <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s ideas made this stretch. Her things hold steady while everything else warps, "as if she's an
+    anchor of stability". And under the shouting, one quiet thought, only ever in his head:</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/anchor.jpg" width="840" height="720" loading="lazy" alt="The hall warped and doubled around a crisp, steady warm balloon reading 'I'M HERE' and a steady phone screen.">
+      <figcaption><b>Her anchor:</b> her balloon and her call stay crisp while the hall warps around them.</figcaption></figure>
+    <figure class="panel"><img src="img/why.jpg" width="1600" height="448" loading="lazy" alt="A torn scrap of paper reading 'why does she stay with me?' in small biro, crossed out, alone on a dark page.">
+      <figcaption><b>"why does she stay with me?"</b> Written on through the last bars, crossed out, the last thing to fall.</figcaption></figure>
+  </div>
+
+  <h3 id="s-bridge">The bridge <span class="when">2:42-3:10 · session 6</span></h3>
+  <p>The call drops on "the signal breaks" and the page goes dark, with a ringing in his ears and his pulse on every
+    kick drum. She rings back: "LOOK AT ME, COUNT TO FOUR". He can't stay against the front door (she has to come in
+    through it later), so on "I find the floor beneath the floor" he crawls down the hall to the fridge, to her notes
+    and her breathing card. The crawl took five rounds.</p>
+  <div class="say"><blockquote>I think we need his hands to travel against the floor, but have the floor itself
+    wobbling rather than moving. If that makes sense? We might need to iterate on this a bit to get it
+    right.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, round 4</cite></div>
+  <div class="wide trio">
+    <figure class="panel"><img src="img/hands_cut.jpg" width="1254" height="706" loading="lazy" alt="His two hands on floorboards coloured red and green as cut-out masks.">
+      <figcaption><b>Hands cut out</b> of the drawing (seeded by eye) so they can move over a floor of their own.</figcaption></figure>
+    <figure class="panel"><img src="img/tube_arms.jpg" width="1600" height="600" loading="lazy" alt="Frames of hands crawling up floorboards, each trailing a thin tube of sleeve to the frame's edge.">
+      <figcaption><b>First try:</b> the sleeves trailed behind as thin tubes.</figcaption></figure>
+    <figure class="panel"><img src="img/arms_taper.jpg" width="1600" height="900" loading="lazy" alt="The fixed crawl: arms tapering in perspective, one hand reaching over the panel's top edge, THUMP bursts below.">
+      <figcaption><b>Fixed:</b> a perspective warp per arm, the leading hand reaching out of its panel.</figcaption></figure>
+  </div>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_bridge.jpg" width="1280" height="720"><source src="clips/c_bridge.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>"I find the floor beneath the floor", 2:51-3:00.</b> Two laboured steps on his pulse,
+      pulling himself up on the door frame, his hands still at the foot of the fridge, then her card as the band comes
+      back.</figcaption>
+  </figure>
+  <p>Then the count. Her card's square is traced round in warm light, one side for each sung line: in, hold, out,
+    hold. The wobble drains away to exactly nothing on "the walls stay still". In the near-silence her voice counts
+    him out from the phone, and "breath begins" prints itself inside the square, whispered by one of them; it could
+    be either.</p>
+  <figure class="panel wide"><img src="img/breath_card.jpg" width="1600" height="900" loading="lazy" alt="Her shopping list beside her breathing card, its square traced in warm light, 'breath begins' printed inside; a warm phone balloon 'OUT… 2… 3… 4…' below.">
+    <figcaption><b>The quiet page.</b> Her notes, her count, and the line that belongs to neither of them.</figcaption></figure>
+
+  <h3 id="s-final">The final chorus <span class="when">3:10-3:42 · session 7</span></h3>
+  <p>The same chorus words turned round. Hushed at first: the ceiling moves again, slowly, breathing with the card's
+    count, and on her "Stay with me" the room drifts back together out of the dark in the pieces chorus 2 broke it into.
+    Then the homecoming saved since session 3: every sound is her coming home. TICK, her key, the deadbolt with his
+    tally on the note above it, the door. "I'm here, I'm here," and his voice joins hers on "we say it out loud".</p>
+  <figure class="panel wide"><img src="img/gathers.jpg" width="1600" height="1350" loading="lazy" alt="Frames of the final chorus's first page: the ceiling breathing, then the kitchen's cracked pieces drifting together out of the dark.">
+    <figcaption><b>The room gathers:</b> chorus 2's shatter in reverse, still cracked at the page turn ("I can't find
+      the room").</figcaption></figure>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_homecoming.jpg" width="1280" height="720"><source src="clips/c_homecoming.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>"Every sound is more than just a sound", 3:17-3:26.</b> The band crashes back in as she
+      kneels in front of him.</figcaption>
+  </figure>
+  <p>The notes on this round were all about what details imply:</p>
+  <div class="say right"><blockquote>Why are her knees soaked? A few drops makes sense, but this looks like she's been
+    changing a tyre.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <div class="say"><blockquote>I'm seeing a weird dotty skin texture on the hands quite often … in this final shot it
+    looks definitely generated … like a skin disorder.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/jeans.jpg" width="1600" height="451" loading="lazy" alt="Three close-ups of her knees in jeans: soaked dark, then dry with a few raindrops.">
+      <figcaption><b>Her knees:</b> soaked, then dry denim with a few drops.</figcaption></figure>
+    <figure class="panel"><img src="img/skin.jpg" width="1415" height="1600" loading="lazy" alt="Five versions of two hands at full size: the original with random dots, and four restyled skin treatments.">
+      <figcaption><b>Skin at 1:1:</b> Codex's random dots, then four post-processed looks. D (a screen in the light,
+        hatching in the shadow) "could be quite effective".</figcaption></figure>
+  </div>
+  <p>Her hand over his fist came next, and the fist unclenching. But the last frame held too long, and <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>
+    remembered the storyboard:</p>
+  <div class="say right"><blockquote>… in our original storyboard we had them sitting in a patch of morning sun, cuddled
+    together against the kitchen cabinets in a peaceful scene. … the entire sequence from her coming in and kneeling
+    down, could continue on to dawn breaking, bringing her colour in and bathing them both.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>So the film breaks its own rule once. The camera leaves his eyes for its only wide shot: the two of them on the
+    floor under her coat, his cheek on the top of her head, her face hidden in her hair, checked at twice the size
+    to make sure there are no faces. Dawn comes up through the whole section. Codex relit each drawing, and we kept only its soft light
+    and colour under the original's own lines, so every line stays put and each light dissolves into the next.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/dawn_hands.jpg" width="903" height="1529" loading="lazy" alt="Three takes of the couple, zoomed on their hands, with notes on whose hand is whose.">
+      <figcaption><b>Whose hand is whose.</b> One take gave him two right arms; another put his ring on the hand round her
+        shoulder. Take 2: his bracelet hand holds her ringed hand in his lap.</figcaption></figure>
+    <figure class="panel"><img src="img/tiles_white.jpg" width="1600" height="603" loading="lazy" alt="Before and after a relight: the blue wall tiles turned cream.">
+      <figcaption><b>First light, first try:</b> the relight repainted the blue tiles cream. The fix: "every surface
+        keeps its own colour exactly".</figcaption></figure>
+  </div>
+  <figure class="panel wide"><img src="img/dawn_lights.jpg" width="1600" height="298" loading="lazy" alt="The wide shot three times: blue before sunrise, sun on the floor, sun on the two of them.">
+    <figcaption><b>One drawing, three lights:</b> before sunrise, the sun on the floor, the sun on them.</figcaption></figure>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_dawn.jpg" width="1280" height="720"><source src="clips/c_dawn.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>"Now I can feel your hand through this", 3:31-3:42.</b> The sun moves onto them on
+      "unclenches".</figcaption>
+  </figure>
+
+  <h3 id="s-ending">The outro and the ending <span class="when">3:42-4:08 · session 7</span></h3>
+  <div class="say"><blockquote>I think this rule break works, and ties up the song, but I've realised that I'd got
+    ahead of things, we've now used the final scene.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>The storyboard's last shot had been spent, so the ending needed a new idea. We tried the comic closing. On the
+    final crash the page pulls back into a book, and the song's pages turn back over it one leaf at a time, slowly,
+    then faster every bar, so the calm pages can be read and the panic is a blur. Each page is printed whole, every
+    caption lettered. The cover comes over last and slams shut on the last hit.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/book.jpg" width="1138" height="1600" loading="lazy" alt="Frames of a comic book's pages turning back in perspective, curling, ending with the cover closing.">
+      <figcaption><b>The comic closes.</b></figcaption></figure>
+    <figure class="panel"><img src="img/book_printed.jpg" width="1600" height="759" loading="lazy" alt="A grid of the book's 25 pages, each fully lettered.">
+      <figcaption><b>The book's pages,</b> each at its fullest moment. "Each page should be its complete form, in so
+        far as they can be said to be complete."</figcaption></figure>
+  </div>
+  <p>The outro before it recasts the intro's page in the morning: the strip light off, the doorway quiet, and the
+    count, "one, two, three", now the family's handprints from the fridge catching the sun one by one (sunlit tiles
+    "don't read as sunlit tiles"). On the last beats, the child's footsteps come down the side of the page to
+    the kitchen doorway.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/tiles_sun.jpg" width="800" height="520" loading="lazy" alt="Three narrow panels of sunlit tiles labelled ONE, TWO, THREE.">
+      <figcaption><b>Tiles in the sun:</b> they mirrored the intro, but didn't read.</figcaption></figure>
+    <figure class="panel"><img src="img/footsteps.jpg" width="960" height="540" loading="lazy" alt="The outro page: the switched-off strip light, three handprint panels lit by sun, the dawn wide shot, the doorway, and coloured 'pad' footsteps coming down the left.">
+      <figcaption><b>The outro page:</b> red, blue and yellow handprints, and the child's "pad, pad" in the child's colours.</figcaption></figure>
+  </div>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_ending.jpg" width="1280" height="720"><source src="clips/c_ending.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>"One breath more, and then I will", 3:49 to the end.</b> The footsteps, the crash, the
+      book closing.</figcaption>
+  </figure>
+  <div class="say right"><blockquote>I quite like the book result, I think we've said enough by this point that a flash
+    back through it all fits the music nicely.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+</section>
+
+<section class="flow" id="chapter-review" aria-labelledby="review-h">
+  <p class="meta">Sessions 8-10 · 7-13 October</p>
+  <h2 id="review-h"><span class="cap">After the first cut</span></h2>
+  <p>The whole song was built by the end of session 7, and the first complete cut rendered overnight. Watching it end
+    to end showed what working one section at a time had hidden: consistency lives between drawings, and nothing had
+    compared them since verse 1.</p>
+  <div class="say"><blockquote>I've been rather fussy about consistency but I bet I've still missed loads of places.
+    Rather than start fixing this right away, I'd like to look at the pattern and see if we can build this into our
+    process.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>So reviewing got its own tools: a player that saves each note with the song time, the sung line and the drawings
+    on screen, and continuity sheets that crop every prop out of every drawing that shows it, side by side under the
+    bible's words. The faults went on one list (a spatula on the wrong side of the cooker, a socket on the wrong wall,
+    the breathing card drawn as a circle on the master plate) and each was fixed in every drawing at once, with the
+    misreading written into the bible as something the prop must never be.</p>
+  <figure class="panel wide"><img src="img/continuity.jpg" width="1600" height="573" loading="lazy" alt="A continuity sheet: the fridge door cropped from six drawings side by side; in the first, the master plate, the breathing card is a circle, in the others a square.">
+    <figcaption><b>A continuity sheet:</b> her breathing card in every drawing that shows it. The master plate, first,
+      still drew it as a circle.</figcaption></figure>
+  <p>When the film was ready to go up on YouTube, a rewatch still found a slip in the one detail the whole film is most
+    careful about.</p>
+  <div class="say right"><blockquote>I just watched this video again and realised we made a howler! Well... two
+    actually but on the same sequence.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>His fist in chorus 1 read as a right hand, with the band on the wrong finger. Redrawn as his left, it came back
+    with the band on his middle finger in both takes, and it passed our check: seen from above, the top two knuckles
+    of a fist read as one. The next cut went out with it.</p>
+  <div class="say"><blockquote>I'm afraid his ring is still on the wrong finger when he has a fist at 1:09 though.
+    Let's update our process to make sure I double-check before we go to the trouble of releasing.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <figure class="panel wide"><img src="img/fist_band.jpg" width="1600" height="457" loading="lazy" alt="Four close-ups of a clenched fist: the gold band on the third finger down, then three versions with the band moved up one finger.">
+    <figcaption><b>Counting knuckles.</b> The band on the third knuckle down, the middle finger, then three patches
+      moving it up one, to the ring finger. Now every fist is counted out loud: little, ring with the band, middle,
+      index.</figcaption></figure>
+  <p>The dawn's wide shot needed two more rounds. Its first drawing gave the two of them three hands and sank his
+    face into her head; the prompt had asked for his right arm round her shoulders while she sat on his left, an arm
+    that would have to cross his whole body. Redrawn with two hands, his face still went too deep:</p>
+  <div class="say right"><blockquote>I still feel like his face is buried too deep into where her head would be, it
+    looks off</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <figure class="panel wide"><img src="img/dawn_heads.jpg" width="1600" height="948" loading="lazy" alt="Five close-ups of the couple's heads and hands: the cut's version, and two poses, two takes each.">
+    <figcaption><b>Four ways to hold her.</b> The cut's version, then two poses, two takes each. "B1 is the most
+      realistic I think": his cheek on the crown of her head, his face turned away.</figcaption></figure>
+  <p>Even the clean-up left marks. A patch meant to take the kettle's old lead away only half-erased it, and every
+    light of the dawn inherited the broken loop ("the kettle lead has gone wonky in those light renders"); it was
+    painted out by hand. From then on, every round of fixes went back to be watched before anything was released.</p>
+  <figure class="panel"><img src="img/kettle_lead.jpg" width="1600" height="335" loading="lazy" alt="Three close-ups of the counter beside the kettle: a black lead looping out from its base, then a faint broken remnant of it in morning light and in sunlight.">
+    <figcaption><b>The kettle's lead:</b> the old one, then what a patch left of it, in the morning and in the
+      sun.</figcaption></figure>
+</section>
+
+<section class="flow" id="chapter-verdict" aria-labelledby="verdict-h">
+  <p class="meta">Looking back</p>
+  <h2 id="verdict-h"><span class="cap">What worked, what didn't</span></h2>
+  <div class="wide verdict">
+    <div class="yes">
+      <h4>Worked</h4>
+      <ul>
+        <li><strong>Timings first, locked by ear.</strong> Every word's moment was settled before any art existed, and
+          everything keys off it.</li>
+        <li><strong>One curve for the whole film.</strong> The unease curve gave it a build, a peak and a stillness.</li>
+        <li><strong>Layout, then redraw.</strong> Our camera, Codex's hand. Codex keeps a layout's composition almost
+          exactly.</li>
+        <li><strong>The room bible.</strong> Fifty-odd drawings, one kitchen: the same tap, fridge, mugs, rings and
+          coats throughout.</li>
+        <li><strong>Patching instead of redrawing,</strong> and drawings derived from approved ones, so dissolves are
+          exact.</li>
+        <li><strong>Light and words as code.</strong> The count and fizz, the call dropping, the dawn, the steam
+          writing: the drawings stay still while the light moves and the words arrive on time.</li>
+        <li><strong>Options side by side</strong> whenever words failed: three ways to whisper a line, four skins,
+          the warp at full and half.</li>
+        <li><strong>One section per session,</strong> each a test with sound, a commit and a written handoff.</li>
+      </ul>
+    </div>
+    <div class="no">
+      <h4>Didn't, or not yet</h4>
+      <ul>
+        <li><strong>The 3D film.</strong> Hard to steer in words; it left behind the set, the count and fizz, and the
+          perception layer.</li>
+        <li><strong>Free drawings.</strong> Alive, and a different room every time.</li>
+        <li><strong>The print stipple.</strong> Painted on rather than part of the drawing. Parked.</li>
+        <li><strong>The full-strength warp.</strong> It melted the drawings; softened above a knee.</li>
+        <li><strong>Early story placement.</strong> The homecoming and their first touch were built too early and saved
+          for the end; the storyboard's last shot was spent before the ending.</li>
+        <li><strong>Codex and hands.</strong> Rings on the wrong finger, an extra digit, nails on palms, skin like a
+          rash: every hand checked by counting from the thumb.</li>
+        <li><strong>Checking our own work.</strong> A band on the wrong finger passed two checks and went out in a cut;
+          now every round of fixes is watched before anything is released.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="chapter-numbers" aria-labelledby="numbers-h">
+  <p class="meta">The project</p>
+  <h2 id="numbers-h"><span class="cap">By the numbers</span></h2>
+  <div class="wide numbers">
+    <div><b>4</b><span>days of work, 6–13 October 2026, about 26 hours</span></div>
+    <div><b>10</b><span>sessions, each picked up from a written handoff</span></div>
+    <div><b>360</b><span>sung words, each timed and lettered at its moment</span></div>
+    <div><b>66</b><span>props in the room bible</span></div>
+    <div><b>~50</b><span>drawings in the film, from 231 pictures Codex drew</span></div>
+    <div><b>9,000</b><span>lines of Python in 47 scripts</span></div>
+    <div><b>245</b><span>working images kept in the journey</span></div>
+    <div><b>7,452</b><span>frames in the finished film</span></div>
+    <div><b>0</b><span>faces</span></div>
+  </div>
+  <p>How it's built, end to end:</p>
+  <ol class="pipeline">
+    <li>The song as data: a beat grid from the MIDI, levels and hits from the stems, every word's time from Whisper and
+      the lyrics, confirmed by ear; who sings what, by pitch.</li>
+    <li>A story and its rules: no faces; every lyric on screen at its moment; his voice cold, hers warm.</li>
+    <li>The room bible: every prop and person in one file, blocked into a Blender set built by a script.</li>
+    <li>For each panel, a layout render from the set, redrawn by Codex against the master plate and reference sheets,
+      checked at zoom, patched where needed.</li>
+    <li>An animator in Python that composes each frame on the music: panels, captions, balloons, handwriting, sound
+      effects, light, and a perception layer that follows the unease curve.</li>
+    <li>A test with sound for each section, notes, rounds, approval; then the full cut, continuity sheets across every
+      drawing, and a last check of every fix before release.</li>
+  </ol>
+  <p>The method, the prompts and the lessons are written up for the next song in a music video kit: a Claude Code
+    skill (the playbook, every Codex prompt, the checklists) and the tools that aren't tied to this song, with a
+    command that starts a new project from them and keeps its copies in step.</p>
+  <p class="end" aria-hidden="true">one breath more, and then I will</p>
+</section>
+
+<footer class="flow">
+  <p>Song: <em>While The Ceiling Moves</em> by Amber &amp; Ink, written by <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> and made with Suno. Video: made
+    by <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> with Claude
+    (Claude Code) writing and running the code and Codex image generation drawing the panels; Blender 5.2, Python
+    (OpenCV, NumPy, Pillow, librosa, faster-whisper) and ffmpeg. Lettering in Comic Neue; handwriting in Reenie
+    Beanie, Caveat and Shadows Into Light (all SIL Open Font License). Clips are from the section tests made along the
+    way and from the finished film, <a href="https://youtu.be/Xie61X2mAi0">on YouTube</a>.</p>
+</footer>
+</main>
+
+<script>
+// The redacted name scrambles now and then: random glyphs, "[EXPUNGED]" for a beat, then the bar again.
+(() => {
+  const bars = Array.from(document.querySelectorAll(".x"));
+  const calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!bars.length || calm) return;
+  const glyphs = "#%&@$!?*/=+~^0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+  const scramble = () => Array.from({ length: 10 }, () => glyphs[Math.floor(Math.random() * glyphs.length)]).join("");
+  function burst(el) {
+    if (el.classList.contains("scr")) return;
+    el.classList.add("scr");
+    let n = 0;
+    const id = setInterval(() => {
+      n += 1;
+      if (n < 9) { el.textContent = scramble(); return; }
+      clearInterval(id);
+      el.textContent = "[EXPUNGED]";
+      setTimeout(() => { el.textContent = ""; el.classList.remove("scr"); }, 700);
+    }, 55);
+  }
+  function tick() {
+    const seen = bars.filter((el) => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; });
+    if (seen.length) burst(seen[Math.floor(Math.random() * seen.length)]);
+    setTimeout(tick, 1600 + Math.random() * 2600);
+  }
+  bars.forEach((el) => el.addEventListener("mouseenter", () => burst(el)));
+  setTimeout(tick, 1400);
+})();
+</script>
+
+</body>
+</html>
