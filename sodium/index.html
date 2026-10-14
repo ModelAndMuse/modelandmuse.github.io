@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<meta name="description" content="How a garage track about distance became a woman&#x27;s walk home at 3am through a real English town: seven days, ten sessions, twelve sets built from maps and measurements, and a story rebuilt after its first viewer.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Making Sodium">
+<meta property="og:description" content="How a garage track about distance became a woman&#x27;s walk home at 3am through a real English town: seven days, ten sessions, twelve sets built from maps and measurements, and a story rebuilt after its first viewer.">
+<meta property="og:url" content="https://modelandmuse.github.io/sodium/">
+<meta property="og:image" content="https://modelandmuse.github.io/sodium/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.png">
+<title>Making Sodium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Comic+Neue:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Reenie+Beanie&display=swap">
+<style>
+/* Layout: a long comic page at 3am under sodium light. Text runs in one column; panels (images, clips) break out
+   wider, framed in the film's pale panel borders; chapter titles are her cream caption boxes; the director's words
+   are white balloons in blue biro, the way the film letters the one voice that answers her. */
+:root {
+  color-scheme: dark;
+  --page: #0c1215;        /* the film's gutter */
+  --panel: #141b1f;
+  --rule: #263238;
+  --text: #d4cec3;        /* paper under a sodium lamp */
+  --muted: #918b80;
+  --frame: #dfeaee;       /* the film's panel borders */
+  --cap: #fce0ad;         /* her captions */
+  --ink: #0d1114;
+  --sodium: #f2a33c;      /* the lamps */
+  --balloon: #f5f7f8;     /* his balloon */
+  --biro: #2a4699;        /* his hand */
+  --paint: #e8b52b;       /* the yard's road paint */
+  --display: "Comic Neue", "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif;
+  --body: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --road: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --hand: "Reenie Beanie", "Bradley Hand", cursive;
+  --col: 66ch;
+  --wide: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--page);
+  color: var(--text);
+  font: 400 1.125rem/1.62 var(--body);
+  margin: 0;
+  padding-inline: clamp(16px, 4vw, 40px);
+  padding-block: 0 64px;
+}
+a { color: var(--sodium); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, video:focus-visible { outline: 2px solid var(--sodium); outline-offset: 3px; }
+img, video { display: block; max-width: 100%; height: auto; }
+code { font: 0.86em var(--mono); color: var(--frame); background: var(--panel); padding: 0.08em 0.35em; border-radius: 3px; }
+em { font-style: italic; }
+
+/* the flow: text in the column, .wide things break out */
+.flow { display: grid; grid-template-columns: 1fr min(var(--col), 100%) 1fr; row-gap: 1.25rem; }
+.flow > * { grid-column: 2; margin: 0; min-width: 0; }
+.flow > .wide { grid-column: 1 / -1; width: 100%; max-width: var(--wide); justify-self: center; }
+
+/* hero: the title painted in the yard's KEEP CLEAR box, as on the film's cover */
+.hero { padding-block: clamp(40px, 8vw, 88px) 8px; }
+.kicker, .meta {
+  font: 500 0.78rem/1.4 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 { margin: 0.5rem 0 0.4rem; }
+.paint {
+  display: inline-grid;
+  justify-items: center;
+  gap: 0.1em;
+  padding: 0.28em 0.6em 0.22em;
+  border: 0.09em solid var(--paint);
+  outline: 0.05em solid var(--paint);
+  outline-offset: 0.12em;
+  color: var(--paint);
+  font: 600 clamp(2.6rem, 9vw, 5.4rem)/0.95 var(--road);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(-1.2deg);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 1.1em, rgba(232, 181, 43, 0.08) 1.1em 1.25em),
+    var(--page);
+}
+.paint small { font-size: 0.3em; letter-spacing: 0.24em; }
+.dek { font-size: clamp(1.2rem, 2.4vw, 1.5rem); line-height: 1.45; color: var(--frame); max-width: 36ch; }
+
+/* chapters: her caption boxes */
+section { padding-top: clamp(48px, 7vw, 80px); }
+h2 { margin: 0; line-height: 1.1; }
+.cap {
+  display: inline-block;
+  background: var(--cap);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.45);
+  text-wrap: balance;
+}
+h2 .cap { font-size: clamp(1.25rem, 3vw, 1.7rem); padding: 0.3em 0.55em 0.22em; transform: rotate(-0.5deg); }
+h3 {
+  margin: 0;
+  font: 700 1.3rem/1.25 var(--display);
+  color: var(--frame);
+  text-wrap: balance;
+  padding-top: 1.5rem;
+}
+h3 .when { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; color: var(--muted); margin-left: 0.6em; text-transform: uppercase; white-space: nowrap; }
+p { text-wrap: pretty; }
+
+/* panels */
+figure { margin: 0; }
+.panel img, .panel video { border: 2px solid var(--frame); border-radius: 2px; background: var(--ink); width: 100%; }
+figcaption { font: 400 0.8rem/1.5 var(--mono); color: var(--muted); padding-top: 0.55rem; max-width: 92ch; }
+figcaption b { color: var(--frame); font-weight: 500; }
+.pair { display: grid; gap: clamp(12px, 2vw, 20px); align-items: start; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.tilt-l { transform: rotate(-0.7deg); }
+.tilt-r { transform: rotate(0.6deg); }
+.sound::before { content: "▶ with sound · "; color: var(--sodium); }
+
+/* the director's words: his white balloon, blue biro */
+.say { position: relative; justify-self: start; max-width: min(100%, 54ch); margin-block: 0.4rem 1.1rem; }
+.say blockquote {
+  position: relative;
+  margin: 0;
+  background: var(--balloon);
+  color: var(--biro);
+  font: 700 1.04rem/1.42 var(--display);
+  padding: 0.9rem 1.25rem 0.95rem;
+  border-radius: 1.6rem;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+.say blockquote::after {  /* the tail */
+  content: "";
+  position: absolute;
+  left: 2.2rem;
+  bottom: -0.95rem;
+  border-style: solid;
+  border-width: 1.05rem 0.9rem 0 0;
+  border-color: var(--balloon) transparent transparent transparent;
+  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.35));
+}
+.say cite { display: block; font: 400 0.74rem var(--mono); color: var(--muted); padding: 1.15rem 0 0 4.2rem; font-style: normal; }
+.say.right { justify-self: end; }
+.say.right blockquote::after { left: auto; right: 2.2rem; border-width: 1.05rem 0 0 0.9rem; border-color: var(--balloon) transparent transparent transparent; }
+.say.right cite { text-align: right; padding: 1.15rem 4.2rem 0 0; }
+
+/* the walk */
+.arc-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 10px 8px; }
+.arc { display: block; width: 100%; min-width: 760px; height: auto; font-family: var(--mono); }
+.arc .area { fill: var(--sodium); fill-opacity: 0.12; }
+.arc .curve { fill: none; stroke: var(--sodium); stroke-width: 2.4; stroke-linejoin: round; }
+.arc .grid { stroke: var(--rule); stroke-dasharray: 3 5; }
+.arc .base { stroke: var(--muted); }
+.arc .div { stroke: var(--rule); }
+.arc .tick { fill: var(--muted); font-size: 11px; }
+.arc .sec { fill: var(--frame); font-size: 12px; text-anchor: middle; }
+.arc .hit { fill: transparent; }
+.arc a:hover .hit, .arc a:focus .hit { fill: var(--sodium); fill-opacity: 0.1; }
+.arc a:hover .sec { fill: var(--sodium); }
+.arc .peak { fill: var(--cap); }
+.arc .note { fill: var(--cap); font-size: 11px; }
+.arc .sess { stroke: var(--muted); stroke-width: 3; stroke-linecap: round; }
+.arc .sess.s10 { stroke: var(--sodium); stroke-opacity: 0.7; stroke-dasharray: 2 6; }
+.arc .sesst { fill: var(--muted); font-size: 11px; text-anchor: middle; }
+
+/* lists of what worked and didn't */
+.verdict { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+.verdict > div { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 18px 20px 6px; min-width: 0; }
+.verdict h4 { margin: 0 0 0.6rem; font: 700 1rem var(--display); text-transform: uppercase; letter-spacing: 0.04em; }
+.verdict .yes h4 { color: var(--cap); }
+.verdict .no h4 { color: var(--sodium); }
+.verdict ul { margin: 0; padding-left: 1.1rem; }
+.verdict li { margin-bottom: 0.7rem; font-size: 1rem; line-height: 1.5; }
+.verdict li strong { color: var(--frame); font-weight: 600; }
+
+/* numbers */
+.numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.numbers div { border-top: 2px solid var(--sodium); padding-top: 10px; }
+.numbers b { display: block; font: 700 2.1rem/1 var(--display); color: var(--frame); font-variant-numeric: tabular-nums; }
+.numbers span { font: 400 0.8rem/1.45 var(--mono); color: var(--muted); }
+
+.pipeline { list-style: none; padding: 0; margin: 0; counter-reset: step; display: grid; gap: 0.7rem; }
+.pipeline li { counter-increment: step; display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.6rem; font-size: 1rem; line-height: 1.5; }
+.pipeline li::before { content: counter(step); font: 700 1rem/1.5 var(--display); color: var(--ink); background: var(--cap); text-align: center; height: 1.5rem; border-radius: 2px; }
+
+.toc { display: flex; flex-wrap: wrap; gap: 6px 14px; font: 400 0.82rem/1.5 var(--mono); }
+.toc a { color: var(--muted); text-decoration: none; }
+.toc a:hover { color: var(--sodium); }
+.watch { font: 500 0.9rem/1.4 var(--mono); letter-spacing: 0.04em; margin-top: -0.4rem; color: var(--muted); }
+.watch a { color: var(--sodium); }
+.end { font: 2.6rem/1.05 var(--hand); color: var(--cap); transform: rotate(-2deg); padding-top: 2rem; }
+footer { padding-top: 3rem; }
+footer p { font: 400 0.8rem/1.6 var(--mono); color: var(--muted); }
+footer a { color: var(--muted); }
+
+/* a name, redacted: a bar in the text's own colour; now and then it scrambles to [EXPUNGED] and closes again */
+.x { display: inline-block; width: 5.4em; height: 0.95em; vertical-align: -0.1em; background: currentColor;
+  border-radius: 1px; overflow: hidden; white-space: nowrap; font: 500 0.78em/1.22 var(--mono); letter-spacing: 0;
+  text-align: center; text-transform: uppercase; cursor: default; }
+.x.scr { background: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+</style>
+</head>
+<body>
+<main>
+<header class="hero flow">
+  <p class="kicker">A making-of · a music video for Amber &amp; Ink · 8–14 October 2026</p>
+  <h1><span class="paint">Sodium<small>Amber &amp; Ink</small></span></h1>
+  <p class="dek">How a garage track about distance became a woman's walk home at 3am through a real English town:
+    seven days, ten sessions, twelve sets built from maps and measurements, and a story rebuilt after its first
+    viewer.</p>
+  <p class="watch"><a href="https://youtu.be/ZZSLG5jgcws">Watch the film on YouTube</a> · 4:08</p>
+  <figure class="panel wide">
+    <img src="img/hero.jpg" width="1600" height="900" alt="A comic panel at night: a woman in an ochre rain mac walks away from us along a wet riverside promenade under Victorian lamps, towards a white lattice footbridge over the dark river.">
+    <figcaption><b>Instrumental 2, 2:27.</b> The Embankment's lamps, a few seconds before they fail one after
+      another in the order she walks past them. The white bridge ahead is where the story turns.</figcaption>
+  </figure>
+  <p>This is the story of how the video was made: what we tried first, what we threw away, and how a walk home
+    became the whole film. It was made in conversation between <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, who wrote the song and made it
+    with Suno, and Claude (Claude Opus 5.5, working in Claude Code), which wrote and ran every script, with Codex
+    drawing the pictures. It's the second film credited to Amber &amp; Ink, after
+    <a href="https://modelandmuse.github.io/while-the-ceiling-moves/">While The Ceiling Moves</a>, and it started
+    from the method and tools that film left behind. <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s notes appear here as they were given, in white
+    balloons lettered in blue, the way the film letters the one voice that answers her.</p>
+  <nav class="toc" aria-label="Chapters">
+    <a href="#chapter-brief">The brief</a><a href="#chapter-words">A bridge made of words</a>
+    <a href="#chapter-picture">Her picture</a><a href="#chapter-comic">Comic, not animation</a>
+    <a href="#chapter-seeing">Ways of seeing</a><a href="#chapter-town">A real town</a>
+    <a href="#chapter-sets">Sets, because words weren't enough</a><a href="#chapter-lettering">Words in the street</a>
+    <a href="#chapter-song">The song, page by page</a><a href="#chapter-viewer">The first viewer</a>
+    <a href="#chapter-umbrella">Codex and the umbrella</a><a href="#chapter-cuts">After the second cut</a>
+    <a href="#chapter-verdict">What worked</a><a href="#chapter-numbers">By the numbers</a>
+  </nav>
+</header>
+
+<section class="flow" aria-labelledby="walk-h">
+  <p class="meta">The shape of the film</p>
+  <h2 id="walk-h"><span class="cap">Forty-eight minutes in four</span></h2>
+  <p>Sodium is one walk: 3.7 km from the care home where Amber works nights to the terrace she shares with Ink, on
+    real streets, from 02:58 to 03:46 by the story's clock. That's forty-eight minutes of walking in four minutes of
+    song, so each section of the song is a stretch of the route. The line below is how far she has walked. It climbs
+    through the verses and choruses and stops twice: at the lights, where the film cuts to Ink standing on his own
+    doorstep, and on the bridge, where they meet. It ends at their door. Underneath are the sessions that built each
+    section. Each band links to its part of the story.</p>
+  <div class="wide arc-wrap">
+<svg class="arc" viewBox="0 0 1000 262" role="img" aria-labelledby="walk-title walk-desc">
+<title id="walk-title">Her walk home against the song</title>
+<desc id="walk-desc">The distance she has walked along her 3.7 km route home, from 0 at the care home's door to 3.7 km at her own, across the song's 4:03 and the story's clock from 02:58 to 03:46. The line climbs through the verses and choruses, stays flat while she waits at the lights in the first instrumental and again on the bridge where they meet, and ends at home. Below it, the song's sections and the session that built each one.</desc>
+<line class="grid" x1="8.0" y1="133.7" x2="992.0" y2="133.7"/><text class="tick" x="990.0" y="129.7" text-anchor="end">1 km</text>
+<line class="grid" x1="8.0" y1="99.4" x2="992.0" y2="99.4"/><text class="tick" x="990.0" y="95.4" text-anchor="end">2 km</text>
+<line class="grid" x1="8.0" y1="65.1" x2="992.0" y2="65.1"/><text class="tick" x="990.0" y="61.1" text-anchor="end">3 km</text>
+<a href="#s-intro"><title>Intro, 0:00–0:13</title><rect class="hit" x="8.0" y="180" width="53.0" height="26"/><text class="sec" x="34.5" y="197">Intro</text></a>
+<line class="div" x1="61.0" y1="30" x2="61.0" y2="206"/>
+<a href="#s-verse1"><title>Verse 1, 0:13–0:39</title><rect class="hit" x="61.0" y="180" width="104.5" height="26"/><text class="sec" x="113.2" y="197">Verse 1</text></a>
+<line class="div" x1="165.4" y1="30" x2="165.4" y2="206"/>
+<a href="#s-chorus1"><title>Chorus 1, 0:39–1:08</title><rect class="hit" x="165.4" y="180" width="117.6" height="26"/><text class="sec" x="224.2" y="197">Chorus 1</text></a>
+<line class="div" x1="283.0" y1="30" x2="283.0" y2="206"/>
+<a href="#s-inst1"><title>Instrumental 1, 1:08–1:21</title><rect class="hit" x="283.0" y="180" width="52.2" height="26"/><text class="sec" x="309.1" y="197">Inst.</text></a>
+<line class="div" x1="335.1" y1="30" x2="335.1" y2="206"/>
+<a href="#s-verse2"><title>Verse 2, 1:21–1:46</title><rect class="hit" x="335.1" y="180" width="104.1" height="26"/><text class="sec" x="387.2" y="197">Verse 2</text></a>
+<line class="div" x1="439.3" y1="30" x2="439.3" y2="206"/>
+<a href="#s-chorus2"><title>Chorus 2, 1:46–2:15</title><rect class="hit" x="439.3" y="180" width="116.9" height="26"/><text class="sec" x="497.7" y="197">Chorus 2</text></a>
+<line class="div" x1="556.2" y1="30" x2="556.2" y2="206"/>
+<a href="#s-inst2"><title>Instrumental 2, 2:15–2:41</title><rect class="hit" x="556.2" y="180" width="103.9" height="26"/><text class="sec" x="608.1" y="197">Inst.</text></a>
+<line class="div" x1="660.1" y1="30" x2="660.1" y2="206"/>
+<a href="#s-bridge"><title>Bridge, 2:41–3:06</title><rect class="hit" x="660.1" y="180" width="103.8" height="26"/><text class="sec" x="712.0" y="197">Bridge</text></a>
+<line class="div" x1="763.9" y1="30" x2="763.9" y2="206"/>
+<a href="#s-final"><title>Final chorus, 3:06–3:35</title><rect class="hit" x="763.9" y="180" width="116.9" height="26"/><text class="sec" x="822.4" y="197">Final chorus</text></a>
+<line class="div" x1="880.8" y1="30" x2="880.8" y2="206"/>
+<a href="#s-outro"><title>Outro, 3:35–3:56</title><rect class="hit" x="880.8" y="180" width="84.7" height="26"/><text class="sec" x="923.2" y="197">Outro</text></a>
+<line class="div" x1="965.5" y1="30" x2="965.5" y2="206"/>
+<a href="#s-outro"><title>Ending, 3:56–4:03</title><rect class="hit" x="965.5" y="180" width="26.5" height="26"/><text class="sec" x="978.8" y="197">End</text></a>
+<path class="area" d="M8.0,168.0 L61.0,165.1 L165.4,145.2 L283.0,124.2 L335.1,123.8 L439.3,109.9 L556.2,96.5 L660.1,85.2 L763.9,84.5 L880.8,52.7 L965.5,40.0 L992.0,40.0 L992.0,168.0 L8.0,168.0 Z"/><path class="curve" d="M8.0,168.0 L61.0,165.1 L165.4,145.2 L283.0,124.2 L335.1,123.8 L439.3,109.9 L556.2,96.5 L660.1,85.2 L763.9,84.5 L880.8,52.7 L965.5,40.0 L992.0,40.0"/>
+<line class="base" x1="8.0" y1="168.0" x2="992.0" y2="168.0"/>
+<circle class="peak" cx="8.0" cy="168.0" r="3.5"/><text class="note" x="12.0" y="146.0" text-anchor="start">02:58 out of work</text>
+<circle class="peak" cx="129.7" cy="152.0" r="3.5"/><text class="note" x="129.7" y="129.0" text-anchor="middle">03:05 her message</text>
+<circle class="peak" cx="308.9" cy="124.0" r="3.5"/><text class="note" x="300.9" y="112.0" text-anchor="end">03:12–03:14 the lights; he's on his step</text>
+<circle class="peak" cx="616.3" cy="90.0" r="3.5"/><text class="note" x="608.3" y="106.0" text-anchor="end">the lamps fail</text>
+<circle class="peak" cx="709.6" cy="84.9" r="3.5"/><text class="note" x="701.6" y="72.9" text-anchor="end">03:29 they meet</text>
+<circle class="peak" cx="790.7" cy="77.2" r="3.5"/><text class="note" x="798.7" y="99.2" text-anchor="start">03:31 his message lands</text>
+<circle class="peak" cx="965.5" cy="40.0" r="3.5"/><text class="note" x="957.5" y="30.0" text-anchor="end">03:46 home</text>
+<line class="sess" x1="11.0" y1="216" x2="58.0" y2="216"/><text class="sesst" x="34.5" y="233">S9</text>
+<line class="sess" x1="64.0" y1="216" x2="436.3" y2="216"/><text class="sesst" x="250.1" y="233">Session 5</text>
+<line class="sess" x1="442.3" y1="216" x2="657.1" y2="216"/><text class="sesst" x="549.7" y="233">S6</text>
+<line class="sess" x1="663.1" y1="216" x2="760.9" y2="216"/><text class="sesst" x="712.0" y="233">S7</text>
+<line class="sess" x1="766.9" y1="216" x2="877.8" y2="216"/><text class="sesst" x="822.4" y="233">S8</text>
+<line class="sess" x1="883.8" y1="216" x2="989.0" y2="216"/><text class="sesst" x="936.4" y="233">S9</text>
+<line class="sess s10" x1="11.0" y1="244" x2="989.0" y2="244"/><text class="sesst" x="500.0" y="258">Session 10: the story reworked across the film</text>
+<text class="tick" x="8.0" y="18" text-anchor="start">0:00</text>
+<text class="tick" x="251.3" y="18" text-anchor="middle">1:00</text>
+<text class="tick" x="494.6" y="18" text-anchor="middle">2:00</text>
+<text class="tick" x="738.0" y="18" text-anchor="middle">3:00</text>
+<text class="tick" x="981.3" y="18" text-anchor="middle">4:00</text>
+</svg>
+  </div>
+</section>
+
+<section class="flow" id="chapter-brief" aria-labelledby="brief-h">
+  <p class="meta">Session 1 · 8 October, 9:50 pm</p>
+  <h2 id="brief-h"><span class="cap">The brief</span></h2>
+  <div class="say"><blockquote>I've put a new song into this folder and wanted to see how we get on. The skill is
+    currently based on a comic-book style of animation. I'd like to see how we can take this approach and grow it to
+    produce some new and interesting effect that match the song … go cautiously on codex because the results look
+    very AI at times, and consistency took a lot of our time</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, the first message</cite></div>
+  <p>The song came from Suno as <em>Bridge Between Us</em>: four minutes and three seconds of two-step UK garage
+    at 149.5 beats a minute (it feels like 75), in D♭ major, on one four-chord loop almost all the way through, G♭,
+    D♭, A♭, B♭ minor. It ends on the minor chord, not home. It's about two people apart, "the lines, the miles, the
+    time apart", building back to each other word by word, and its motif is light: "two shadows underneath one
+    light", "that little light that says we're not that far".</p>
+  <p>The first job was the one While The Ceiling Moves had taught us: turn the song into data, because Claude can't
+    listen to it. The kit's tools did most of that (a beat grid from the MIDI, levels and hits from each stem, every
+    word's time from Whisper matched against the lyrics), and this song found their weak spots. Whisper heard none of
+    the choruses at first: its voice detector had thrown the processed chorus vocals away. Without it, and with a
+    second pass that prompts Whisper a few lines at a time, 306 of the 325 sung words matched. The lyric check video
+    went to <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s ear twice ("That's much improved … it's pretty close"), and every fix to the tools went
+    back into the kit for the next song.</p>
+</section>
+
+<section class="flow" id="chapter-words" aria-labelledby="words-h">
+  <p class="meta">Session 1 · the first evening</p>
+  <h2 id="words-h"><span class="cap">A bridge made of words</span></h2>
+  <p>The first proposal took the old title literally. A river at night with a lamp on each bank, and in chorus 1
+    every sung word dropping in as a carved stone of an arch at the moment it's sung, the echoes laid from the far
+    bank, the cracks between them filled with gold. It came in two looks: A rendered entirely in code, B the same
+    stones over a river Codex drew from our layout.</p>
+  <div class="wide pair">
+    <figure class="panel tilt-l"><img src="img/look_b.jpg" width="1600" height="900" loading="lazy" alt="Four stills of a night river under a violet sky: carved stone blocks lettered with lyrics assemble into an arch from both banks.">
+      <figcaption><b>Look B,</b> chorus 1: each course of the arch is a sung line.</figcaption></figure>
+    <figure class="panel tilt-r"><video controls preload="none" playsinline poster="clips/c_look_b.jpg" width="1280" height="720"><source src="clips/c_look_b.mp4" type="video/mp4"></video>
+      <figcaption class="sound"><b>Look B moving, 0:40-0:50.</b> The stones land on the words.</figcaption></figure>
+  </div>
+  <div class="say right"><blockquote>That looks good, and plays to the ideas in the song well. The main problem is
+    that the only vocalist here is Amber, she's backing herself so the bridge building from the otherside doesn't
+    quite land right. It's a song to Ink, but he's not singing.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, on looks A and B</cite></div>
+  <p>That one observation set a rule for the whole film: nothing in it may be built as Ink's answer from the other
+    side. The bracketed echoes in the lyrics are her own voice, double-tracked. Look B was "the stronger for the
+    detail in the cityscape", but one scene couldn't tell a story, and <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> wanted one: "something punchy
+    and surprising".</p>
+</section>
+
+<section class="flow" id="chapter-picture" aria-labelledby="picture-h">
+  <p class="meta">Session 1 · later that night</p>
+  <h2 id="picture-h"><span class="cap">Her picture</span></h2>
+  <p>Claude offered twists: the other side of the first film's night, a pirate radio station, the song as the bridge
+    itself. The story came from a picture <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> already had:</p>
+  <div class="say"><blockquote>a sort of top-down angle on a lone figure walking along beside a streetlight, looking
+    down at their phone, casting a shadow behind and then ahead as they pass under the light, still comic-book panel
+    style. She's texting, it's late and a little drizzly. She's remembering the last time she walked together with
+    Ink, and how she's struggling with his insecurities and anxiety disorder … I'm not sure entirely what the story
+    is here, to be honest. It's fun to discover it.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>The story grew from it. Amber, a night carer, walks home from the late shift in the drizzle under sodium
+    streetlights, texting Ink, who is awake at home with his anxiety. Her call drops on a footbridge over the river. A
+    second shadow stretches into her light from the dark, carrying an umbrella: Ink has come out to meet her
+    halfway. A storyboard of sixteen Codex sketches went over the same night.</p>
+  <figure class="panel wide"><img src="img/storyboard.jpg" width="1600" height="600" loading="lazy" alt="A strip of eight amber-and-black storyboard sketches: a woman on a dark footbridge, a second shadow on the deck, a figure under an umbrella, two people walking in step, a red front door at dawn.">
+    <figcaption><b>The first storyboard's last sketches:</b> the dropped call, the second shadow, Ink under the
+      umbrella, home in step, dawn at the door.</figcaption></figure>
+  <div class="say right"><blockquote>Read that, loved it. Listened and imagined along. I think it's super … Ink's
+    arrival is lovely. It's almost a reflected version of the original story. She's the vulnerable one, and he's
+    there for her. They're supporting each other.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>The questions it raised were answered one at a time over the next days, and each became a rule. It's the same
+    Amber as in While The Ceiling Moves, earlier in their relationship: their first rented home, no rings yet, no
+    baby things. (Her singing voice is British here and country and western in the first film; in her backstory
+    she's good at accents.) It happens at about 3am at midsummer, the shortest night, so dawn at their door is true.
+    Her coat is an ochre rain mac: Amber wears amber, Ink wears ink. Still no faces. And the song was renamed:</p>
+  <div class="say"><blockquote>Bridge Between Us is nauseatingly obvious and missing an opportunity to do something
+    more interesting.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>Of the titles offered, <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> took <em>Sodium</em>, the light the whole film is drawn in: "I think the song is
+    called Sodium. I never liked Bridge Between Us much."</p>
+</section>
+
+<section class="flow" id="chapter-comic" aria-labelledby="comic-h">
+  <p class="meta">Session 2 · 9 October</p>
+  <h2 id="comic-h"><span class="cap">Comic, not animation</span></h2>
+  <p>The first look test animated the storyboard's walk. A street of terraced houses was laid out in metres and
+    redrawn by Codex panel by panel, and on top of it, all computed, Amber walked one lamp every four bars with a step
+    on every beat, her shadow from each lamp swinging round her like a clock hand as she passed under it. The lyrics
+    were painted on the road like road markings, and her echoes were written inside her own shadow.</p>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_walk.jpg" width="1280" height="720"><source src="clips/c_walk.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>The walk test, 0:30-0:41.</b> Four drawn poses on the beat, the shadows from
+      every lamp computed, the verse painted on the road.</figcaption>
+  </figure>
+  <div class="say right"><blockquote>Although it's quite cute and charming, it doesn't have the comic-book vibe we're
+    going for. Rather than attempt to animate the walking frame-by-frame, we should focus on using panels, swipes,
+    fades, etc, to give the drawn-but-animated feel. I'm concerned that we'll spend a lot of time trying to get this
+    motion to look natural rather than computer game-y.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, on the walk</cite></div>
+  <p>So the film became held drawings with the motion in the page: panels sliding in on the beat, the camera pulling
+    back across a page, pushes into a detail, lettering arriving as it's sung. The first comic pages went up that
+    evening, and eleven notes came back. Grouped by cause before any was fixed, they came down to five, and each got
+    a check that runs before every render from then on: lettering that doesn't sit on its surface, lettering that
+    doesn't look like the real thing, things that couldn't happen in a real street, a street that looks generated,
+    and which lyric goes where.</p>
+  <figure class="panel wide"><img src="img/comic_v1.jpg" width="1600" height="1200" loading="lazy" alt="Twelve frames of the first comic pages: a high street at night with lyric captions, an advert, a fly-poster, a phone screen, a puddle, words painted along a kerb, a zebra crossing with a word on each stripe.">
+    <figcaption><b>The first comic pages,</b> verse 1 and chorus 1. The kerb's words were "very squint", the advert
+      "quite plain", and the zebra had her walking along its stripes.</figcaption></figure>
+</section>
+
+<section class="flow" id="chapter-seeing" aria-labelledby="seeing-h">
+  <p class="meta">Session 3 · 9 October</p>
+  <h2 id="seeing-h"><span class="cap">Ways of seeing</span></h2>
+  <div class="say"><blockquote>I'd also like a conversation about using parallax effects to create depth in scenes.
+    We want to emphasise distance and space, emptiness in a cluttered scene. We can also use CCTV pictures and other
+    effects to add interest, and a slightly sinister undertone.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>The conversation was held over real output. A small depth model, Depth Anything V2, running on the CPU, gave
+    every drawing a depth map, and a parallax camera moved through it. A town camera's picture was built in code the
+    way a cheap recorder keeps it: an optical zoom that hunts for focus, a few frames a second, monochrome, grain, a
+    timestamp, and a wall of four monitors with VIDEO LOSS on one. Then a convex traffic mirror, a shop's shutter as a
+    wipe, and her phone's map.</p>
+  <div class="wide pair">
+    <figure class="panel"><video controls preload="none" playsinline poster="clips/c_cctv.jpg" width="1280" height="720"><source src="clips/c_cctv.mp4" type="video/mp4"></video>
+      <figcaption class="sound"><b>The CCTV test, 0:39-0:50.</b> A camera finds her and zooms in on the bar; the
+        monitor wall's labels are the echo, THE LINES, THE MILES, THE TIME APART.</figcaption></figure>
+    <figure class="panel"><img src="img/cctv.jpg" width="1600" height="900" loading="lazy" alt="Nine grey-green CCTV stills of a wet street at night: a woman walking, a monitor wall, a bus shelter, timestamps.">
+      <figcaption><b>Stills from the reel,</b> in the cameras' monochrome: "they retain a comic-book feel in their
+        style this way."</figcaption></figure>
+  </div>
+  <div class="say right"><blockquote>The use of parallax and cctv definitely have a place here, I wonder what other
+    perspectives we could have. Keeping a simple journey home interesting is all about the presentation and
+    interesting angles, observations and clever use of the set.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>That became the film's structure: a way of seeing for each section. Her own eyes on her phone in verse 1. The
+    city's cameras in chorus 1. Traffic lights changing for nobody in the first instrumental. Shop windows and
+    reflections in verse 2. Her map in chorus 2. The lamps failing around her before the bridge. And two witnesses
+    from the list of ideas: "the fox would be great, and someone's doorbell is an excellent idea." The fox is the one
+    other thing awake, and it turns up three times. The doorbell became their own, and it ends the film.</p>
+</section>
+
+<section class="flow" id="chapter-town" aria-labelledby="town-h">
+  <p class="meta">Sessions 3-5 · 9-10 October</p>
+  <h2 id="town-h"><span class="cap">A real town</span></h2>
+  <p>Her map needed streets, so it got a real town: Bedford, from OpenStreetMap, never named on screen. Its Victorian
+    suspension footbridge of 1888, white lattice arches over the Great Ouse, was already the storyboard's bridge. The
+    first route was forced through the places the story wanted, and it showed: she walked round a roundabout's
+    carriageway, and Ink took the long way round like a car. <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> spotted each one. So the route was
+    computed the way someone on foot would walk it, with only the bridge as a waypoint, and the streets chose the
+    rest: a long terrace, a footpath between garden walls, the lights on The Broadway, the High Street, the
+    Embankment, the bridge, Mill Meadows, the Rope Walk zebra, home. The song's sections landed on it without
+    forcing.</p>
+  <figure class="panel"><img src="img/route.jpg" width="1050" height="1350" loading="lazy" alt="A dark street map of a town with a route drawn in amber from the north-west down to a river, across a footbridge, then in amber and blue to the south-east, each stretch labelled with a section of the song.">
+    <figcaption><b>Her walk home, section by section.</b> Amber alone to the bridge, amber and blue together after
+      it. Map data © OpenStreetMap contributors.</figcaption></figure>
+  <p>Then photographs. Geograph's archive answers searches by position, so a script walked her route every 100 metres
+    and kept what was near it: 238 photographs, of which 45 were kept. The find was N Chadwick's night series from
+    2016 of Foster Hill Road and the High Street under the old low-pressure sodium lamps, everything one orange: her
+    streets in the film's own light. Mapillary's dashcam frames filled the gaps nobody had photographed, like the
+    zebra on Roff Avenue. All of them were references, never traced: every street in the film is our own set, drawn by
+    Codex, and every photographer is credited in the video's description.</p>
+  <div class="say"><blockquote>Fine to include them; interesting to have a real place behind this. I like that
+    someone who knows would know.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, on Bedford's landmarks</cite></div>
+  <p>So John Bunyan's statue stands at the lights, the steel faces meet nose to nose up Silver Street, and the bridge
+    is the real one, restaged. It has no lamps on its deck, so the lamps that fail are the Embankment's, and one lamp
+    post at the far end throws his shadow. Every change to the real place is on a list of liberties, from a lamp
+    every two houses (for the timing of her shadows) to the fox's winter coat at midsummer, and each is drawn the same
+    way in every panel, so it reads as the place and never as a slip.</p>
+  <div class="say right"><blockquote>I don't mind artistic license, if we're careful about it not looking like a
+    generative mistake.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+</section>
+
+<section class="flow" id="chapter-sets" aria-labelledby="sets-h">
+  <p class="meta">Sessions 4-5 · 10 October</p>
+  <h2 id="sets-h"><span class="cap">Sets, because words weren't enough</span></h2>
+  <p>While The Ceiling Moves was one kitchen, built once in Blender and redrawn by Codex from our camera. Sodium is a
+    whole route through a town, and it needed the same treatment for the same reason: asked in words, Codex can't
+    place a street lamp.</p>
+  <div class="say"><blockquote>Yes, A looks correct. But we must make sure that they are on the correct side of the
+    pavement and facing in the right direction. Codex gets them all over the place, sometimes nearside, sometimes
+    far.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, picking the town's lamp</cite></div>
+  <p>From words alone it stood the column in the middle of the pavement, pointed the neck along the street, moved the
+    lamp across the road and laid it flat from above. Drawn from a set's layout, every lamp stayed at the kerb with
+    its neck out over the road.</p>
+  <figure class="panel wide"><img src="img/lamps_set.jpg" width="1600" height="973" loading="lazy" alt="Above, four Codex drawings of a street lamp and a house from words, the lamps in the wrong places; below, flat grey-and-orange 3D layouts of the same views with the lamps at the kerb.">
+    <figcaption><b>The lamp from words, then from a set.</b> Above, the sheets drawn from descriptions; below, the
+      set of their close rendered as the layouts they were redrawn from.</figcaption></figure>
+  <p>So twelve sets were built, each by a script from real measurements: the bridge (a 30.5 m span, a
+    1.83 m deck rising 1.9 m to its crown, rods every 1.9 m), Gladstone Street (fronts 14.5 m apart by OpenStreetMap's
+    buildings, its houses checked against a photograph from the photographer's own position), Roff Avenue's zebra,
+    Foster Hill Road, The Broadway's lights, the High Street, the ward, the Embankment, the Rope Walk zebra, Turner
+    Way and their own close, and a stranger's terrace that the rework later cut. A set renders a layout for Codex, a depth map for parallax, masks
+    of every part and light passes for our own lighting. A seeded generator gives every house its own door,
+    windows, alarm box and bins, because the real street is mirrored pairs of cottages and its variety is all in the
+    details.</p>
+  <figure class="panel wide"><img src="img/walk_takes.jpg" width="1600" height="331" loading="lazy" alt="Three images side by side: a flat 3D layout of a terraced street from behind a figure, and two inked night drawings of the same view.">
+    <figcaption><b>Layout, then redraw:</b> the set's view of Gladstone Street from high behind her, and Codex's two
+      takes. The lamps stand where the set puts them, their necks over the parked cars.</figcaption></figure>
+  <p>Sets also catch what a drawing hides. Seen from the side, Amber stands behind the bridge's near railing, a rod
+    and the lattice. That's right in 3D, and Codex merged her into the ironwork.</p>
+  <div class="say right"><blockquote>Good idea building a model for the bridge. Codex had parts of her body mixed into
+    the railings.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>Now any view that sees someone through ironwork is drawn empty and the people go in afterwards: Codex draws the
+    person alone on a green ground in the set's pose, and the set's masks decide which rails pass in front of
+    them.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/railings.jpg" width="1440" height="405" loading="lazy" alt="Two drawings of a woman on a footbridge: in the first her coat merges with the railings; in the second the bridge is drawn empty and she is placed behind the rails.">
+      <figcaption><b>Her in the railings,</b> then the bridge drawn empty and her put in by us.</figcaption></figure>
+    <figure class="panel"><img src="img/bridge_set.jpg" width="1280" height="1440" loading="lazy" alt="Eight renders of a 3D model of the white footbridge: layouts from different cameras, a depth map, and flat colour masks of its parts.">
+      <figcaption><b>The bridge as a set:</b> five views' layouts, the deck's depth and the parts' masks, from its
+        real measurements.</figcaption></figure>
+  </div>
+</section>
+
+<section class="flow" id="chapter-lettering" aria-labelledby="lettering-h">
+  <p class="meta">Lettering · sessions 5-9</p>
+  <h2 id="lettering-h"><span class="cap">Words in the street</span></h2>
+  <p>Every sung line is on screen once, in a form chosen for what it means, and most are lettered onto real things in
+    the street: a road sign's name plate (THE IN-BETWEEN), a lost-cat poster with WE added in marker, a bus shelter's
+    advert for an invented phone network, relay ("Never out of reach."), with line 4 as its headline, a chemist's
+    green LED cross, a departure board reading NO MORE BUSES TONIGHT · FIRST BUS 05:42, grit-dusted tar in the road's
+    cracks, a memorial bench's brass plaque, the planks of the bridge and the stripes of a zebra. Each is designed as
+    its real object first (a British road sign's typeface and border, a home printer's poster, a phone's chat with its
+    ticks) and laid onto the drawing by code, on corners fitted to the drawn edges.</p>
+  <figure class="panel wide"><img src="img/lettering.jpg" width="1600" height="1364" loading="lazy" alt="Six frames from the film: a green pharmacy cross with SCAR lit in white dots, a purple bus-shelter advert, words in pale sealant in a grey CCTV picture, a brass bench plaque, a phone map beside a bench, and a zebra crossing with lyrics on its stripes.">
+    <figcaption><b>Lettered by code, laid into the drawings:</b> the chemist's cross, the shelter's advert, line 6
+      in the road's sealed cracks under CAM 05, the bench's plaque, the plaque again from the promenade, the Rope
+      Walk zebra.</figcaption></figure>
+  <p>Each surface is checked on a sheet at twice the size before any render, and <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s eye still caught what
+    the sheet passed. The cross first scrolled the whole line across its LEDs:</p>
+  <div class="say"><blockquote>Idea is good, font is hard to read especially at speed</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <div class="say right"><blockquote>The writing is clearer, but it was better before without the dark green
+    background. Perhaps white dots on the green, flashing up key words rather than trying to scroll the entire thing
+    across</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, a round later</cite></div>
+  <p>So it flashes WORD, HEALS and SCAR, each one whole, on its green. A lit advert showed a pixel's miss as a
+    glowing white rim, twice, so lit cards are now fitted side by side to the drawn edge and grown 3 px over it.</p>
+  <figure class="panel wide"><img src="img/cross_layers.jpg" width="1600" height="678" loading="lazy" alt="Left, a street drawing split into coloured layers: a lamp post in magenta, a wall and car in green, houses behind. Right, three close-ups of a green pharmacy cross reading WORD, HEALS, SCAR.">
+    <figcaption><b>The poster's lean-in as three flat layers</b> cut on the drawing's own edges (the post, the wall
+      with its car, the houses), so nothing bends; and the cross's three words.</figcaption></figure>
+</section>
+
+<section class="flow" id="chapter-song" aria-labelledby="song-h">
+  <p class="meta">Sessions 5-9 · 10-12 October</p>
+  <h2 id="song-h"><span class="cap">The song, page by page</span></h2>
+  <p>Each section was built the same way: a line table agreed first (each sung line, its panel and its form), then
+    the sets and drawings, then a review clip with sound and rounds of notes until it was approved, two to five
+    rounds a section. The clips here are from the finished film.</p>
+
+  <h3 id="s-intro">The intro <span class="when">0:00-0:13 · sessions 9-10</span></h3>
+  <p>The care home's staff door: its keypad's four beeps on the song's four vocal chops, a green light and a clunk.
+    From above, the yard, where SODIUM and AMBER &amp; INK are painted in the fire exit's KEEP CLEAR box in yellow road
+    paint, and her shoes step out of the corridor's cold green light into amber. Then she's out of the gateway onto
+    Turner Way, the lamps leading away into the town.</p>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_intro.jpg" width="1280" height="720"><source src="clips/c_intro.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>The intro, 0:00-0:14.</b> The yard's painted title is the film's cover too: the
+      comic closes on it at the end.</figcaption>
+  </figure>
+
+  <h3 id="s-verse1">Verse 1 <span class="when">0:13-0:39 · session 5</span></h3>
+  <p>The walk up Gladstone Street, the passage, her phone, the first zebra. It took five versions to find the film's
+    page. The second was a panel at a time, and <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> wondered about "smaller panels all in the same page for
+    this journey perhaps. Not sure", so the third mocked that up from the drawings we had, and the page arrived:
+    panels building up as she walks. The fourth added a page camera that opens on the walk full frame and pulls back
+    across the page. On her phone she walked too, the paving flowing towards her under her hands, a step on every
+    beat, which is 150 steps a minute:</p>
+  <div class="say"><blockquote>quite short, like she's holding an egg between her knees</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>So she steps on every other beat, the half-time the song walks at. Straight down from 45 metres, the first
+    drawing had her standing still ("She looks like she's stopped to take a photo of someone's bins"), and Codex's
+    shadows ran off at 45° from each leg; they're cast now in code from the set's two lamps.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/v3_mock.jpg" width="1600" height="900" loading="lazy" alt="A mock comic page: five small street panels building up, a phone close-up and a zebra crossing with a thought balloon.">
+      <figcaption><b>The third version, a mock:</b> smaller panels on one page, the drawings we already had.</figcaption></figure>
+    <figure class="panel"><video controls preload="none" playsinline poster="clips/c_verse1.jpg" width="1280" height="720"><source src="clips/c_verse1.mp4" type="video/mp4"></video>
+      <figcaption class="sound"><b>Verse 1 in the film, 0:14-0:29.</b> The page builds as she walks; the drums
+        come in on her phone.</figcaption></figure>
+  </div>
+
+  <h3 id="s-chorus1">Chorus 1 <span class="when">0:39-1:08 · session 5</span></h3>
+  <p>The city's eyes. CAM 03 finds her on Foster Hill Road and the page pulls back to a wall of monitors, the echo on
+    their labels. CAM 04, on the bridge, cuts to VIDEO LOSS on "apart" (it comes back in the final chorus with two
+    people on it). Then the chemist's cross, the shelter, the board, and the fox under a parked car, watching her
+    shoes go by. Her phone ends it: the read receipt on her 03:05 message, Read 03:06, arriving six minutes late.</p>
+  <div class="say right"><blockquote>Nice. My main worry is that there's so much going on here in such a short space,
+    but let's see how it lands with the notes applied</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>The answer was fewer page moves (two where there had been four) and, from then on, one thing moving at a
+    time.</p>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_chorus1.jpg" width="1280" height="720"><source src="clips/c_chorus1.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>Chorus 1, 0:44-0:58.</b> The monitor wall, the cross, the shelter's advert, the
+      board.</figcaption>
+  </figure>
+
+  <h3 id="s-inst1">Instrumental 1 <span class="when">1:08-1:21 · sessions 5 and 10</span></h3>
+  <p>Eight bars at The Broadway's lights, with nothing sung. The crossing is a puffin, whose kerbside detector sees
+    whoever waits there, so the lights change for nobody because a fox has sat down at the kerb. The first fox waited
+    for the green man and crossed at the crossing.</p>
+  <div class="say"><blockquote>it defies credibility that the fox waits for the lights and goes right across the
+    proper crossing</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>Now it gets up as the traffic's green comes, trots along the kerb away from the crossing and lopes across among
+    the zigzags. The night bus Codex drew from words was "quite confused … uprights are sloping, seats merge into
+    others", so the bus became a set too, from an Enviro400's layout, and its side got a line of its own ("We're also
+    not using the huge opportunity on the side to say something"): relay's campaign, "Never out of reach.", on the
+    night their signal fails both ways. In session 10 the page split in two, with Ink on his doorstep below (see
+    <a href="#chapter-viewer">the first viewer</a>).</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/bus.jpg" width="1600" height="900" loading="lazy" alt="Stills of a night bus: the version drawn from words with sloping poles, then the version drawn from a 3D layout with upright poles and an advert reading Never out of reach; below, a fox crossing a junction in a grey CCTV picture.">
+      <figcaption><b>The bus from words, then from a set,</b> and the fox's way across.</figcaption></figure>
+    <figure class="panel"><video controls preload="none" playsinline poster="clips/c_inst1.jpg" width="1280" height="720"><source src="clips/c_inst1.mp4" type="video/mp4"></video>
+      <figcaption class="sound"><b>Instrumental 1 in the film, 1:08-1:21.</b> Her junction above, his doorstep
+        below, a narrow panel a bar.</figcaption></figure>
+  </div>
+
+  <h3 id="s-verse2">Verse 2 <span class="when">1:21-1:46 · session 5</span></h3>
+  <p>She calls him from the High Street. The storyboard's ward had been a sketch from words, and <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> described the
+    real one:</p>
+  <div class="say right"><blockquote>It looks <em>very</em> generative, with repeated same poses on four randomly
+    scattered beds. I think we have a deep angle into a ward, late at night with everyone sleeping, one visitor at one
+    bedside in the distance. Amber is taking notes from the end of a bed in the foreground.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>So the ward became a small set (two rows of beds, every sleeper a different shape, curtains on their tracks,
+    night lights) drawn in hospital green, and it's seen through a lit window across the street as the page pushes
+    in.</p>
+  <div class="wide pair">
+    <figure class="panel tilt-l"><img src="img/ward_sketch.jpg" width="1280" height="720" loading="lazy" alt="A green storyboard sketch from above: a woman standing among four beds of visitors.">
+      <figcaption><b>The storyboard's ward,</b> from words.</figcaption></figure>
+    <figure class="panel tilt-r"><img src="img/ward_cut.jpg" width="1600" height="900" loading="lazy" alt="A deep view down a dark hospital ward in green light: rows of sleeping patients, one visitor far off, Amber in a plum tunic writing on a clipboard at the foot of the nearest bed, with captions 'A crowded room,' and 'I feel alone'.">
+      <figcaption><b>The ward in the film,</b> from its set: "A crowded room, I feel alone".</figcaption></figure>
+  </div>
+  <p>In a closed-down shop's dark glass, Codex drew her reflection as a copy of her back, phone and bag on the same
+    side, four takes running. The reflection is now made by code: her figure cut out of the drawing, mirrored, a
+    little smaller, dimmed and clipped to the glass. Of the next page, between Bedford's two steel faces: "This is a
+    great shot, between these two faces at this point. Very nice."</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/verse2_catches.jpg" width="1600" height="1428" loading="lazy" alt="Before-and-after pairs: a phone held to a chest drawn too long, then shorter; a reflection in a shop window copied, then mirrored; a woman seen from above walking into shop fronts, then along the pavement.">
+      <figcaption><b>What went wrong on the way:</b> the phone "weirdly long" and her bag at the wrong hip; the
+        reflection a copy of her back; straight down, her walking into the shops.</figcaption></figure>
+    <figure class="panel"><video controls preload="none" playsinline poster="clips/c_verse2.jpg" width="1280" height="720"><source src="clips/c_verse2.mp4" type="video/mp4"></video>
+      <figcaption class="sound"><b>Verse 2, 1:21-1:35.</b> From inside a closed café; the green window across the
+        road; the ward.</figcaption></figure>
+  </div>
+
+  <h3 id="s-chorus2">Chorus 2 <span class="when">1:46-2:15 · sessions 6 and 10</span></h3>
+  <p>The miles, on the Embankment: her map on her phone with Ink's dot stale at home, a memorial bench whose plaque
+    carries "With every word that heals a scar", a fingerpost lettered with the echo, and the white bridge's
+    reflection broken up by the rain. The checks that came out of this section were about cars. Codex's parked cars had
+    "two number plates on one end, and impossible fronts backs and wing mirrors", and some were parked on the
+    pavement behind the trees. Every car is now checked at zoom: one front, one back, one plate at each end, in the
+    road at the kerb.</p>
+
+  <h3 id="s-inst2">Instrumental 2 <span class="when">2:15-2:41 · sessions 6 and 10</span></h3>
+  <p>The lamps. A low shot at a puddle, the camera creeping in. A dolly zoom: she holds her size while the Embankment
+    slips away behind her. Then, on the breakdown, the lamps fail in the order she walks past them, the way
+    low-pressure sodium dies: the amber stutters, there's a moment of its neon pink, then nothing. One lamp stays lit,
+    at the bridge's far end.</p>
+  <p>As a depth warp, the dolly zoom bent the bridge's rods and kinked the lamp posts (the depth model gives thin things
+    the depth of what's behind them), so it's built from flat layers: the drawing recedes about her feet with her held
+    over it as a cut-out. Codex drew the lamps lit, and our light takes them out one by one, using the set's light
+    passes to know what each lamp lit.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/dolly.jpg" width="1600" height="750" loading="lazy" alt="Left, two versions of a white bridge in a dolly zoom: bent by a depth warp, straight as flat layers. Right, four frames of a woman on the promenade as the bridge recedes.">
+      <figcaption><b>The dolly zoom</b> as a depth warp (the rods bend) and as flat layers about her feet.</figcaption></figure>
+    <figure class="panel"><img src="img/lamps_failing.jpg" width="1600" height="750" loading="lazy" alt="Frames of the riverside promenade as its lamps go from amber to pink to dark, one far lamp left lit.">
+      <figcaption><b>The lamps failing:</b> lit, half out, pink, all out with the far lamp and her phone kept.</figcaption></figure>
+  </div>
+  <div class="say"><blockquote>I do wonder if we need to somehow include a quick inset of her starting to hurry. The
+    scene fits the music, but the pacing isn't quite right without some extra nudge towards the bridge.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>An inset of her feet breaking into a run came in on the breakdown. After the second cut it moved a second later,
+    to the moment the lamps at the bridge's foot go out: "more like she's responding than predicting".</p>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_inst2.jpg" width="1280" height="720"><source src="clips/c_inst2.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>Instrumental 2, 2:24-2:41.</b> The lamps fail behind her, then ahead; she runs; the
+      bridge rises out of the dark on the strings.</figcaption>
+  </figure>
+
+  <h3 id="s-bridge">The bridge <span class="when">2:41-3:06 · session 7</span></h3>
+  <p>The call drops on "The signal falters". She stops on the deck; her phone shows a white error page, No
+    connection, and she presses Try again twice. Then a shadow comes down the deck towards her from the one lamp
+    beyond the far end, cast by code from the bridge's set at 90 positions, one a frame, so it reads as someone
+    walking. For a moment it's a stranger's shadow over a woman alone on a bridge at 3am.</p>
+  <div class="say right"><blockquote>I think he needs to be more sinister and silhouetted at this stage</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>On "And suddenly" she sees him: a backlit silhouette under an umbrella, blocking the path. "I'm here, I always
+    was" is the one line of the song given to him, in his own blue hand in a balloon. The planks between them light word by word
+    as they close the gap, and they hold each other on "To find each other in that light" as the Embankment's lamps
+    restrike behind them, pink warming to amber.</p>
+  <div class="wide pair">
+    <figure class="panel"><video controls preload="none" playsinline poster="clips/c_bridge.jpg" width="1280" height="720"><source src="clips/c_bridge.mp4" type="video/mp4"></video>
+      <figcaption class="sound"><b>The bridge, 2:44-3:06.</b> His shadow, his silhouette, his balloon, the
+        planks.</figcaption></figure>
+    <figure class="panel"><img src="img/embrace.jpg" width="1600" height="900" loading="lazy" alt="From high behind a man in a charcoal coat under a black umbrella on the bridge deck: a woman's ochre sleeves round him, the lamps on the far bank lit amber on the river.">
+      <figcaption><b>3:05:</b> the embrace, the lamps back on.</figcaption></figure>
+  </div>
+  <div class="say"><blockquote>Perfect. That works well. Let's wrap this session up and move onto the next.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+
+  <h3 id="s-final">The final chorus <span class="when">3:06-3:35 · session 8</span></h3>
+  <p>CAM 04, the camera chorus 1 lost, finds the two of them at 03:31 walking off the bridge under his umbrella. His
+    message, sent when he left home, gets through at last. In its first version she read it with her phone in one
+    hand and the other on his, on the umbrella's crook:</p>
+  <div class="say right"><blockquote>This umbrella/hands combo is looking super wonky. I think she'd likely have put
+    her phone away now they're together. (thinking) He knows the way.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>So her phone buzzes in her pocket and she holds it up between them for him to see: "on my way ☂️", sent 17
+    minutes ago. On the last echo she stops sharing her location, and the phone's thread ends with her putting it
+    away. The fox watches them go from the long grass on Mill Meadows ("The fox is amazing!"), and they cross the Rope
+    Walk zebra with the line on its stripes.</p>
+  <div class="wide pair">
+    <figure class="panel tilt-l"><img src="img/umbrella_hands.jpg" width="960" height="540" loading="lazy" alt="Through her eyes: her hand holding a phone with a map, her other hand over his on an umbrella's wooden crook.">
+      <figcaption><b>The first version:</b> "super wonky".</figcaption></figure>
+    <figure class="panel tilt-r"><img src="img/pocket.jpg" width="1600" height="300" loading="lazy" alt="Three panels from behind a couple: her coat pocket lighting up with BZZT, then her holding the phone up between them.">
+      <figcaption><b>The rethink:</b> BZZT in her pocket, then held up between them.</figcaption></figure>
+  </div>
+  <figure class="panel wide">
+    <video controls preload="none" playsinline poster="clips/c_final.jpg" width="1280" height="720"><source src="clips/c_final.mp4" type="video/mp4"></video>
+    <figcaption class="sound"><b>The final chorus, 3:08-3:26.</b> CAM 04 finds them, the buzz, the lock screen,
+      the fox.</figcaption>
+  </figure>
+
+  <h3 id="s-outro">The outro and the ending <span class="when">3:35-4:08 · sessions 9-10</span></h3>
+  <p>Their doorbell sees two people come up the path at 03:46. Across the road, the lamp he left on behind their
+    blind throws their two shadows on it, and goes off. The doorbell at 04:46 clicks into colour, the film's first full
+    colour. Then their front at sunrise, the street lamp clicking off, and the comic closes: its pages turn back to the
+    cover, the yard's painted title, held with the credits after the music ends.</p>
+  <p>The people in the doorbell first slid across the picture as cut-outs ("the motion looks more like they're
+    sliding across the pavement"), so they walk as held poses, cross-fading, the comic's way. And their garden was
+    different in every drawing until it was pinned in the set: lawn, shrub bed, the dividing hedge, one black bin.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/window.jpg" width="1600" height="900" loading="lazy" alt="A brick post-war terrace at night across a wet road: a lit window with two shadows close together on the blind, a red front door beside it, a street lamp's column in the foreground.">
+      <figcaption><b>3:45:</b> their shadows on the blind, under the lamp he left on.</figcaption></figure>
+    <figure class="panel"><video controls preload="none" playsinline poster="clips/c_outro.jpg" width="1280" height="720"><source src="clips/c_outro.mp4" type="video/mp4"></video>
+      <figcaption class="sound"><b>The outro and the ending, 3:40-4:08.</b> The window, 04:46 in colour, sunrise,
+        the book closing on the cover.</figcaption></figure>
+  </div>
+</section>
+
+<section class="flow" id="chapter-viewer" aria-labelledby="viewer-h">
+  <p class="meta">Sessions 9-10 · 12-13 October</p>
+  <h2 id="viewer-h"><span class="cap">The first viewer</span></h2>
+  <p>The first full cut was finished on 12 October. <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>: "Really good. I enjoyed that a lot." Then they
+    showed it to someone who hadn't seen any of it.</p>
+  <div class="say"><blockquote>the audience feel that he's left again, rather than this being earlier in the night.
+    We're going to have to rethink the story arc a bit, as the story didn't land very well on first
+    viewing.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, after the first viewing</cite></div>
+  <p>Laid out beat by beat, what was on screen against what a first-time viewer would read, the film showed the story
+    and never said it. Nothing said he struggles to leave the house: his one line in the thread was "k". Her messages
+    were the lyrics typed out. He set out only in the outro, in doorbell clips from 03:07 and 03:09 shown after the two
+    of them were home, so they read as him leaving again. His lost message was three emoji. And her phone filled about
+    75 of the film's 243 seconds.</p>
+  <div class="wide pair">
+    <figure class="panel"><video controls preload="none" playsinline poster="clips/c_cut1_outro.jpg" width="1280" height="720"><source src="clips/c_cut1_outro.mp4" type="video/mp4"></video>
+      <figcaption class="sound"><b>The first cut's outro, 3:41-3:53.</b> The doorbell's list after they're home,
+        then 03:07 and 03:09: read as him leaving again.</figcaption></figure>
+    <figure class="panel"><img src="img/cut1_phone.jpg" width="1600" height="1350" loading="lazy" alt="Six frames of hands holding a phone in the rain: the lyrics typed as messages, a map, and an inset of a message with a read receipt.">
+      <figcaption><b>The first cut's phone:</b> the lyrics typed as her messages, "not carrying their
+        weight".</figcaption></figure>
+  </div>
+  <p>The rework was agreed line by line. Real messages: at 22:40 hers, "finishing late. walk me home after? 🙏", and
+    at 22:52 his, "can't. sorry. not tonight"; at 03:05, "just left. pouring 😩 talk to me?". And his side told as it
+    happens:</p>
+  <div class="say right"><blockquote>I don't think the surprise helped us tell this story, but it's no less of a
+    relief to Amber</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>So the first instrumental became two tiers: her junction above, his doorstep below, a narrow panel for each bar
+    from 03:12 to 03:14, him on the step with the umbrella furled, looking back at the door, his hand tight on the
+    crook, then FWUMP as it opens and he steps off. His "on my way ☂️" is lost to the signal and lands on the bridge
+    at 03:31, "sent 17 minutes ago". The map came down to about 8 seconds in chorus 2, the stranger's doorbell went
+    from the intro, and the outro's middle became their shadows on the blind.</p>
+  <figure class="panel wide"><img src="img/two_tiers.jpg" width="1600" height="900" loading="lazy" alt="Four stills of a comic page in two tiers: above, a traffic signal and an empty junction with a fox; below, narrow panels of a man in a charcoal coat on his doorstep with a furled umbrella, the last with FWUMP spilling off its panel.">
+    <figcaption><b>Instrumental 1 in two tiers.</b> FWUMP spills off its panel: "it fits the creative use of panels
+      style".</figcaption></figure>
+  <p><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> reviewed the rework as a stranger would, "Trying to watch these through from the perspective of
+    someone who hasn't watched this, and doesn't know the story". The map's glimpse in verse 1 went ("just as we try to
+    read that it flicks away again"), and the read receipt now lands on "light", the page leaning in on it.</p>
+</section>
+
+<section class="flow" id="chapter-umbrella" aria-labelledby="umbrella-h">
+  <p class="meta">Session 10 · 13 October</p>
+  <h2 id="umbrella-h"><span class="cap">Codex and the umbrella</span></h2>
+  <p>Some details took many rounds. His umbrella, left open to dry on their path, came back from Codex shaved flat, its
+    top edge a straight line. Patched, it lost its handle. Domed out by code, it still didn't read.</p>
+  <div class="say right"><blockquote>The umbrella is still wrong I'm afraid. It has also lost its handle at some
+    point. Maybe we should try relocating it, or something? … I'm reaching the conclusion that Codex can't do
+    umbrellas in this orientation very well.</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/umbrella_wrong.jpg" width="1200" height="560" loading="lazy" alt="A black umbrella lying on a garden path at night, its canopy flattened and no handle visible.">
+      <figcaption><b>"Still wrong":</b> the domed fix, without its handle.</figcaption></figure>
+    <figure class="panel"><img src="img/umbrella_green.jpg" width="1600" height="922" loading="lazy" alt="Four drawings of an open black umbrella lying on its side with a wooden crook handle, each on a flat green ground.">
+      <figcaption><b>Drawn alone on green</b> from the set's blocking: right in all four takes.</figcaption></figure>
+  </div>
+  <p>The answer was to stop asking for it in the scene. Four places for it were rendered from their close's set and
+    <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> picked the lawn. Codex drew the umbrella alone from the set's blocking from both angles, and code laid
+    it into the night, the daylight and the sunrise where the set has it, with shadows of its own. It still floated
+    at sunrise ("its shadow belongs to a football") until the shade under it came from the drawing's own outline.</p>
+  <figure class="panel wide"><img src="img/umbrella_grounded.jpg" width="1600" height="406" loading="lazy" alt="Three views of the same umbrella on the lawn: grey night vision, daylight, and sunrise from across the road.">
+    <figcaption><b>One umbrella in three shots:</b> night vision, daylight, sunrise.</figcaption></figure>
+  <p>The same thing happened all through the film, in smaller ways. Codex hung her bag at the outside hip in every
+    drawing of the two of them from behind, though the words said the hip next to him. It drew her phone half again as
+    long as her hand, and her fob watch on her coat in one panel and her tunic in the next. Each was patched, and each
+    became a line in the bible that goes into every prompt.</p>
+  <figure class="panel"><img src="img/bag.jpg" width="810" height="540" loading="lazy" alt="The couple from behind under his umbrella, twice: her bag hanging at her outer hip, then moved to the hip next to him.">
+    <figcaption><b>Her bag,</b> at the outside hip as drawn, then patched to the side next to him.</figcaption></figure>
+</section>
+
+<section class="flow" id="chapter-cuts" aria-labelledby="cuts-h">
+  <p class="meta">Session 10 · 13-14 October</p>
+  <h2 id="cuts-h"><span class="cap">After the second cut</span></h2>
+  <p>The second cut was released with a YouTube draft written beside it, and <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>'s notes on it were sitting in
+    the notes file, unread.</p>
+  <div class="say"><blockquote>Oh snap! I just checked the latest rendering and it doesn't have my latest comments
+    addressed</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span></cite></div>
+  <p>Now the publishing script refuses any cut that has review notes on it not marked done. The notes themselves came
+    down to one cause. Once the lamps fail, the panels after them had reused drawings lit before it, and the climax
+    needed to be dark: "there's not enough sense of peril". The puddle shot now has every lamp out and her running in
+    it. The bridge rises lit only by a pool from its far lamp, with her a silhouette. Her hands on the deck are lit
+    only by her screen.</p>
+  <div class="wide pair">
+    <figure class="panel"><img src="img/run_fix.jpg" width="1600" height="465" loading="lazy" alt="Before and after: the promenade with her walking, then running as the lamps at the bridge's foot go out.">
+      <figcaption><b>2:32, before and after:</b> she breaks into a run as the lamps at the bridge's foot go.</figcaption></figure>
+    <figure class="panel"><img src="img/bridge_dark.jpg" width="1600" height="465" loading="lazy" alt="Before and after: the page at the climax with the bridge lit evenly, then sunk into the dark, lit only by a pool from the far lamp, her a silhouette.">
+      <figcaption><b>2:39, before and after:</b> the bridge in the dark, lit from its far end.</figcaption></figure>
+  </div>
+  <p>A lamp nudged off the river wall's coping by a Codex patch ended up in the road ("The lampost is in the road
+    now"), so it was moved by code instead: the drawing's own lamp, slid 40 pixels onto the paving. Cut v3 went back
+    for a check before anything was released.</p>
+  <div class="say right"><blockquote>Thanks! I've been over it and it looks good. We can go ahead and release
+    it!</blockquote><cite><span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span>, on cut v3</cite></div>
+</section>
+
+<section class="flow" id="chapter-verdict" aria-labelledby="verdict-h">
+  <p class="meta">Looking back</p>
+  <h2 id="verdict-h"><span class="cap">What worked, what didn't</span></h2>
+  <div class="wide verdict">
+    <div class="yes">
+      <h4>Worked</h4>
+      <ul>
+        <li><strong>A set before every drawing.</strong> Twelve sets from real measurements kept the lamps at the
+          kerb, the people out of the railings and the shadows true, and gave every drawing its depth and masks.</li>
+        <li><strong>A real place.</strong> OpenStreetMap for the route and the sets, photographs for the look, and the
+          liberties on a list.</li>
+        <li><strong>A way of seeing per section.</strong> Cameras, a doorbell, a convex mirror, a map, a reflection:
+          the walk keeps changing how it's shown.</li>
+        <li><strong>Lettering on real objects,</strong> each designed as the real thing and checked on a sheet before
+          any render.</li>
+        <li><strong>Light as code.</strong> Lamps failing in walking order and restriking pink to amber, a shadow cast
+          a frame at a time, the first light: the drawings stay still while the light moves.</li>
+        <li><strong>The first film's method and tools,</strong> carried over in the kit, and improved there as we
+          went.</li>
+        <li><strong>Rendering only what changed.</strong> Each cut after the first is the last cut's frames with the
+          changed spans re-rendered.</li>
+      </ul>
+    </div>
+    <div class="no">
+      <h4>Didn't, or not yet</h4>
+      <ul>
+        <li><strong>The words as a bridge.</strong> A lovely idea that gave Ink a voice the song doesn't have.</li>
+        <li><strong>Animated walking.</strong> Charming and "computer game-y"; replaced by the page.</li>
+        <li><strong>Codex from words, for anything placed.</strong> Lamps, a bus's seats, a reflection, an umbrella on
+          a lawn: each needed a set or code.</li>
+        <li><strong>The story, the first time.</strong> It showed what happened and never said it, and a first viewer
+          read the opposite. Real messages and dramatic irony fixed it.</li>
+        <li><strong>The map.</strong> Liked, and too much: about 75 seconds of phone came down to a few glimpses.</li>
+        <li><strong>Reading every note.</strong> A cut was released over the notes on it. Now the tools refuse.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="chapter-numbers" aria-labelledby="numbers-h">
+  <p class="meta">The project</p>
+  <h2 id="numbers-h"><span class="cap">By the numbers</span></h2>
+  <div class="wide numbers">
+    <div><b>7</b><span>days of work, 8–14 October 2026, about 45 hours</span></div>
+    <div><b>10</b><span>sessions, each picked up from a written handoff</span></div>
+    <div><b>3.7 km</b><span>walked, 48 minutes of story in 4 minutes of song</span></div>
+    <div><b>325</b><span>sung words in 45 lines, each on screen at its moment</span></div>
+    <div><b>12</b><span>sets built in Blender from real measurements</span></div>
+    <div><b>343</b><span>pictures drawn by Codex, about 17 hours of drawing</span></div>
+    <div><b>25,548</b><span>lines of Python in 124 files, 10,455 of them from the kit</span></div>
+    <div><b>57</b><span>photographs used as references, every one credited</span></div>
+    <div><b>7,428</b><span>frames in the finished film, in three full cuts</span></div>
+    <div><b>132</b><span>prompts from the director, 5,238 words in all</span></div>
+    <div><b>1.77 bn</b><span>tokens read by Claude (almost all from its cache), 5.9 million written</span></div>
+    <div><b>0</b><span>faces</span></div>
+  </div>
+  <p>How it's built, end to end:</p>
+  <ol class="pipeline">
+    <li>The song as data: a beat grid from the MIDI, levels and hits from the stems, every word's time from Whisper
+      and the lyrics, confirmed by ear.</li>
+    <li>A story and its rules, a storyboard, and the whole film planned on a real route: each section's stretch of
+      the walk, its way of seeing and every line's form.</li>
+    <li>A bible of the people and places, and a set for each place, built by a script from maps, photographs and
+      measurements.</li>
+    <li>For each panel, a layout from the set redrawn by Codex against the bible's sheets, checked at zoom, patched
+      where needed; people put in from their own drawings where ironwork or glass comes between.</li>
+    <li>An animator in Python that composes each frame on the music: the page and its camera, the panels, the
+      lettering on its surfaces, captions, balloons, the cameras' pictures, light, rain and shadows.</li>
+    <li>A review clip with sound for each section, notes, rounds, approval; then full cuts, each fix checked by the
+      director before anything is released.</li>
+  </ol>
+  <p>The method, the prompts and the lessons are written up for the next song in a music video kit: a Claude Code
+    skill (the playbook, every Codex prompt, the checklists) and the tools that aren't tied to one song. Sodium added
+    the street sets, the photographs, the cameras, the lamps and the doorbell to it.</p>
+  <p class="end" aria-hidden="true">that little light that says we're not that far</p>
+</section>
+
+<footer class="flow">
+  <p>Song: <em>Sodium</em> by Amber &amp; Ink, written by <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> and made with Suno. Video: made by
+    <span class="x" role="img" aria-label="name redacted" title="[EXPUNGED]"></span> with Claude (Claude Opus 5.5 in Claude Code) writing and running the code and Codex image
+    generation drawing the panels; Blender 5.2, Python (OpenCV, NumPy, Pillow, librosa, faster-whisper, Depth
+    Anything V2 Small on onnxruntime) and ffmpeg. Map data © OpenStreetMap contributors (ODbL). Street photographs
+    from Geograph, Mapillary, Flickr and Wikimedia Commons were references for the sets and drawings; each is credited
+    in the video's description. Lettering in Comic Neue, Cinzel, Barlow, VT323, Kalam, Arimo, Caveat, Reenie Beanie,
+    Shadows Into Light and Noto Color Emoji (SIL Open Font License) and Permanent Marker (Apache License 2.0). Clips
+    are from the tests made along the way and from the finished film,
+    <a href="https://youtu.be/ZZSLG5jgcws">on YouTube</a>.</p>
+</footer>
+</main>
+
+<script>
+// The redacted name scrambles now and then: random glyphs, "[EXPUNGED]" for a beat, then the bar again.
+(() => {
+  const bars = Array.from(document.querySelectorAll(".x"));
+  const calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!bars.length || calm) return;
+  const glyphs = "#%&@$!?*/=+~^0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+  const scramble = () => Array.from({ length: 10 }, () => glyphs[Math.floor(Math.random() * glyphs.length)]).join("");
+  function burst(el) {
+    if (el.classList.contains("scr")) return;
+    el.classList.add("scr");
+    let n = 0;
+    const id = setInterval(() => {
+      n += 1;
+      if (n < 9) { el.textContent = scramble(); return; }
+      clearInterval(id);
+      el.textContent = "[EXPUNGED]";
+      setTimeout(() => { el.textContent = ""; el.classList.remove("scr"); }, 700);
+    }, 55);
+  }
+  function tick() {
+    const seen = bars.filter((el) => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; });
+    if (seen.length) burst(seen[Math.floor(Math.random() * seen.length)]);
+    setTimeout(tick, 1600 + Math.random() * 2600);
+  }
+  bars.forEach((el) => el.addEventListener("mouseenter", () => burst(el)));
+  setTimeout(tick, 1400);
+})();
+</script>
+
+</body>
+</html>

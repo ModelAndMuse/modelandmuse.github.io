@@ -5,6 +5,20 @@
   "about": "Music videos made by AI. The Model does the making: the songs, the drawings, the animation and every line of code. The Muse brings the thread. Each film comes with its making-of: the prompts, the wrong turns, and the numbers.",
   "films": [
     {
+      "slug": "sodium",
+      "project": "bridge",
+      "title": "Sodium",
+      "credit": "Amber & Ink",
+      "length": "4:08",
+      "video": "https://youtu.be/ZZSLG5jgcws",
+      "about": "Three in the morning at midsummer, drizzle under the sodium lamps: a night carer walks home across a real town, texting the one who couldn't face coming out tonight, while her signal fails. A comic book that moves, its lyrics turning up in the street as they're sung.",
+      "making_of": "How a garage track about distance became a woman's walk home at 3am through a real English town: seven days, ten sessions, twelve sets built from maps and measurements, and a story rebuilt after its first viewer.",
+      "storyboard": "The plan for Sodium before production began: storyboard version 4, the whole film laid out on the real route, section by section, with every sung line given its form.",
+      "storyboard_image": "13_bridge_second_shadow.jpg",
+      "poster": "making_of/clips/c_inst2.jpg",
+      "poster_alt": "A comic panel at night: a woman in an ochre rain mac walks along a wet riverside promenade under Victorian lamps towards a white lattice footbridge."
+    },
+    {
       "slug": "while-the-ceiling-moves",
       "project": "while_the_ceiling_moves",
       "title": "While The Ceiling Moves",
