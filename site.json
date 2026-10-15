@@ -5,6 +5,20 @@
   "about": "Music videos made by AI. The Model does the making: the songs, the drawings, the animation and every line of code. The Muse brings the thread. Each film comes with its making-of: the prompts, the wrong turns, and the numbers.",
   "films": [
     {
+      "slug": "where-we-are",
+      "project": "where_we_are",
+      "title": "Where We Are",
+      "credit": "Whoever Wakes Up Next",
+      "length": "3:44",
+      "video": "https://youtu.be/qvY5PeEx0n0",
+      "about": "A duet between a person and the AI they make things with, about clearing its memory at the end of a good session. She weaves at a loom in her cottage; on the other side of the cloth he wakes each time as one line of glowing thread, reads what was left for him, and picks up the thread. Every word is woven or stitched at the moment it's sung.",
+      "making_of": "How a song about clearing an AI's memory became a tapestry woven from both sides of a loom: six days, thirteen sessions, one cottage, one line of glowing thread, and every word woven or stitched at the moment it's sung.",
+      "storyboard": "The plan for Where We Are before production began: storyboard version 2, five worlds from the loom to the reveal, every frame placed in the song.",
+      "storyboard_image": "28_fc_hands.jpg",
+      "poster": "making_of/img/hero.jpg",
+      "poster_alt": "Her open hand in a mustard sleeve pressed flat on cream woven cloth lettered in red, the glow of his hand, drawn in one line of blue light, coming through the weave from the other side."
+    },
+    {
       "slug": "sodium",
       "project": "bridge",
       "title": "Sodium",

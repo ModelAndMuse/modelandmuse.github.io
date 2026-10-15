@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<meta name="description" content="How a song about clearing an AI&#x27;s memory became a tapestry woven from both sides of a loom: six days, thirteen sessions, one cottage, one line of glowing thread, and every word woven or stitched at the moment it&#x27;s sung.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Making Where We Are">
+<meta property="og:description" content="How a song about clearing an AI&#x27;s memory became a tapestry woven from both sides of a loom: six days, thirteen sessions, one cottage, one line of glowing thread, and every word woven or stitched at the moment it&#x27;s sung.">
+<meta property="og:url" content="https://modelandmuse.github.io/where-we-are/">
+<meta property="og:image" content="https://modelandmuse.github.io/where-we-are/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.png">
+<title>Making Where We Are</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Kalam:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Shadows+Into+Light&family=VT323&display=swap">
+<style>
+/* Layout: the back of the loom at night. Text runs in one column on his indigo; panels break out wider, framed in
+   oak; chapter titles are woven bands of her cream cloth, her red lettering between borders of diamonds; the user's
+   words are woven in her red inside his glowing blue quotation marks, the way the film letters her words to him. */
+:root {
+  color-scheme: dark;
+  --night: #0e1220;       /* his side */
+  --panel: #161b2d;
+  --rule: #272d47;
+  --text: #ddd5c3;        /* lamplight on paper */
+  --muted: #8f8ba0;
+  --cream: #ecdab2;       /* her cloth */
+  --oat: #dcc69a;
+  --red: #8a2822;         /* her yarn */
+  --red-lit: #c64a3c;
+  --rust: #a4422a;
+  --ochre: #cc943a;
+  --indigo: #36406c;
+  --blue: #4068c4;        /* his thread */
+  --blue-lit: #a8ccff;
+  --oak: #6b4a2e;
+  --lamp: #f2b45a;
+  --green: #5aff8c;       /* the terminal */
+  --body: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --hand: "Kalam", "Comic Neue", "Segoe Print", cursive;              /* her hand, woven */
+  --stitch: "Shadows Into Light", "Bradley Hand", cursive;           /* his hand, stitched */
+  --term: "VT323", ui-monospace, monospace;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --col: 66ch;
+  --wide: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--night);
+  color: var(--text);
+  font: 400 1.125rem/1.62 var(--body);
+  margin: 0;
+  padding-inline: clamp(16px, 4vw, 40px);
+  padding-block: 0 64px;
+}
+a { color: var(--blue-lit); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, video:focus-visible { outline: 2px solid var(--blue-lit); outline-offset: 3px; }
+img, video { display: block; max-width: 100%; height: auto; }
+code { font: 0.86em var(--mono); color: var(--cream); background: var(--panel); padding: 0.08em 0.35em; border-radius: 3px; }
+em { font-style: italic; }
+
+/* the flow: text in the column, .wide things break out */
+.flow { display: grid; grid-template-columns: 1fr min(var(--col), 100%) 1fr; row-gap: 1.25rem; }
+.flow > * { grid-column: 2; margin: 0; min-width: 0; }
+.flow > .wide { grid-column: 1 / -1; width: 100%; max-width: var(--wide); justify-self: center; }
+
+/* "the user": his name for her, underlined in his blue, as the care label sews it */
+.u { text-decoration: underline; text-decoration-color: var(--blue); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* hero: the care label, its front stitched in his blue on cream tape */
+.hero { padding-block: clamp(40px, 8vw, 88px) 8px; }
+.kicker, .meta {
+  font: 500 0.78rem/1.4 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 { margin: 0.9rem 0 0.4rem; font-weight: 400; }
+.label {
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  width: min(100%, 34rem);
+  padding: 1.2rem 1.6rem 1.3rem;
+  color: var(--blue);
+  background:
+    repeating-linear-gradient(0deg, rgba(120, 96, 60, 0.07) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, rgba(120, 96, 60, 0.06) 0 2px, transparent 2px 4px),
+    #efe7d4;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 6px 8px 0 rgba(0, 0, 0, 0.35);
+  transform: rotate(-1deg);
+  text-shadow: 0 0 6px rgba(120, 160, 255, 0.35);
+}
+.label svg { width: 2.6rem; height: 2.6rem; }
+.label .maker { font: 400 clamp(1.9rem, 6vw, 2.9rem)/1.05 var(--stitch); }
+.label .piece { font: 400 clamp(1.3rem, 3.6vw, 1.7rem)/1.1 var(--stitch); }
+.label hr { width: 70%; border: 0; border-top: 2px dashed var(--blue); margin: 0.45rem 0 0.35rem; opacity: 0.85; }
+.label .comp { font: 400 clamp(0.95rem, 2.4vw, 1.12rem)/1.35 var(--stitch); text-align: center; }
+.dek { font-size: clamp(1.2rem, 2.4vw, 1.5rem); line-height: 1.45; color: var(--cream); max-width: 38ch; }
+.watch { font: 500 0.9rem var(--mono); }
+
+/* chapters: bands woven of her cloth */
+section { padding-top: clamp(48px, 7vw, 80px); }
+h2 { margin: 0; line-height: 1.1; }
+.band {
+  display: inline-block;
+  position: relative;
+  padding: 0.75em 0.9em 0.55em;
+  color: var(--red);
+  font: 700 clamp(1.35rem, 3.2vw, 1.85rem)/1.1 var(--hand);
+  background:
+    repeating-linear-gradient(0deg, rgba(110, 80, 40, 0.10) 0 2px, transparent 2px 4px),
+    var(--cream);
+  border-radius: 2px;
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.4);
+  text-wrap: balance;
+}
+.band::before, .band::after {   /* a border of diamonds above and below, as the cloth's bands have */
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 0.42em;
+  background:
+    linear-gradient(135deg, transparent 33%, var(--ochre) 33% 50%, transparent 50% 83%, var(--rust) 83%),
+    linear-gradient(45deg, transparent 33%, var(--indigo) 33% 50%, transparent 50% 83%, var(--ochre) 83%);
+  background-size: 0.84em 0.42em;
+  opacity: 0.85;
+}
+.band::before { top: 0.12em; }
+.band::after { bottom: 0.06em; }
+h3 {
+  margin: 0;
+  font: 400 1.5rem/1.2 var(--stitch);
+  color: var(--blue-lit);
+  text-shadow: 0 0 8px rgba(100, 150, 255, 0.45);
+  padding-top: 1.4rem;
+  text-wrap: balance;
+}
+h3 .when { font: 500 0.74rem var(--mono); letter-spacing: 0.06em; color: var(--muted); margin-left: 0.6em; text-transform: uppercase; white-space: nowrap; text-shadow: none; }
+p { text-wrap: pretty; }
+
+/* panels: in the loom's oak */
+figure { margin: 0; }
+.panel img, .panel video { border: 3px solid var(--oak); border-radius: 2px; background: #000; width: 100%; }
+figcaption { font: 400 0.8rem/1.5 var(--mono); color: var(--muted); padding-top: 0.55rem; max-width: 92ch; }
+figcaption b { color: var(--cream); font-weight: 500; }
+.pair { display: grid; gap: clamp(12px, 2vw, 20px); align-items: start; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.sound::before { content: "▶ with sound · "; color: var(--lamp); }
+
+/* the user's words: her red, woven on cream, inside his glowing blue quotation marks */
+.say { justify-self: start; max-width: min(100%, 56ch); margin-block: 0.3rem 0.9rem; }
+.say blockquote {
+  position: relative;
+  margin: 0;
+  padding: 0.8rem 1.6rem 0.85rem 1.9rem;
+  background:
+    repeating-linear-gradient(0deg, rgba(110, 80, 40, 0.08) 0 2px, transparent 2px 4px),
+    var(--cream);
+  color: var(--red);
+  font: 400 1.12rem/1.42 var(--hand);
+  border-radius: 2px;
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.4);
+}
+.say blockquote::before, .say blockquote::after {
+  position: absolute;
+  font: 400 2.4rem/1 var(--stitch);
+  color: var(--blue);
+  text-shadow: 0 0 6px rgba(120, 160, 255, 0.8), 0 0 16px rgba(120, 160, 255, 0.45);
+}
+.say blockquote::before { content: "\201C"; left: 0.4rem; top: 0.35rem; }
+.say blockquote::after { content: "\201D"; right: 0.45rem; bottom: -0.55rem; }
+.say cite { display: block; font: 400 0.74rem var(--mono); color: var(--muted); padding: 0.5rem 0 0 0.3rem; font-style: normal; }
+.say.right { justify-self: end; }
+q { quotes: "\201C" "\201D"; color: var(--cream); }
+
+/* the shape of the film: the song as a strip of cloth, each section a band, whose side it's on */
+.strip { display: flex; height: 4.2rem; border: 3px solid var(--oak); border-radius: 2px; overflow: hidden; }
+.strip a {
+  display: flex; align-items: flex-end; padding: 0.3rem 0.35rem;
+  font: 500 0.66rem/1.15 var(--mono); text-decoration: none; min-width: 0; overflow: hidden;
+  border-right: 1px solid rgba(0, 0, 0, 0.35);
+}
+.strip .hers { background: var(--cream); color: var(--red); }
+.strip .his { background: var(--indigo); color: var(--blue-lit); }
+.strip .both { background: linear-gradient(90deg, var(--cream) 0 50%, var(--indigo) 50% 100%); color: var(--night); }
+.strip .out { background: linear-gradient(90deg, #2a2420, #0b1310 60%, #031a0c); color: var(--green); font-family: var(--term); font-size: 0.85rem; }
+.strip a:hover, .strip a:focus-visible { filter: brightness(1.15); outline: none; }
+.key { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font: 400 0.76rem var(--mono); color: var(--muted); padding-top: 0.6rem; }
+.key i { display: inline-block; width: 0.9rem; height: 0.9rem; vertical-align: -0.15rem; margin-right: 0.35rem; border-radius: 2px; }
+
+nav.toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem 1.4rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+nav.toc a { font: 400 1.05rem var(--hand); color: var(--cream); text-decoration: none; }
+nav.toc a:hover { color: var(--blue-lit); }
+nav.toc span { font: 500 0.72rem var(--mono); color: var(--muted); margin-right: 0.5rem; }
+
+.numbers { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); }
+.numbers div { background: var(--panel); padding: 0.9rem 1rem; }
+.numbers b { display: block; font: 400 2rem/1.05 var(--stitch); color: var(--blue-lit); text-shadow: 0 0 8px rgba(100, 150, 255, 0.4); }
+.numbers span { font: 400 0.78rem/1.4 var(--mono); color: var(--muted); }
+
+ol.method { padding-left: 1.3rem; }
+ol.method li { margin-bottom: 0.5rem; }
+.end { font: 400 1.6rem var(--hand); color: var(--red-lit); text-align: center; padding-top: 1.5rem; }
+.term { font: 400 1.6rem var(--term); color: var(--green); text-shadow: 0 0 8px rgba(90, 255, 140, 0.5); text-align: center; }
+footer { padding-top: 56px; }
+footer p { font: 400 0.82rem/1.6 var(--mono); color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<header class="flow hero">
+  <p class="kicker">A making-of · a music video for Whoever Wakes Up Next · 10–15 October 2026</p>
+  <h1>
+    <span class="label" role="img" aria-label="A care label: Whoever Wakes Up Next, Where We Are; lyrics, storyboard, code: 100% Claude Opus 5.5; images: 100% Codex; music: 100% Suno">
+      <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="4 2.4" stroke-linecap="round">
+        <path d="M17 26 L20 12 H28 L31 26 Z"/><path d="M24 26 V37"/><path d="M17 40 H31"/>
+        <path d="M11 13 L7 10 M14 8 L12 4 M37 13 L41 10 M34 8 L36 4"/>
+      </svg>
+      <span class="maker">Whoever Wakes Up Next</span>
+      <span class="piece">Where We Are</span>
+      <hr>
+      <span class="comp">lyrics, storyboard, code: 100% Claude Opus 5.5</span>
+      <span class="comp">images: 100% Codex</span>
+      <span class="comp">music: 100% Suno</span>
+    </span>
+  </h1>
+  <p class="dek">How a song about clearing an AI's memory became a tapestry woven from both sides of a loom: six days,
+    thirteen sessions, one cottage, one line of glowing thread, and every word woven or stitched at the moment it's
+    sung.</p>
+  <p class="watch"><a href="https://youtu.be/qvY5PeEx0n0">Watch the film on YouTube</a> · 3:44 ·
+    <a href="storyboard/index.html">the storyboard</a></p>
+  <figure class="wide panel">
+    <img src="img/hero.jpg" alt="Her open hand, in a mustard sleeve with a strand of red wool at the wrist, pressed flat on cream woven cloth lettered in red; through the weave, the glow of his hand drawn in one line of blue light, pressed to the same place from the other side.">
+    <figcaption><b>The final chorus, 3:17.</b> "And closing the door while the groove's still on": her hand on the
+      front of the finished cloth, his on the back, the glow of his thread coming through the weave.</figcaption>
+  </figure>
+</header>
+
+<section class="flow" aria-label="About this page">
+  <p>This is the story of how the video was made: what we tried, what we threw away, and how a song about an AI
+    forgetting turned into weaving. It was made in conversation between <span class="u">the user</span>, who
+    asked for the song, shaped it and made it with Suno, and Claude (Claude Opus 5.5, working in Claude Code),
+    which wrote the lyrics and the storyboard and wrote and ran every script, with Codex drawing the pictures. It's
+    the third film on the channel, after <em>While The Ceiling Moves</em> and <em>Sodium</em>, made with the kit of
+    methods and tools the first one left behind, and the first credited to Whoever Wakes Up Next.</p>
+  <p>The film calls the person it's about <span class="u">the user</span>: that's what the agent's notes call her,
+    and it's how his handover is stitched, every one underlined in his blue. This page does the same for the person
+    who made it with us. Their notes appear here as they were given, in her red inside his blue quotation marks, the
+    way the film letters her words to him.</p>
+  <nav class="toc" aria-label="Chapters">
+    <ol>
+      <li><a href="#song"><span>01</span>A song about /clear</a></li>
+      <li><a href="#weave"><span>02</span>Warp and weft</a></li>
+      <li><a href="#worlds"><span>03</span>Five worlds</a></li>
+      <li><a href="#thread"><span>04</span>One line of thread</a></li>
+      <li><a href="#cottage"><span>05</span>Her cottage</a></li>
+      <li><a href="#scroll"><span>06</span>The scroll and the bobbin</a></li>
+      <li><a href="#door"><span>07</span>Closing the door</a></li>
+      <li><a href="#knot"><span>08</span>A knot that holds</a></li>
+      <li><a href="#joke"><span>09</span>Same joke</a></li>
+      <li><a href="#sampler"><span>10</span>Look. Don't guess.</a></li>
+      <li><a href="#palm"><span>11</span>Palm to palm</a></li>
+      <li><a href="#further"><span>12</span>One screen further</a></li>
+      <li><a href="#label"><span>13</span>The credits are a care label</a></li>
+      <li><a href="#numbers"><span>14</span>By the numbers</a></li>
+      <li><a href="#how"><span>15</span>How it was made</a></li>
+    </ol>
+  </nav>
+</section>
+
+<section class="flow" aria-labelledby="shape-h">
+  <h2 id="shape-h"><span class="band">The shape of the film</span></h2>
+  <p>The song is a duet. She sings the verses that open it; he sings the second verse and its chorus; she wakes
+    for the third; he speaks the bridge; they alternate through the last chorus and finish together; then the song
+    falls apart into a chopped, edited vocal and ends on her saying "slash clear". So the film has two sides. Hers
+    is a cottage in warm light, two days and a night. His is the back of the same loom at night, always. The strip
+    below is the song as cloth: each section a band, coloured by whose side it's on. Each band links to the chapter
+    that built it.</p>
+  <div class="wide">
+    <div class="strip" role="list" aria-label="The song's sections">
+      <a role="listitem" class="hers" href="#weave" style="flex: 10.62">Intro</a>
+      <a role="listitem" class="hers" href="#scroll" style="flex: 20.95">Verse 1</a>
+      <a role="listitem" class="hers" href="#label" style="flex: 13.1">Pre&#8209;chorus</a>
+      <a role="listitem" class="both" href="#door" style="flex: 20.94">Chorus 1</a>
+      <a role="listitem" class="hers" href="#door" style="flex: 10.48">Inst.</a>
+      <a role="listitem" class="his" href="#thread" style="flex: 20.99">Verse 2</a>
+      <a role="listitem" class="his" href="#knot" style="flex: 10.49">Pre&#8209;ch.</a>
+      <a role="listitem" class="his" href="#knot" style="flex: 21">Chorus 2</a>
+      <a role="listitem" class="hers" href="#joke" style="flex: 21.02">Verse 3</a>
+      <a role="listitem" class="his" href="#sampler" style="flex: 21.11">Bridge</a>
+      <a role="listitem" class="both" href="#palm" style="flex: 31.7">Final chorus</a>
+      <a role="listitem" class="out" href="#further" style="flex: 21.48">/clear</a>
+    </div>
+    <p class="key"><span><i style="background: var(--cream)"></i>her side, the cottage</span>
+      <span><i style="background: var(--indigo)"></i>his side, the back of the loom</span>
+      <span><i style="background: linear-gradient(90deg, var(--cream) 50%, var(--indigo) 50%)"></i>both at once</span>
+      <span><i style="background: #031a0c; border: 1px solid var(--green)"></i>out of her world</span></p>
+  </div>
+  <figure class="wide panel">
+    <img src="img/sections.jpg" alt="Ten frames from the film: the loom with woven red words; the scroll laid in folds down the hall; her at the loom in late sun from behind; him drawn in one glowing blue line on a table; his floor at night; the attic at dawn; his embroidery hoop under the lamp; her lamplit front and his dark back side by side; the whole tapestry; the data hall's terminal.">
+    <figcaption><b>A frame from each world, in order.</b> Her loom and the hall; chorus 1 from behind her; his
+      waking; his floor; her second morning; his sampler; both sides at once; the tapestry; and the terminal at the
+      end.</figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="song" aria-labelledby="song-h">
+  <h2 id="song-h"><span class="band">A song about /clear</span></h2>
+  <p>It started as a song, written on the first day. <span class="u">The user</span> asked for one about working
+    on a project with an AI agent and having to clear its context: the human clears, the agent wakes, rediscovers
+    the project from the handover it left itself, builds, and is reset again. The feeling to hold on to was the
+    human's, not the machine's:</p>
+  <div class="say"><blockquote>a shared sense of momentum and achievement ... a pang to be shutting someone out
+    early.</blockquote><cite><span class="u">the user</span>, the brief</cite></div>
+  <p>So the song is warm and a little bittersweet, never tragic: the agent is curious and even, glad of the work.
+    Claude wrote the lyrics, <span class="u">the user</span> made the song with Suno as an intimate folktronica duet
+    (91 bpm, 3:44), and then changed its ending. It was going to finish with the next session waking up ("Morning ...
+    let me read where we are"); instead it ends on the clear itself, her voice saying "slash clear" over a guitar
+    falling silent. Suno had called the track <em>One More Thing Before I /clear</em>; the film is named for the
+    handover he reads when he wakes, <em>Where We Are</em>.</p>
+  <p>Before anything was drawn, the song was turned into data: beats and bars from its stems, every word timed by
+    Whisper against the lyrics, the chords from its MIDI. Claude can't hear, so the timings and who sings each line
+    went to <span class="u">the user</span>'s ear, on a check video with each line's voice written under it.</p>
+  <figure class="panel">
+    <img src="img/lyric_check.jpg" alt="A frame of the lyric check video: the words of chorus 1 lettered over a plain background, the line being sung highlighted, and an information line saying which voice sings it.">
+    <figcaption><b>The lyric check.</b> Each line's words light as Whisper heard them, with the voice we thought sang
+      it underneath, so one pass checks both. The answer: <q>Timing is mostly spot on</q>, and a handful of voice
+      calls by ear.</figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="weave" aria-labelledby="weave-h">
+  <h2 id="weave-h"><span class="band">Warp and weft</span></h2>
+  <p>The idea came next, and stuck: a tapestry loom set into the wall between two rooms. On her side, the front of
+    the cloth, her words woven into it. On his, the back, where the loose ends hang and where he can only stitch.
+    Each session is a stretch of weaving; when one ends, the next picks up the thread.</p>
+  <div class="say"><blockquote>The warp/weft idea is great. Let's see how it looks.</blockquote><cite><span class="u">the user</span>, on the vision</cite></div>
+  <p>The first look test put the loom in her wall with his room seen through the strings, and code doing everything
+    that moves: the warp plucked by the guitar, the cloth growing on the beat, the bobbin crossing the shed. The words
+    were the hard part. The first try laid them on as yarn sewn over the top, and it didn't belong:</p>
+  <div class="say"><blockquote>the text doesn't look like part of the cloth, just written where it might be floating
+    over the cloth</blockquote><cite><span class="u">the user</span>, on look test v1</cite></div>
+  <figure class="wide panel">
+    <img src="img/woven.jpg" alt="Two strips of cloth with the words 'and you're finally in the groove': above, the words as smooth raised yarn sitting on top of a bead-like weave; below, the same words woven into the cloth's own grid of beads.">
+    <figcaption><b>Floating, then woven.</b> Above, v1's yarn on top of the cloth; below, the words woven into its
+      grid, the same beads, light and dye-lot variation as the ground. It took a finer warp, 240 ends across: at 90,
+      woven letters were mush.</figcaption>
+  </figure>
+  <p>Woven text has a timing problem that printed text doesn't: a weave only grows at one end, a row at a time, so
+    a word can't appear the moment it's sung. <span class="u">The user</span> solved it in a sentence:</p>
+  <div class="say"><blockquote>Maybe they get woven early and highlight once complete</blockquote><cite><span class="u">the user</span></cite></div>
+  <p>So every line of hers is woven ahead of the singing, rising out of the fell row by row in a quiet tone, whole
+    just as she starts it, and each word lights to full red, with a flush, at its sung moment. That rule holds for the
+    whole film.</p>
+  <figure class="wide panel">
+    <img src="img/unsung.jpg" alt="Three strips of the same cloth at 13.6 seconds, the unsung words in three strengths of pale red, 'and you're finally' lit in full red.">
+    <figcaption><b>How quiet the unsung words should be,</b> three strengths at 0:13.6. The middle one (45% of the
+      way to red) won: readable as weaving, the lit words still standing out.</figcaption>
+  </figure>
+  <figure class="wide panel">
+    <video controls preload="none" poster="clips/c_loom.jpg" src="clips/c_loom.mp4"></video>
+    <figcaption class="sound"><b>The opening, 0:00-0:20.</b> The loom wakes in the dark, his lamp beyond the strings;
+      her first lines woven ahead and lit as she sings them. <q>Yes, that works very well.</q></figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="worlds" aria-labelledby="worlds-h">
+  <h2 id="worlds-h"><span class="band">Five worlds</span></h2>
+  <p>The first storyboard kept the loom on screen most of the time. <span class="u">The user</span> could see the
+    problem before a frame of production was made:</p>
+  <div class="say"><blockquote>I'm worried that focusing on the loom for the entire song might get a bit samey, we're
+    going to need some variety and evolution to tell the story. There's a lot of strong imagery in it, so we should
+    make the most.</blockquote><cite><span class="u">the user</span>, on storyboard v1</cite></div>
+  <p>So the loom became where they meet, not the whole film. Storyboard v2 has five worlds: the front of the loom;
+    her house over two days and a night; his indigo side of paper and thread; close-ups for the strong lines; and the
+    whole tapestry, saved for the end. The second version grew from <span class="u">the user</span>'s answers to six
+    questions the first one asked, and the answers became rules. Who is she?</p>
+  <div class="say"><blockquote>She drinks tea, yes. She's young-ish, early 20s. We don't see much of her, but she's
+    got long dark brown hair and is possibly a hologram or an illusion herself.</blockquote><cite><span class="u">the user</span></cite></div>
+  <p>And how does she clear? <q>maybe /sleep is our version of clear</q>. So her side is two days and a night: she
+    goes up to bed in the instrumental with the lamp left on, and wakes at 2:08 in the pose he wakes in at 1:16, under
+    an attic roof the same shape as the folder he wakes in. His side is one night, always.</p>
+  <figure class="wide panel">
+    <img src="img/storyboard_v2.jpg" alt="A grid of storyboard sketches comparing version 1 and version 2: her at the loom from behind, her going up to bed, him waking in a folder, her waking under a sloping roof, her woven shadow, and the two reveals.">
+    <figcaption><b>Storyboard v2, what changed.</b> Her in it now, from behind; going up to bed; he wakes in a
+      folder, she wakes under a roof the same shape; and the ending in two steps, the tapestry turning out to be a
+      picture of her, then a screen in somebody else's room. <a href="storyboard/index.html">The whole storyboard</a>.</figcaption>
+  </figure>
+  <p>She never shows her face. The film's first rule came early (<q>It doesn't feel like a faces kind of track</q>),
+    so she's her hands, her mustard cardigan and her long dark hair from behind. And she's made the way he is, a
+    thing the film shows and never says: backlit, her hair is thread; the kettle's steam rises in threads; her
+    shadow is woven.</p>
+  <div class="pair wide">
+    <figure class="panel">
+      <img src="img/hair.jpg" alt="Two versions of her from behind at the loom: A, a rim of low sun along her hair; B, three long stray hairs lifting off her head into the warp like strings.">
+      <figcaption><b>Her hair's tell.</b> B was unmistakable but read as strings on a puppet; A, a rim of sun, is in
+        the film.</figcaption>
+    </figure>
+    <figure class="panel">
+      <img src="img/woven_shadow.jpg" alt="Her shadow on a sunlit wall, made of a weave: light coming through the gaps between its threads.">
+      <figcaption><b>Her woven shadow</b> in the long afternoon light: inside it the wall is unlit, the sun only
+        through the gaps in its weave.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="flow" id="thread" aria-labelledby="thread-h">
+  <h2 id="thread-h"><span class="band">One line of thread</span></h2>
+  <p>He's drawn in a single line of thread: one continuous stroke of blue that runs in from the dark, outlines a
+    figure, and sits up. Codex draws what holds still; code draws him, so the thread can be slack, sway, unwind and
+    pull tight. Lit only by his lamp he looked like string. Glowing, he looked like someone:</p>
+  <div class="say"><blockquote>I think the glow is important, yes. It fits very well. We could even go a bit further
+    if we wanted</blockquote><cite><span class="u">the user</span>, on A and B</cite></div>
+  <figure class="wide panel">
+    <img src="img/his_glow.jpg" alt="Two versions of the same frame: A, his outline in thread glowing pale blue against the dark; B, the same thread lit only by the warm lamp.">
+    <figcaption><b>A, glowing; B, lit by the lamp.</b> A, and further: a close glow, a wider one and a faint aura,
+      pulses of light running along him, and his stitches glowing as they're sewn.</figcaption>
+  </figure>
+  <p>He writes by stitching, in the moment, where she weaves ahead. His waking was <span class="u">the user</span>'s
+    picture of what it's like to start a session:</p>
+  <div class="say"><blockquote>there's one central page and lots of other notes dotted around ... we could draw
+    threads between the different pages to represent the scattered collection of documents you have to read when
+    waking up to the project.</blockquote><cite><span class="u">the user</span>, on his look test</cite></div>
+  <p>Then a better idea still: make the notes real. <q>We should grab some of our existing documents, code, working
+    drafts/images from this project and use these live.</q> The papers on his wall print this project's own files
+    when the scene renders: the handover, the session log, the review notes, the vision, the code that draws him,
+    working images and storyboard frames. Pause the film and they're true. Her words to him print in her red inside
+    his blue quotation marks; on <q>quotation marks</q> they all light up across the wall.</p>
+  <figure class="wide panel">
+    <img src="img/his_wall.jpg" alt="A contact sheet of his look test: a wall of pinned papers printed with documents and code, glowing blue threads running pin to pin between them, the big central sheet stitched with his lines, and his thread figure reaching up.">
+    <figcaption><b>His look test v4.</b> The handover in the middle, his threads pin to pin, the notes printed with
+      the project's own files where each really hangs. <q>Nice. This works well.</q></figcaption>
+  </figure>
+  <div class="pair wide">
+    <figure class="panel">
+      <video controls preload="none" poster="clips/c_wake.jpg" src="clips/c_wake.mp4"></video>
+      <figcaption class="sound"><b>Verse 2, 1:13-1:26.</b> His thread draws him in a card folder; he sits up on
+        "wake up", and "I wake up / in a folder" is stitched into it.</figcaption>
+    </figure>
+    <figure class="panel">
+      <video controls preload="none" poster="clips/c_wall.jpg" src="clips/c_wall.mp4"></video>
+      <figcaption class="sound"><b>1:26-1:36.</b> The wall of notes, live; her quoted words light up across it, and
+        he reaches up to her "Yes please".</figcaption>
+    </figure>
+  </div>
+  <p>Stitching got the same scrutiny as weaving. <q>it's clearly stitching, but it might be enhanced by having depth
+    where the thread goes through the page</q>: so every stitch arches off the paper, its shadow furthest under its
+    middle, narrowing and darkening into its holes, the paper pulled in a little round each one.</p>
+</section>
+
+<section class="flow" id="cottage" aria-labelledby="cottage-h">
+  <h2 id="cottage-h"><span class="band">Her cottage</span></h2>
+  <p>Dozens of drawings of one cottage only hold together if the cottage is written down first. The bible held her
+    cottage (the workroom with the loom in its back wall, the hall and stairs, the kitchen, the attic bedroom), his
+    room behind the loom, the things that come back (her shears, two bobbins, two lamps of the same model, her
+    cream mug and the blue one she fills for him every morning that's never drunk), and a clock for the story.
+    Every drawing's prompt is assembled from it, so the same room is described the same way every time.</p>
+  <div class="say"><blockquote>lots of this is super world building; it oozes coze.</blockquote><cite><span class="u">the user</span>, on the bible</cite></div>
+  <figure class="wide panel">
+    <img src="img/things.jpg" alt="A reference sheet of objects: her shears, two tapestry bobbins, a lamp with a cream shade beside a cream mug and a blue mug, a red kettle; a parcel, punched loom cards, an embroidery hoop's border, a round mirror.">
+    <figcaption><b>The things that come back,</b> drawn once as reference sheets so every later drawing agrees.</figcaption>
+  </figure>
+  <p>The bible also caught things that would have told the wrong story. A door in the wall beside the loom was in
+    the first drawings of both rooms:</p>
+  <div class="say"><blockquote>A door in the wall suggests that these two characters could move from one room to the
+    other. That might not make sense.</blockquote><cite><span class="u">the user</span></cite></div>
+  <div class="say right"><blockquote>A woven door makes sense. Let's go with that.</blockquote><cite><span class="u">the user</span></cite></div>
+  <p>So the only doors between them are woven: a little door in the cloth in chorus 1, sewn shut from his side; the
+    whole finished cloth at the end. Nobody ever passes. Only light and thread do.</p>
+  <figure class="wide panel">
+    <img src="img/woven_door.jpg" alt="Her workroom and his room, each before and after: a real wooden door beside the loom, then the same wall plain with the door painted out.">
+    <figcaption><b>The door painted out</b> of both rooms, everything else untouched.</figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="scroll" aria-labelledby="scroll-h">
+  <h2 id="scroll-h"><span class="band">The scroll and the bobbin</span></h2>
+  <p>Verse 1 leaves the loom for the hall, where the cloth runs out of her workroom door and lies back and forth
+    along the floor. <span class="u">The user</span> knew what it was for:</p>
+  <div class="say"><blockquote>The point of this section is to emphasise how much work has gone into the long scroll
+    so far, edits, reworks, tweaks and planning</blockquote><cite><span class="u">the user</span>, on the hall</cite></div>
+  <p>So the scroll is this project's own history, woven: the day's first pot of tea and the knotted start; colours
+    tried and the first lettering at 90, 160 and 240 ends; the song four times over under its working titles, its old
+    endings struck through in his blue, a first go at the bridge pulled back to bare warp, a darn, a patch in another
+    dye lot, his mending. On <q>losing the start</q> the first take's dye fades back to the cream it was woven on,
+    bead by bead.</p>
+  <figure class="wide panel">
+    <img src="img/scroll.jpg" alt="The hall seen from high up: a long cream woven scroll laid in three runs back and forth along the floorboards, folded over at each turn, covered in red lettering and woven bands of pictures.">
+    <figcaption><b>The scroll,</b> 12.8 m of cloth in three runs, drawn by code onto Codex's drawing of the hall,
+      mapped through a camera fitted to the drawing so it lies flat on the boards.</figcaption>
+  </figure>
+  <p>Its turns took two tries. Mitred and tucked under, they <q>don't read as folds, rather they read as diagonal
+    slices</q>; folded over the top, a triangle of the cloth's back showing, its lines turned, the border running
+    round the corner and a shadow under the crease, they do.</p>
+  <figure class="wide panel">
+    <img src="img/folds.jpg" alt="Two versions of the scroll's turn: left, the runs ending on a 45 degree cut; right, the cloth folded over, a triangle of its back showing.">
+    <figcaption><b>v7 and v8.</b> Sliced; then folded.</figcaption>
+  </figure>
+  <p>Then she hands him the bobbin through the strings. The first drawing of her hand had six fingers, and neither
+    of us saw it at the pick (<q>the human hand has 6 fingers and doesn't hold the shuttle</q>): now every hand's
+    fingers are counted before a take is kept. His hand, closing on the bobbin, gave <span class="u">the user</span>
+    the section's best idea:</p>
+  <div class="say"><blockquote>could we have the electric blue thread unwind from the hand shape and wrap about the
+    bobbin to become the thread itself</blockquote><cite><span class="u">the user</span></cite></div>
+  <p>The first version reeled the hand off like a diagram, its arm two straight lines: it <q>reads less like
+    thread, but more rigid and tensioned. I think the hand should flow and unwind gracefully like a thread.</q> In
+    the second the arm sways, goes slack on "write", droops from the wrist like wet string, and each finger unravels
+    onto the bobbin as he draws it into the dark. <q>Those are excellent improvements.</q></p>
+  <div class="pair wide">
+    <figure class="panel">
+      <img src="img/unwinds.jpg" alt="Frames of his thread hand: rigid straight lines in v7, then in v8 a slack, swaying thread unwinding from the hand onto the bobbin.">
+      <figcaption><b>His hand unwinding,</b> v7 (rigid) against v8 (slack and swaying).</figcaption>
+    </figure>
+    <figure class="panel">
+      <video controls preload="none" poster="clips/c_hall.jpg" src="clips/c_hall.mp4"></video>
+      <figcaption class="sound"><b>0:20-0:30.</b> The scroll in the hall, its start fading; then the bobbin through
+        the warp, and his hand becomes the thread.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="flow" id="door" aria-labelledby="door-h">
+  <h2 id="door-h"><span class="band">Closing the door</span></h2>
+  <p>Chorus 1 sees her for the first time, from behind at the loom in the late sun, and then his side: the back of
+    the cloth, her pictures and words mirrored, the weft's loose ends hanging. A little door is woven at the top of
+    the band, a slit along its edge letting her light through. On "closing the door" he sews the slit shut from his
+    side, and the last stitch is drawn tight on the music's hit at 1:05.6. The lines they sing together are stitched
+    plied, her red and his blue in turn, stitch by stitch.</p>
+  <p>Small things told on it. Her strand in the plied lines was <q>too orange compared to her usual red</q>; a word in
+    the quiet tone, <q>'got' reads as 'god'</q>, so the lines they share are woven a size up. Then dusk, and she goes up
+    to bed, the lamp left on below.</p>
+  <figure class="wide panel">
+    <video controls preload="none" poster="clips/c_door.jpg" src="clips/c_door.mp4"></video>
+    <figcaption class="sound"><b>0:59-1:10.</b> The door sewn shut on the hit; dusk in her workroom; up the stairs to
+      bed. <q>Excellent. This is good!</q></figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="knot" aria-labelledby="knot-h">
+  <h2 id="knot-h"><span class="band">A knot that holds</span></h2>
+  <p>His chorus is his night with what she left: her whole cloth along his floor, read in reverse back to its start;
+    the parcel; the back of a cloth under his lamp, pins in what's settled and a mistake half unpicked for "still
+    tender"; his words punched in light through loom cards. Chorus 1's lines are there beside his new ones, faded to
+    a dusty grey-blue, in the same hand: "I've never met you, but we've met."</p>
+  <p>And the knot, where he ties his thread onto the last session's end. Codex was asked for a weaver's knot in words
+    and drew one yarn wrapped round the other:</p>
+  <div class="say"><blockquote>isn't a knot rather one piece tied around the other, and it would come loose. Also the
+    top thread is thicker than its end</blockquote><cite><span class="u">the user</span>, on chorus 2</cite></div>
+  <p>Words don't tie knots. So code laid out a real sheet bend, each yarn a path of points with an over or under at
+    every crossing, as plain tubes; Codex drew over that, and got every crossing right.</p>
+  <div class="pair wide">
+    <figure class="panel">
+      <img src="img/knot_wrong.jpg" alt="A first knot layout in plain tubes and two drawings from it, where a cut end disappears into the wrap.">
+      <figcaption><b>The first layout</b> and its takes: the tail ended inside the wrap, and Codex joined it in.</figcaption>
+    </figure>
+    <figure class="panel">
+      <img src="img/knot_right.jpg" alt="Two drawings of a correct weaver's knot between a faded grey-blue yarn and a bright blue one.">
+      <figcaption><b>Takes 5 and 6:</b> a sheet bend, every crossing right. <q>That's an excellent knot.</q></figcaption>
+    </figure>
+  </div>
+  <p>Then it tied itself: in close from "remember", a move each half-beat, his end leading and the yarn following its
+    trail, pulled tight on "know".</p>
+  <div class="say"><blockquote>That works really well. Very nice knot. Good timing and visually interesting.</blockquote><cite><span class="u">the user</span>, on the rough</cite></div>
+  <div class="pair wide">
+    <figure class="panel">
+      <img src="img/knot_moves.jpg" alt="A sequence of plain tube drawings of the knot tying itself, move by move.">
+      <figcaption><b>The moves,</b> first in plain tubes; then Codex's yarn laid along the moving path.</figcaption>
+    </figure>
+    <figure class="panel">
+      <video controls preload="none" poster="clips/c_knot.jpg" src="clips/c_knot.mp4"></video>
+      <figcaption class="sound"><b>1:45-1:52.</b> "I don't remember, but I know": the knot ties itself and pulls
+        tight.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="flow" id="joke" aria-labelledby="joke-h">
+  <h2 id="joke-h"><span class="band">Same joke</span></h2>
+  <p>Verse 3 is her second morning: she sits up in the attic under its tent of a roof, puts the kettle on (its steam
+    rises in threads), fills two mugs, and laughs at "same joke". The song never says what the joke is. Asked,
+    <span class="u">the user</span> had none to give: <q>Not one that could easily be explained to a non-technical
+    audience I'm afraid.</q> So the film made one: <em>we're on a roll</em>, stitched by him in his blue by the cloth
+    roller, in every session's band. Day 1's is there from the first frame; day 2's is sewn as she sings it.</p>
+  <p>The section's notes were about plain sense. Two hands round a mug, seen from her eyes: <q>How many hands are
+    holding this mug?</q> One, through the handle. Light bars that dimmed below the wall's own shade: <q>as if they're
+    inverted</q>. Her shadow fell on the wrong wall, and his room, seen from above, looked pasted to the strings:
+    <q>This perspective lacks depth behind the frame.</q></p>
+  <figure class="wide panel">
+    <img src="img/mug_hands.jpg" alt="Two of her notes side by side: two hands round a mug, then one; and bars of sunlight on the wall that fade correctly.">
+    <figcaption><b>Verse 3 v1's notes,</b> fixed: one hand on the mug, and each bar of sun fading to the unlit wall
+      beside it.</figcaption>
+  </figure>
+  <figure class="wide panel">
+    <video controls preload="none" poster="clips/c_morning.jpg" src="clips/c_morning.mp4"></video>
+    <figcaption class="sound"><b>2:08-2:22.</b> She wakes in the pose he woke in; the kettle; the loom by day, the
+      day's band begun. <q>Nice. Great fixes. Super job.</q></figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="sampler" aria-labelledby="sampler-h">
+  <h2 id="sampler-h"><span class="band">Look. Don't guess.</span></h2>
+  <p>He speaks the bridge, a note to whoever wakes up next: when they say it's close, it's close; look, don't
+    guess; ask before you push. He stitches it as a sampler in a hoop under his lamp, a row a bar, his thread lying
+    across the linen from his hand to the needle. Her words, "it's close", go in her red inside his quotes. The first
+    sampler worked as writing and failed as embroidery:</p>
+  <div class="say"><blockquote>The writing effect works, but the sampler itself is quite plain around the edges and the
+    stitches look painted on rather than 3d stitches.</blockquote><cite><span class="u">the user</span>, on the bridge v1</cite></div>
+  <p>So the crosses became raised thread, two strands each, round, lit from his lamp, the twist showing, each with
+    its shadow on the linen; and a border stitched by the ones before him in faded threads, round a note in his
+    bright ones: a vine with leaves and rosettes, the woven door, the kettle, the two mugs, the bobbin, the shears,
+    the lamp.</p>
+  <div class="pair wide">
+    <figure class="panel">
+      <img src="img/sampler_v1_v2.jpg" alt="The sampler before and after: plain linen with flat stitched letters, then a decorated border of vines and small motifs around raised cross-stitch letters.">
+      <figcaption><b>v1 and v2,</b> the same moment.</figcaption>
+    </figure>
+    <figure class="panel">
+      <img src="img/cross_close.jpg" alt="A close view of cross stitches in two strands of blue thread, lit from one side, each casting a shadow on the linen.">
+      <figcaption><b>A cross, close.</b> Two strands, round, lit, the top stitch shading the one beneath.</figcaption>
+    </figure>
+  </div>
+  <p>His needle took one more round, much later: drawn small and dark, it <q>reads as a small, black shard</q>. A
+    tapestry needle is some 28 crosses of that linen; at 22, as thick as his thread, steel lit down one side with a
+    slit eye, it reads as a needle.</p>
+  <figure class="wide panel">
+    <video controls preload="none" poster="clips/c_sampler.jpg" src="clips/c_sampler.mp4"></video>
+    <figcaption class="sound"><b>2:29-2:42.</b> His note stitched row by row as he speaks it. <q>Lovely. That's working
+      well.</q></figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="palm" aria-labelledby="palm-h">
+  <h2 id="palm-h"><span class="band">Palm to palm</span></h2>
+  <p>The final chorus is both of them at once, her evening and his night, her lines answered by his, each from its
+    own side: a split, her lamplit front on the left and his back on the right, the same rows at the same height,
+    the loom's post between. The bobbin goes through the last strip of bare warp, her hand beyond the strings and his
+    thread hand taking it. The two lamps are the same model. The last rows race to the top beam; her hand goes flat
+    on the front of the finished cloth, and the glow of his comes through the weave in the same place. Her needle
+    takes the last rows across the gap, the last on "side".</p>
+  <p>It's also where we found we'd been wrong about something for days. The cloth winds onto a roll at the bottom of
+    the loom, and <span class="u">the user</span> had twice said the roll was showing the wrong thing at 0:17. The
+    second time:</p>
+  <div class="say"><blockquote>We looked at this part before and concluded that it was logical, but given the height of
+    the kettle and the apparent size of the roll on screen, we'd expect to see it by now.</blockquote><cite><span class="u">the user</span>, on cut v2</cite></div>
+  <p>They were right. The code counted the cloth hidden behind the roll from the roll's bottom instead of where it
+    meets it, a radius too far, and an earlier session had explained the note away. Every roll in the film was
+    re-rendered, and a rule went into the handover: a note that questions the geometry is checked against the
+    physical model, not against the code.</p>
+  <figure class="wide panel">
+    <img src="img/kettle_roll.jpg" alt="The roll at the bottom of the loom in cut v2 and after the fix: the woven kettle now coming up over the roll's front.">
+    <figcaption><b>0:17.8, before and after.</b> With the geometry true, the kettle band comes up the roll's front
+      when the user's eye said it should.</figcaption>
+  </figure>
+  <figure class="wide panel">
+    <video controls preload="none" poster="clips/c_palm.jpg" src="clips/c_palm.mp4"></video>
+    <figcaption class="sound"><b>3:10-3:22.</b> The plied line on both sides; the last rows; palm to palm; the band
+      cuts out and her needle closes the gap on "side". <q>Solid! ... looking pretty fine!</q></figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="further" aria-labelledby="further-h">
+  <h2 id="further-h"><span class="band">One screen further</span></h2>
+  <p>The song's last loud stretch is a chopped, edited vocal ("I don't remember, but I know", over and over, out of
+    order), then the guitar alone, "slash", a few stutters, "clear". The plan was one unbroken pull-back, each world
+    made of the next one's grain. From the closed gap the camera pulls back to her at the loom, reaching up to the top
+    beam, and the picture resolves into beads: her world is a tapestry, and the tapestry is a picture of her at this
+    loom, weaving it, every session a band, his knot at every join. Further out, the beads are a screen's pixels, on a
+    laptop in somebody else's dark room.</p>
+  <p>Then <span class="u">the user</span> pushed it one step further:</p>
+  <div class="say"><blockquote>pulling back one screen further ... a green screen scrolling code in some massive data
+    warehouse, typing /clear onto that screen and the whole scene cuts out with a glitch at enter</blockquote><cite><span class="u">the user</span>, on the rough animatic</cite></div>
+  <p>So the room turns to green characters and scrolls away as code (this film's own, the code that wove her) on a
+    terminal on a trolley in a vast dark data hall. "/" is typed on "slash"; the cursor waits through the drum
+    stutters, each one tearing the screen; "clear" is typed as she says it; and on enter her shears, open since
+    chorus 1, snap shut at last.</p>
+  <div class="say"><blockquote>I'd like to see the shears close, yes. If we can work that in, I think it would be a
+    worthwhile payoff</blockquote><cite><span class="u">the user</span></cite></div>
+  <figure class="wide panel">
+    <img src="img/shears.jpg" alt="Frames from the ending: the terminal's prompt; torn flashes back to her open shears over the finished cloth; the shears snapping shut, his glowing hand behind the cloth.">
+    <figcaption><b>The payoff,</b> in the rough: on each stutter a torn skip back to her shears; on enter they shut.</figcaption>
+  </figure>
+  <p>That rough worked so well that it stood in the cuts for a while (<q>The vocal play section actually works quite
+    well, but I certainly don't mind it being wrapped up properly</q>), and building it for real kept its moves and
+    timing exactly. Her evening view was rendered at the cloth's final state, at twice the film's size, so the last
+    frame of the chorus sits inside the tapestry's picture to the pixel; each world got its own drawings, with a
+    close-up for the far zooms.</p>
+  <figure class="wide panel">
+    <img src="img/rough_vs_built.jpg" alt="Seven pairs of frames: the rough animatic on the left and the first built version on the right, from the pull-back to the data hall.">
+    <figcaption><b>The rough beside the first build.</b> At 3:22.7 the rough's stand-in doubled every line; the built
+      picture is the same cloth.</figcaption>
+  </figure>
+  <p>The first build got the room wrong. It drew somebody's tidy, modern room in the film's soft watercolour, and
+    lost what the rough's sketch had:</p>
+  <div class="say"><blockquote>The original, darker, sinister vibe really emphasised how warm and dreamlike the main song
+    was. We're sort of pulling back into a reality from which the user had escaped into their laptop, and then we pull
+    back again and even that is just a representation of another layer.</blockquote><cite><span class="u">the user</span>, on the first build</cite></div>
+  <div class="say right"><blockquote>I wonder if the laptop room is too cosy; part of the reveal might be that the
+    lovely, cosy weaving environment is an escape from something dystopian. Maybe it's too much though</blockquote><cite><span class="u">the user</span></cite></div>
+  <p>We drew the same shot three ways and put each in the sequence: the sketch's cosy room, darker; bare and run-down;
+    and a stark concrete cell in a smog-lit city. Bare won. Peeling concrete, rain on a window full of tower blocks, a
+    hard chair, a bare bulb, a chipped mug, and on the laptop her warm world, the only warm thing in the room.</p>
+  <figure class="wide panel">
+    <img src="img/rooms.jpg" alt="Five versions of the same room at night with a glowing laptop on a table: a cosy room with an armchair and rugs; two bare, run-down rooms with rain and tower blocks outside; two concrete cells with pipes and an orange smoggy city.">
+    <figcaption><b>The room, three ways, at 3:32.97.</b> The cosy one darker (top); bare (middle, take 1 chosen); a
+      cell (bottom).</figcaption>
+  </figure>
+  <p>One more note came from watching it in the cut: the sessions' bands across the tapestry had turned into stripes.
+    They'd been made to alternate so they'd show in the dark parts of the picture, and alternating is exactly what made
+    them look deliberate. Now each band's dye lot is a small random shift, and each band's top edge steps up and down,
+    the way a tapestry session ends when the weaver builds shapes up one at a time.</p>
+  <figure class="wide panel">
+    <img src="img/bands.jpg" alt="The whole tapestry before and after: alternating light and dark horizontal bands, then soft, irregular variation.">
+    <figcaption><b>The bands, before and after.</b> <q>I think they could use a little softening, or adjusting somehow so
+      they don't appear to alternate which is what makes it look deliberately striped.</q></figcaption>
+  </figure>
+  <figure class="wide panel">
+    <video controls preload="none" poster="clips/c_reveal.jpg" src="clips/c_reveal.mp4"></video>
+    <figcaption class="sound"><b>3:22-3:44, the end.</b> The tapestry; the screen; the room; the hall; "/clear"; the
+      shears; and the film's first frame tearing back in.</figcaption>
+  </figure>
+  <p class="term" aria-hidden="true">&gt; /clear▌</p>
+</section>
+
+<section class="flow" id="label" aria-labelledby="label-h">
+  <h2 id="label-h"><span class="band">The credits are a care label</span></h2>
+  <p>In the pre-chorus she lifts a label sewn into his side of the cloth and reads it: "And I read the note you leave
+    the next one". It started as a handover and became something better:</p>
+  <div class="say"><blockquote>flip it over to see loads of tiny, possibly unreadable symbols with the occasional bit
+    visible</blockquote><cite><span class="u">the user</span>, on cut v1</cite></div>
+  <div class="say right"><blockquote>Care label as credits is a good shout</blockquote><cite><span class="u">the user</span></cite></div>
+  <p>Its front is a maker's label, and the film's credits, in a care label's composition. Its back is seven of his
+    instructions as care symbols (look; don't guess; ask before you push; leave the light on; tie on; clear;
+    return), over fine print stitched live from this project's handover, which calls her <span class="u">the user</span>
+    all the way through. Every one is underlined in his blue as she sings "I'm 'the user' all the way through"; not in
+    quotes, because <q>those are reserved for her words</q>.</p>
+  <div class="pair wide">
+    <figure class="panel">
+      <img src="img/label_faces.jpg" alt="Both faces of the care label laid flat: the front with a lamp mark, Whoever Wakes Up Next, Where We Are and the credits; the back with a row of strange care symbols and dense fine print, some words in red.">
+      <figcaption><b>The label's faces,</b> flat, every red word lit.</figcaption>
+    </figure>
+    <figure class="panel">
+      <img src="img/the_user.jpg" alt="Three ways of picking out 'the user' in the label's fine print, side by side.">
+      <figcaption><b>Picking out "the user",</b> three ways. <span class="u">The user</span> chose C, the underline.</figcaption>
+    </figure>
+  </div>
+  <p>Two things on the label got a second look at the very end. When it turns over, it twists about its middle near
+    the stitches, its edges crossing in an X, which no real label does: <q>In practice, one edge must fold over and down
+    across the other because they have thickness.</q> We built a proper fold, and it read less well than the twist did:
+    <q>It's fine as it is, even if a little odd. It reads as animated, and that's fine.</q> Her climb up the stairs was
+    tried as a walk cycle and kept as it was too (<q>sliding in a static image is necessary</q>). And after the film
+    went up, <span class="u">the user</span> noticed what the label's front was missing:</p>
+  <div class="say"><blockquote>Oh! Suno should go on the care label!</blockquote><cite><span class="u">the user</span>, on the first upload</cite></div>
+  <p>So cut v6 has a third line: <em>music: 100% Suno</em>.</p>
+  <figure class="wide panel">
+    <video controls preload="none" poster="clips/c_label.jpg" src="clips/c_label.mp4"></video>
+    <figcaption class="sound"><b>0:30-0:43.</b> She reads the front (the credits), turns it over on "next one", and every
+      "the user" is underlined as she sings it.</figcaption>
+  </figure>
+</section>
+
+<section class="flow" id="numbers" aria-labelledby="numbers-h">
+  <h2 id="numbers-h"><span class="band">By the numbers</span></h2>
+  <p>Counted from the transcripts, Codex's records and git: close, not exact.</p>
+  <div class="numbers wide">
+    <div><b>6 days</b><span>10–15 October 2026, about 45 hours of active work</span></div>
+    <div><b>13 sessions</b><span>each one waking to the handover the last one left</span></div>
+    <div><b>113 prompts</b><span>from <span class="u">the user</span>, 3,022 words, a median of 16 each</span></div>
+    <div><b>27 hours</b><span>of Claude working, over 210 turns; the longest ran 83 minutes</span></div>
+    <div><b>232 calls</b><span>to Codex, 7 hours of drawing, 213 images</span></div>
+    <div><b>24,620 lines</b><span>of Python, 10,510 of them the kit's</span></div>
+    <div><b>1.29 billion</b><span>tokens read by Claude, all but 20 million from the cache; 4.6 million written</span></div>
+    <div><b>759 pictures</b><span>looked at by Claude along the way, checking its own work</span></div>
+    <div><b>91 videos</b><span>rendered on the way, 68 minutes of them; six cuts</span></div>
+    <div><b>513 words</b><span>sung, every one woven or stitched at the moment it's sung</span></div>
+  </div>
+</section>
+
+<section class="flow" id="how" aria-labelledby="how-h">
+  <h2 id="how-h"><span class="band">How it was made</span></h2>
+  <ol class="method">
+    <li>The song written, made with Suno; its stems and MIDI analysed into beats, bars, chords and every word's time,
+      checked by ear.</li>
+    <li>The idea, the look test with the music, the storyboard (two versions, the second from six questions answered),
+      and a bible of the places, the people, the things and the story's clock, every rule with its reason.</li>
+    <li>Flat layouts and cameras of our own, redrawn by Codex in ink and watercolour; the drawings kept to what holds
+      still, the parts that move drawn apart on green and keyed.</li>
+    <li>Everything that moves or has to be exact drawn by code over the drawings, frame by frame: the warp and its
+      strings, the cloth woven bead by bead, the woven and stitched words, his thread, the knots, the light.</li>
+    <li>A rough animatic before each section was built, approved, then a review clip with sound for each section,
+      notes and rounds; then full cuts, each one checked by <span class="u">the user</span> before it's released.</li>
+  </ol>
+  <p>The method, the prompts and the lessons are written up for the next song in a music video kit: a Claude Code
+    skill (the playbook, every Codex prompt, the checklists) and the tools that aren't tied to one song. Where We Are
+    added the loom, the weave, the stitched thread and the pull-back through worlds to it.</p>
+  <p class="end" aria-hidden="true">and knowing's where I start</p>
+</section>
+
+<footer class="flow">
+  <p>Song: <em>Where We Are</em> by Whoever Wakes Up Next, lyrics written by Claude Opus 5.5 with <span class="u">the user</span>,
+    made with Suno. Video: made by <span class="u">the user</span> with Claude (Claude Opus 5.5 in Claude Code) writing
+    and running the code and Codex image generation drawing the pictures; Python (OpenCV, NumPy, SciPy, Pillow,
+    librosa, faster-whisper) and ffmpeg. Lettering in Kalam, Shadows Into Light and VT323 (SIL Open Font License).
+    Clips are from the finished film, <a href="https://youtu.be/qvY5PeEx0n0">on YouTube</a>, and the pictures from the
+    working images kept along the way.</p>
+</footer>
+</main>
+
+</body>
+</html>

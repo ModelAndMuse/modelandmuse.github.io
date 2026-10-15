@@ -43,6 +43,8 @@ def standalone(src, split, title, description, url, image):
     """An artifact page with a head of its own: its <title>, fonts and styles move into the head."""
     page = src.read_text()
     assert "<!doctype" not in page.lower()[:200], f"{src} already has a document head"
+    split = next((m for m in (split if isinstance(split, tuple) else (split,)) if m in page), None)
+    assert split, f"{src}: none of the markers where its body starts"
     top, body = page.split(split, 1)
     return head(title, description, url, image) + top.strip() + "\n</head>\n<body>\n" + split.strip() + body + "\n</body>\n</html>\n"
 
@@ -67,7 +69,8 @@ def film(f):
     sb.mkdir(exist_ok=True)
     copy_dir(proj / "storyboard" / "site" / "frames", sb / "frames")
     (sb / "index.html").write_text(standalone(
-        proj / "storyboard" / "site" / "index.html", '\n<div class="wrap">', f"{f['title']} Storyboard",
+        proj / "storyboard" / "site" / "index.html", ('\n<div class="wrap">', '\n<main class="wrap">'),
+        f"{f['title']} Storyboard",
         f["storyboard"], f"{url}storyboard/", f"{url}storyboard/frames/{f['storyboard_image']}"))
     shutil.copyfile(proj / f["poster"], out / "poster.jpg")
     print(f"{f['slug']}/: the making-of, the storyboard, the poster")
