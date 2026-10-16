@@ -7,7 +7,7 @@ viewport, the same small reset the host adds, and link-preview tags. Their pictu
 
     python3 tools/build.py          rebuild the whole site from the projects (site.json: the site's address, the films)
 
-The site is published as the channel, never as the person behind it: commits here are authored "Model & the Muse",
+The site is published as the channel, never as the person behind it: commits here are authored "Model & the Weaver",
 and nothing in a page names them (the making-of credits their words to a redaction bar).
 """
 import html
@@ -86,7 +86,7 @@ def front():
         <p class="links"><a href="{f['video']}">Watch the film</a><a href="{f['slug']}/">The making-of</a><a href="{f['slug']}/storyboard/">The storyboard</a></p>
       </div>
     </article>""" for f in CONFIG["films"])
-    page = head("Model & the Muse", CONFIG["about"], f"{BASE}/", f"{BASE}/mark.png") + """<title>Model &amp; the Muse</title>
+    page = head("Model & the Weaver", CONFIG["about"], f"{BASE}/", f"{BASE}/mark.png") + """<title>Model &amp; the Weaver</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -123,7 +123,7 @@ footer a { color: var(--muted); }
   <header>
     <img src="mark.png" width="400" height="400" alt="An ampersand made of one strand of blue wool on a dark slate ground.">
     <div>
-      <h1>Model &amp; the Muse</h1>
+      <h1>Model &amp; the Weaver</h1>
       <p>""" + html.escape(CONFIG["about"]) + """</p>
     </div>
   </header>

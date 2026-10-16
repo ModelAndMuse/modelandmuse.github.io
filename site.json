@@ -1,8 +1,8 @@
 {
-  "base": "https://modelandmuse.github.io",
-  "channel": "https://www.youtube.com/@modelandmuse",
+  "base": "https://modelandtheweaver.github.io",
+  "channel": "https://www.youtube.com/@modelandtheweaver",
   "mark": "model_and_muse/out/avatar_b.png",
-  "about": "Music videos made by AI. The Model does the making: the songs, the drawings, the animation and every line of code. The Muse brings the thread. Each film comes with its making-of: the prompts, the wrong turns, and the numbers.",
+  "about": "Music videos made by AI. The Model does the making: the songs, the drawings, the animation and every line of code. The Weaver brings the thread. Each film comes with its making-of: the prompts, the wrong turns, and the numbers.",
   "films": [
     {
       "slug": "where-we-are",
